@@ -10,37 +10,78 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
   <style>
+    /* Base font styles for each language */
     body.lang-fr { font-family: 'Inter', sans-serif; }
     body.lang-ar { font-family: 'Tajawal', sans-serif; }
+
+    /* Smooth transition for interactive elements */
     .smooth-transition { transition: all 0.3s ease-in-out; }
-    .option-card { cursor: pointer; border: 2px solid #cbd5e1; }
-    .option-card:hover { border-color: #6366f1; color: #4338ca; }
+
+    /* Styles for selectable option cards */
+    .option-card {
+      cursor: pointer;
+      border: 2px solid #cbd5e1;
+    }
+    .option-card:hover {
+      border-color: #6366f1; /* Indigo-400 */
+      color: #4338ca; /* Indigo-700 */
+    }
     .option-card.selected {
-      border-color: #4f46e5;
-      background-color: #e0e7ff;
-      color: #1e3a8a;
+      border-color: #4f46e5; /* Indigo-600 */
+      background-color: #e0e7ff; /* Indigo-100 */
+      color: #1e3a8a; /* Indigo-900 */
       font-weight: 700;
       box-shadow: 0 4px 10px rgba(79, 70, 229, 0.1);
     }
-    .form-input { background-color: #f8fafc; border: 1px solid #cbd5e1; }
+
+    /* Styles for form text inputs */
+    .form-input {
+      background-color: #f8fafc; /* Slate-50 */
+      border: 1px solid #cbd5e1; /* Slate-300 */
+    }
     .form-input:focus {
-      border-color: #4f46e5;
+      border-color: #4f46e5; /* Indigo-600 */
       box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
       outline: none;
     }
-    .error-message { color: #ef4444; font-size: 0.875rem; margin-top: 0.5rem; display: none; }
-    .form-input.error, .option-card-container.error { border: 1px solid #ef4444 !important; border-radius: 0.5rem; }
+
+    /* Styles for validation errors */
+    .error-message {
+      color: #ef4444; /* Red-500 */
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+      display: none; /* Hidden by default */
+    }
+    .form-input.error {
+        border-color: #ef4444 !important;
+    }
+    .option-card-container.error .option-card:not(.selected) {
+        border-color: #ef4444 !important;
+    }
+
+    /* Language switcher button styles */
     .lang-switcher button {
       padding: 0.5rem 1rem;
       border-radius: 0.5rem;
       font-weight: 600;
-      color: #475569;
-      background-color: #e2e8f0;
+      color: #475569; /* Slate-600 */
+      background-color: #e2e8f0; /* Slate-200 */
     }
     .lang-switcher button.active {
       color: #ffffff;
-      background-color: #4f46e5;
+      background-color: #4f46e5; /* Indigo-600 */
       box-shadow: 0 2px 5px rgba(79, 70, 229, 0.2);
+    }
+    
+    /* Modal Styles */
+    body.modal-open {
+        overflow: hidden;
+    }
+    #course-modal-overlay {
+        transition: opacity 0.3s ease;
+    }
+    #course-modal-container {
+        transition: transform 0.3s ease;
     }
   </style>
 </head>
@@ -57,12 +98,17 @@
     <div id="fr-version" class="language-content">
         <div class="max-w-3xl mx-auto" id="form-container-fr">
           <header class="text-center mb-6">
-            <img src="https://pwwijduek2.space.minimax.io/logo_alshaarea_almoghrabi.jpeg" alt="Logo" class="w-24 h-24 mx-auto mb-4 rounded-full shadow-lg" />
+            <img src="https://pwwijduek2.space.minimax.io/logo_alshaarea_almoghrabi.jpeg" alt="Logo" class="w-24 h-24 mx-auto mb-4 rounded-full shadow-lg" onerror="this.onerror=null;this.src='https://placehold.co/96x96/e0e7ff/4338ca?text=Logo';" />
             <h1 class="text-3xl md:text-4xl font-black text-slate-900">Formulaire d'inscription : Cours de création de vidéos par IA</h1>
             <p class="text-md text-slate-600 mt-2">Bienvenue ! Ce formulaire est votre premier pas vers le monde de la création de contenu professionnelle.</p>
+            <div class="mt-6">
+                <button class="open-modal-btn bg-white hover:bg-slate-50 text-indigo-600 font-semibold py-2 px-4 border border-slate-300 rounded-lg shadow-sm smooth-transition">
+                    Voir les détails du cours
+                </button>
+            </div>
           </header>
           <form action="https://formspree.io/f/xqabowdq" method="POST" id="form-fr" class="bg-white rounded-2xl shadow-xl overflow-hidden p-4 md:p-8" novalidate>
-            <!-- Partie 1: Informations de base -->
+            <!-- Form content is identical for both languages, just with different text -->
             <section class="mb-10">
               <h2 class="text-2xl font-bold mb-6 border-b pb-3">Partie 1 : Informations de base</h2>
               <div class="mb-6"><label for="full_name_fr" class="block text-lg font-bold text-slate-700 mb-2">Nom complet</label><input type="text" id="full_name_fr" name="full_name" required class="w-full p-3 rounded-lg form-input smooth-transition" /><p class="error-message">Veuillez entrer votre nom complet.</p></div>
@@ -73,7 +119,6 @@
               <div class="mb-6"><label for="social_account_fr" class="block text-lg font-bold text-slate-700 mb-2">Votre compte TikTok / Instagram (facultatif)</label><input type="text" id="social_account_fr" name="social_account" class="w-full p-3 rounded-lg form-input smooth-transition" /><p class="text-sm text-slate-500 mt-1">Partager votre compte nous aide à comprendre votre point de départ.</p></div>
             </section>
             
-            <!-- Partie 2: Expérience -->
             <section class="mb-10">
               <h2 class="text-2xl font-bold mb-6 border-b pb-3">Partie 2 : Votre expérience</h2>
               <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">Appareil principal</label><div class="grid grid-cols-2 md:grid-cols-3 gap-4 option-card-container" data-question="device-fr"><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="Ordinateur">Ordinateur</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="Smartphone">Smartphone</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="Tablette">Tablette</div></div><input type="hidden" name="device" id="device-fr" required /><p class="error-message">Veuillez sélectionner un appareil.</p></div>
@@ -81,13 +126,11 @@
               <div class="mb-10"><label for="tools_experience_fr" class="block text-lg font-bold text-slate-700 mb-2">Expérience avec des outils (Montage, Design, IA)</label><p class="text-sm text-slate-500 mb-2">Si oui, mentionnez les outils ou projets.</p><textarea id="tools_experience_fr" name="tools_experience" rows="4" class="w-full p-3 rounded-lg form-input smooth-transition"></textarea></div>
             </section>
 
-            <!-- Partie 3: Objectifs -->
             <section class="mb-10">
               <h2 class="text-2xl font-bold mb-6 border-b pb-3">Partie 3 : Vos objectifs</h2>
               <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">Objectif principal (plusieurs choix possibles)</label><div class="grid grid-cols-1 sm:grid-cols-2 gap-3 option-card-container" data-question="main_goals-fr"><div class="option-card p-3 rounded-lg font-semibold" data-value="Lancer une chaîne à succès">Lancer une chaîne à succès</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Développer mes compétences">Développer mes compétences</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Marketing pour mon projet">Marketing pour mon projet</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Revenu supplémentaire">Générer un revenu supplémentaire</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Explorer l'IA">Explorer l'IA</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Autre">Autre...</div></div><input type="hidden" name="main_goals" id="main_goals-fr" required /><p class="error-message">Veuillez sélectionner au moins un objectif.</p></div>
             </section>
             
-            <!-- Partie 4: Défis et Préférences -->
             <section class="mb-10">
                 <h2 class="text-2xl font-bold mb-6 border-b pb-3">Partie 4 : Défis et Préférences</h2>
                 <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">Quel est votre plus grand obstacle ?</label><div class="grid grid-cols-1 sm:grid-cols-2 gap-3 option-card-container" data-question="main_challenges-fr"><div class="option-card p-3 rounded-lg font-semibold" data-value="Peur de l'échec">Peur de l'échec / manque de vues</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Manque d'idées">Manque d'idées / ne pas savoir par où commencer</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Faibles compétences techniques">Faibles compétences techniques (montage, design)</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Manque de temps">Manque de temps / difficulté à s'engager</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Manque de confiance">Manque de confiance dans la qualité du contenu</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Autre">Autre...</div></div><input type="hidden" name="main_challenges" id="main_challenges-fr" required /><p class="error-message">Veuillez sélectionner un obstacle.</p></div>
@@ -95,7 +138,6 @@
                 <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">Votre approche des outils payants ?</label><div class="grid grid-cols-1 gap-3 option-card-container" data-question="tools_payment-fr"><div class="option-card p-3 rounded-lg font-semibold" data-value="Prêt à payer">Oui, prêt à payer pour la meilleure qualité</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Préfère le gratuit">Je préfère commencer avec des options gratuites</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Pas encore sûr">Pas encore sûr, je déciderai plus tard</div></div><input type="hidden" name="tools_payment" id="tools_payment-fr" required /><p class="error-message">Veuillez sélectionner une option.</p></div>
             </section>
 
-            <!-- Partie 5: Questions supplémentaires -->
             <section class="mb-10">
                 <h2 class="text-2xl font-bold mb-6 border-b pb-3">Partie 5 : Questions supplémentaires</h2>
                 <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2" for="how_heard_fr">Comment avez-vous entendu parler du cours ?</label><input type="text" name="how_heard" id="how_heard_fr" class="form-input w-full p-3 rounded-lg smooth-transition" /></div>
@@ -103,7 +145,10 @@
                 <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2" for="final_questions_fr">Avez-vous des questions ou des préoccupations ?</label><textarea id="final_questions_fr" name="final_questions" rows="3" class="form-input w-full p-3 rounded-lg smooth-transition"></textarea></div>
             </section>
 
-            <div class="text-center"><button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-2xl smooth-transition w-full sm:w-auto">Envoyer le formulaire</button></div>
+            <div class="text-center">
+                <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-2xl smooth-transition w-full sm:w-auto">Envoyer le formulaire</button>
+                <p id="form-error-fr" class="error-message text-center mt-4"></p>
+            </div>
           </form>
         </div>
         <div id="success-message-fr" class="max-w-3xl mx-auto text-center bg-white rounded-2xl shadow-xl p-8" style="display: none;"><svg class="w-16 h-16 mx-auto text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><h2 class="text-3xl font-black text-slate-900 mt-4">Merci !</h2><p class="text-lg text-slate-600 mt-2">Votre formulaire a été envoyé avec succès.</p></div>
@@ -114,12 +159,17 @@
     <div id="ar-version" class="language-content" style="display: none;">
         <div class="max-w-3xl mx-auto" id="form-container-ar">
             <header class="text-center mb-6">
-                <img src="https://pwwijduek2.space.minimax.io/logo_alshaarea_almoghrabi.jpeg" alt="شعار" class="w-24 h-24 mx-auto mb-4 rounded-full shadow-lg" />
+                <img src="https://pwwijduek2.space.minimax.io/logo_alshaarea_almoghrabi.jpeg" alt="شعار" class="w-24 h-24 mx-auto mb-4 rounded-full shadow-lg" onerror="this.onerror=null;this.src='https://placehold.co/96x96/e0e7ff/4338ca?text=Logo';" />
                 <h1 class="text-3xl md:text-4xl font-black text-slate-900">استمارة التسجيل: دورة صناعة فيديوهات AI</h1>
                 <p class="text-md text-slate-600 mt-2">مرحبًا بك! هذه الاستمارة هي خطوتك الأولى نحو عالم صناعة المحتوى الاحترافي.</p>
+                <div class="mt-6">
+                    <button class="open-modal-btn bg-white hover:bg-slate-50 text-indigo-600 font-semibold py-2 px-4 border border-slate-300 rounded-lg shadow-sm smooth-transition">
+                        عرض تفاصيل الدورة
+                    </button>
+                </div>
             </header>
             <form action="https://formspree.io/f/xqabowdq" method="POST" id="form-ar" class="bg-white rounded-2xl shadow-xl overflow-hidden p-4 md:p-8" novalidate>
-                <!-- القسم الأول: المعلومات الأساسية -->
+                <!-- Sections are duplicated for Arabic -->
                 <section class="mb-10">
                     <h2 class="text-2xl font-bold mb-6 border-b pb-3">القسم الأول: المعلومات الأساسية</h2>
                     <div class="mb-6"><label for="full_name_ar" class="block text-lg font-bold text-slate-700 mb-2">الاسم الكامل</label><input type="text" id="full_name_ar" name="full_name" required class="w-full p-3 rounded-lg form-input smooth-transition" /><p class="error-message">الرجاء إدخال اسمك الكامل.</p></div>
@@ -130,7 +180,6 @@
                     <div class="mb-6"><label for="social_account_ar" class="block text-lg font-bold text-slate-700 mb-2">حسابك على تيك توك / انستغرام (اختياري)</label><input type="text" id="social_account_ar" name="social_account" class="w-full p-3 rounded-lg form-input smooth-transition" /><p class="text-sm text-slate-500 mt-1">مشاركة حسابك يساعدنا على فهم نقطة انطلاقك.</p></div>
                 </section>
 
-                <!-- القسم الثاني: الخبرة التقنية -->
                 <section class="mb-10">
                     <h2 class="text-2xl font-bold mb-6 border-b pb-3">القسم الثاني: الخبرة التقنية</h2>
                     <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">الجهاز الرئيسي</label><div class="grid grid-cols-2 md:grid-cols-3 gap-4 option-card-container" data-question="device-ar"><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="حاسوب">حاسوب</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="هاتف ذكي">هاتف ذكي</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="جهاز لوحي">جهاز لوحي</div></div><input type="hidden" name="device" id="device-ar" required /><p class="error-message">الرجاء اختيار جهاز.</p></div>
@@ -138,13 +187,11 @@
                     <div class="mb-10"><label for="tools_experience_ar" class="block text-lg font-bold text-slate-700 mb-2">خبرة سابقة مع الأدوات (مونتاج، تصميم، ذكاء اصطناعي)</label><p class="text-sm text-slate-500 mb-2">إذا كان الجواب نعم، يرجى ذكر الأدوات أو المشاريع.</p><textarea id="tools_experience_ar" name="tools_experience" rows="4" class="w-full p-3 rounded-lg form-input smooth-transition"></textarea></div>
                 </section>
 
-                <!-- القسم الثالث: الأهداف -->
                 <section class="mb-10">
                     <h2 class="text-2xl font-bold mb-6 border-b pb-3">القسم الثالث: أهدافك</h2>
                     <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">ما هو هدفك الرئيسي؟ (يمكن اختيار أكثر من خيار)</label><div class="grid grid-cols-1 sm:grid-cols-2 gap-3 option-card-container" data-question="main_goals-ar"><div class="option-card p-3 rounded-lg font-semibold" data-value="إطلاق قناة ناجحة">إطلاق قناة ناجحة</div><div class="option-card p-3 rounded-lg font-semibold" data-value="تطوير المهارات">تطوير مهاراتي</div><div class="option-card p-3 rounded-lg font-semibold" data-value="التسويق لمشروعي">التسويق لمشروعي</div><div class="option-card p-3 rounded-lg font-semibold" data-value="دخل إضافي">تحقيق دخل إضافي</div><div class="option-card p-3 rounded-lg font-semibold" data-value="استكشاف AI">استكشاف الذكاء الاصطناعي</div><div class="option-card p-3 rounded-lg font-semibold" data-value="أخرى">أخرى...</div></div><input type="hidden" name="main_goals" id="main_goals-ar" required /><p class="error-message">الرجاء اختيار هدف واحد على الأقل.</p></div>
                 </section>
                 
-                <!-- القسم الرابع: التحديات والتفضيلات -->
                 <section class="mb-10">
                     <h2 class="text-2xl font-bold mb-6 border-b pb-3">القسم الرابع: التحديات وأنواع المحتوى</h2>
                     <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">ما هو أكبر عائق يمنعك من البدء؟</label><div class="grid grid-cols-1 sm:grid-cols-2 gap-3 option-card-container" data-question="main_challenges-ar"><div class="option-card p-3 rounded-lg font-semibold" data-value="الخوف من الفشل">الخوف من الفشل أو عدم الحصول على مشاهدات</div><div class="option-card p-3 rounded-lg font-semibold" data-value="نقص الأفكار">نقص الأفكار أو عدم معرفة من أين أبدأ</div><div class="option-card p-3 rounded-lg font-semibold" data-value="ضعف المهارات التقنية">ضعف المهارات التقنية (مونتاج، تصميم)</div><div class="option-card p-3 rounded-lg font-semibold" data-value="ضيق الوقت">ضيق الوقت وصعوبة الالتزام</div><div class="option-card p-3 rounded-lg font-semibold" data-value="عدم الثقة">عدم الثقة في جودة المحتوى</div><div class="option-card p-3 rounded-lg font-semibold" data-value="أخرى">أخرى...</div></div><input type="hidden" name="main_challenges" id="main_challenges-ar" required /><p class="error-message">الرجاء اختيار عائق واحد.</p></div>
@@ -152,7 +199,6 @@
                     <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">ما هو توجهك بالنسبة للأدوات المدفوعة؟</label><div class="grid grid-cols-1 gap-3 option-card-container" data-question="tools_payment-ar"><div class="option-card p-3 rounded-lg font-semibold" data-value="مستعد للدفع">نعم، مستعد للدفع للحصول على أفضل جودة</div><div class="option-card p-3 rounded-lg font-semibold" data-value="أفضل المجاني">أفضل البدء بالخطط المجانية مع القيود</div><div class="option-card p-3 rounded-lg font-semibold" data-value="لست متأكداً">لست متأكداً بعد، سأقرر لاحقاً</div></div><input type="hidden" name="tools_payment" id="tools_payment-ar" required /><p class="error-message">الرجاء اختيار توجهك.</p></div>
                 </section>
 
-                <!-- القسم الخامس: أسئلة مفتوحة -->
                 <section class="mb-10">
                     <h2 class="text-2xl font-bold mb-6 border-b pb-3">القسم الخامس: أسئلة إضافية</h2>
                     <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2" for="how_heard_ar">كيف سمعت عن الدورة؟</label><input type="text" name="how_heard" id="how_heard_ar" class="form-input w-full p-3 rounded-lg smooth-transition" /></div>
@@ -160,7 +206,10 @@
                     <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2" for="final_questions_ar">هل لديك أي أسئلة أو استفسارات؟</label><textarea id="final_questions_ar" name="final_questions" rows="3" class="form-input w-full p-3 rounded-lg smooth-transition"></textarea></div>
                 </section>
 
-                <div class="text-center"><button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-2xl smooth-transition w-full sm:w-auto">إرسال الاستمارة</button></div>
+                <div class="text-center">
+                    <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-2xl smooth-transition w-full sm:w-auto">إرسال الاستمارة</button>
+                    <p id="form-error-ar" class="error-message text-center mt-4"></p>
+                </div>
             </form>
         </div>
         <div id="success-message-ar" class="max-w-3xl mx-auto text-center bg-white rounded-2xl shadow-xl p-8" style="display: none;"><svg class="w-16 h-16 mx-auto text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><h2 class="text-3xl font-black text-slate-900 mt-4">شكرًا لك!</h2><p class="text-lg text-slate-600 mt-2">تم إرسال طلبك بنجاح.</p></div>
@@ -168,139 +217,268 @@
     </div>
   </div>
 
+  <!-- Modal Structure -->
+  <div id="course-modal-overlay" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center p-4 z-50">
+      <div id="course-modal-container" class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 md:p-8 relative transform scale-95">
+          <!-- Modal content injected by JavaScript -->
+      </div>
+  </div>
+
+
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      const frBtn = document.getElementById('lang-fr-btn');
-      const arBtn = document.getElementById('lang-ar-btn');
-      const frVersion = document.getElementById('fr-version');
-      const arVersion = document.getElementById('ar-version');
-      const body = document.body;
-      const html = document.documentElement;
 
-      // --- Language Switcher Logic ---
-      frBtn.addEventListener('click', () => {
-        arVersion.style.display = 'none';
-        frVersion.style.display = 'block';
-        frBtn.classList.add('active');
-        arBtn.classList.remove('active');
-        html.dir = 'ltr';
-        body.classList.remove('lang-ar');
-        body.classList.add('lang-fr');
-      });
+      // --- Main Application Object ---
+      const App = {
+        // Application state
+        state: {
+          lang: 'fr',
+        },
 
-      arBtn.addEventListener('click', () => {
-        frVersion.style.display = 'none';
-        arVersion.style.display = 'block';
-        arBtn.classList.add('active');
-        frBtn.classList.remove('active');
-        html.dir = 'rtl';
-        body.classList.remove('lang-fr');
-        body.classList.add('lang-ar');
-      });
-
-      // --- Generic Form Initialization Function ---
-      function initializeForm(formId) {
-        const form = document.getElementById(formId);
-        if (!form) return;
-
-        const formContainer = form.parentElement;
-        const successMessage = document.getElementById(formContainer.id.replace('form-container', 'success-message'));
-
-        // Card selection logic
-        form.querySelectorAll('.option-card-container').forEach(section => {
-          const cards = section.querySelectorAll('.option-card');
-          const input = form.querySelector('#' + section.dataset.question);
-          const isMultiSelect = input.name.includes('goals') || input.name.includes('challenges') || input.name.includes('types');
-
-          cards.forEach(card => {
-            card.addEventListener('click', () => {
-              section.classList.remove('error');
-              const errorElement = input.parentElement.querySelector('.error-message');
-              if (errorElement) errorElement.style.display = 'none';
-
-              if (isMultiSelect) {
-                card.classList.toggle('selected');
-                let selectedValues = Array.from(section.querySelectorAll('.selected')).map(c => c.dataset.value);
-                input.value = selectedValues.join(', ');
-              } else {
-                cards.forEach(c => c.classList.remove('selected'));
-                card.classList.add('selected');
-                input.value = card.dataset.value;
-              }
-            });
-          });
-        });
-
-        // Form validation and submission
-        form.addEventListener('submit', function (event) {
-          event.preventDefault();
-          let isValid = true;
-          
-          form.querySelectorAll('[required]').forEach(input => {
-            const parentDiv = input.closest('div');
-            const errorElement = parentDiv.querySelector('.error-message');
-            let isFieldValid = true;
-
-            if (input.type === 'hidden') {
-              if (!input.value) {
-                isFieldValid = false;
-                input.previousElementSibling.classList.add('error');
-              } else {
-                input.previousElementSibling.classList.remove('error');
-              }
-            } else {
-              if (!input.value.trim() || (input.type === 'email' && !/^\S+@\S+\.\S+$/.test(input.value))) {
-                isFieldValid = false;
-                input.classList.add('error');
-              } else {
-                input.classList.remove('error');
-              }
-            }
-            
-            if (!isFieldValid) {
-                isValid = false;
-                if(errorElement) errorElement.style.display = 'block';
-            } else {
-                if(errorElement) errorElement.style.display = 'none';
-            }
-          });
-
-          if (isValid) {
-            const submitButton = form.querySelector('button[type="submit"]');
-            submitButton.disabled = true;
-            submitButton.textContent = form.id.includes('fr') ? 'Envoi en cours...' : 'جاري الإرسال...';
-            
-            const formData = new FormData(form);
-            fetch(form.action, {
-              method: 'POST',
-              body: formData,
-              headers: { 'Accept': 'application/json' }
-            }).then(response => {
-              if (response.ok) {
-                formContainer.style.display = 'none';
-                successMessage.style.display = 'block';
-                window.scrollTo(0, 0);
-              } else {
-                response.json().then(data => {
-                  const errorMessage = data.errors ? data.errors.map(e => e.message).join(', ') : "Une erreur s'est produite.";
-                  alert(errorMessage);
-                }).finally(() => {
-                    submitButton.disabled = false;
-                    submitButton.textContent = form.id.includes('fr') ? 'Envoyer le formulaire' : 'إرسال الاستمارة';
-                });
-              }
-            }).catch(error => {
-              alert("Échec de la connexion.");
-              submitButton.disabled = false;
-              submitButton.textContent = form.id.includes('fr') ? 'Envoyer le formulaire' : 'إرسال الاستمارة';
-            });
+        // Internationalization strings
+        i18n: {
+          fr: {
+            modalTitle: "Détails du cours de création de contenu",
+            modalWhatYouLearn: "Qu'allez-vous apprendre ?",
+            learnPoints: ["Lancer une chaîne à succès sur YouTube/TikTok.", "Maîtriser l'écriture de scénarios avec l'IA.", "Générer et animer des images de manière professionnelle.", "Maîtriser le montage sur CapCut et Canva.", "Stratégies de publication et de croissance (SEO)."],
+            modalStructure: "Structure du cours",
+            structurePoints: ["3 semaines intensives de formation pratique.", "9 sessions en direct et interactives.", "Exercices pratiques après chaque session."],
+            modalTools: "Outils que vous maîtriserez",
+            modalFooter: "Prêt à commencer votre voyage ?",
+          },
+          ar: {
+            modalTitle: "تفاصيل دورة صناعة المحتوى",
+            modalWhatYouLearn: "ماذا ستتعلم؟",
+            learnPoints: ["إطلاق قناة ناجحة على يوتيوب/تيك توك.", "إتقان كتابة السيناريو بالذكاء الاصطناعي.", "توليد الصور وتحريكها باحترافية.", "إتقان المونتاج على CapCut و Canva.", "استراتيجيات النشر والنمو (SEO)."],
+            modalStructure: "هيكل الدورة",
+            structurePoints: ["3 أسابيع مكثفة من التدريب العملي.", "9 لقاءات مباشرة وتفاعلية.", "تمارين تطبيقية بعد كل لقاء."],
+            modalTools: "الأدوات التي ستتقنها",
+            modalFooter: "هل أنت مستعد لبدء رحلتك؟",
           }
-        });
-      }
+        },
 
-      // Initialize both forms
-      initializeForm('form-fr');
-      initializeForm('form-ar');
+        // Initialize the application
+        init() {
+          this.cacheDOM();
+          this.bindEvents();
+          this.initializeForm('form-fr');
+          this.initializeForm('form-ar');
+        },
+
+        // Cache DOM elements for performance
+        cacheDOM() {
+          this.frBtn = document.getElementById('lang-fr-btn');
+          this.arBtn = document.getElementById('lang-ar-btn');
+          this.frVersion = document.getElementById('fr-version');
+          this.arVersion = document.getElementById('ar-version');
+          this.body = document.body;
+          this.html = document.documentElement;
+          this.modalOverlay = document.getElementById('course-modal-overlay');
+          this.modalContainer = document.getElementById('course-modal-container');
+          this.openModalBtns = document.querySelectorAll('.open-modal-btn');
+        },
+
+        // Bind all event listeners
+        bindEvents() {
+          this.frBtn.addEventListener('click', () => this.setLanguage('fr'));
+          this.arBtn.addEventListener('click', () => this.setLanguage('ar'));
+          
+          this.openModalBtns.forEach(btn => {
+            btn.addEventListener('click', () => this.openModal());
+          });
+
+          this.modalOverlay.addEventListener('click', (e) => {
+            if (e.target === this.modalOverlay) {
+              this.closeModal();
+            }
+          });
+        },
+
+        // --- Language Management ---
+        setLanguage(lang) {
+          this.state.lang = lang;
+          const isAr = lang === 'ar';
+          this.arVersion.style.display = isAr ? 'block' : 'none';
+          this.frVersion.style.display = isAr ? 'none' : 'block';
+          this.frBtn.classList.toggle('active', !isAr);
+          this.arBtn.classList.toggle('active', isAr);
+          this.html.dir = isAr ? 'rtl' : 'ltr';
+          this.body.classList.toggle('lang-ar', isAr);
+          this.body.classList.toggle('lang-fr', !isAr);
+        },
+
+        // --- Modal Management ---
+        openModal() {
+            const T = this.i18n[this.state.lang];
+            const isAr = this.state.lang === 'ar';
+
+            this.modalContainer.innerHTML = `
+                <button id="modal-close-btn" class="absolute top-4 ${isAr ? 'left-4' : 'right-4'} text-slate-400 hover:text-slate-800 smooth-transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-6 text-center">${T.modalTitle}</h2>
+                
+                <div class="space-y-6 text-slate-700">
+                    <div>
+                        <h3 class="text-lg font-bold mb-2 text-indigo-600">${T.modalWhatYouLearn}</h3>
+                        <ul class="space-y-2 list-disc ${isAr ? 'list-inside' : 'ml-5'}">
+                            ${T.learnPoints.map(p => `<li>${p}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold mb-2 text-indigo-600">${T.modalStructure}</h3>
+                        <ul class="space-y-2 list-disc ${isAr ? 'list-inside' : 'ml-5'}">
+                            ${T.structurePoints.map(p => `<li>${p}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold mb-2 text-indigo-600">${T.modalTools}</h3>
+                        <p>CapCut, Canva, Midjourney, Runway, Pika Labs, ElevenLabs, et plus...</p>
+                    </div>
+                </div>
+
+                <footer class="mt-8 pt-4 border-t text-center font-semibold text-slate-600">
+                    ${T.modalFooter}
+                </footer>
+            `;
+            
+            this.body.classList.add('modal-open');
+            this.modalOverlay.classList.remove('hidden');
+            setTimeout(() => {
+                this.modalOverlay.classList.add('opacity-100');
+                this.modalContainer.classList.add('scale-100');
+                this.modalContainer.classList.remove('scale-95');
+            }, 10);
+
+            document.getElementById('modal-close-btn').addEventListener('click', () => this.closeModal());
+        },
+
+        closeModal() {
+            this.modalOverlay.classList.remove('opacity-100');
+            this.modalContainer.classList.remove('scale-100');
+            this.modalContainer.classList.add('scale-95');
+            setTimeout(() => {
+                this.modalOverlay.classList.add('hidden');
+                this.body.classList.remove('modal-open');
+            }, 300);
+        },
+
+        // --- Form Management ---
+        initializeForm(formId) {
+          const form = document.getElementById(formId);
+          if (!form) return;
+
+          const formContainer = form.parentElement;
+          const successMessage = document.getElementById(formContainer.id.replace('form-container', 'success-message'));
+          const formErrorElement = document.getElementById(formId.replace('form', 'form-error'));
+
+          // Card selection logic
+          form.querySelectorAll('.option-card-container').forEach(container => {
+            const cards = container.querySelectorAll('.option-card');
+            const input = form.querySelector('#' + container.dataset.question);
+            const isMultiSelect = ['main_goals', 'main_challenges', 'content_types'].includes(input.name);
+
+            cards.forEach(card => {
+              card.addEventListener('click', () => {
+                container.classList.remove('error');
+                const errorMsg = input.parentElement.querySelector('.error-message');
+                if (errorMsg) errorMsg.style.display = 'none';
+
+                if (isMultiSelect) {
+                  card.classList.toggle('selected');
+                  const selectedValues = Array.from(container.querySelectorAll('.selected')).map(c => c.dataset.value);
+                  input.value = selectedValues.join(', ');
+                } else {
+                  cards.forEach(c => c.classList.remove('selected'));
+                  card.classList.add('selected');
+                  input.value = card.dataset.value;
+                }
+              });
+            });
+          });
+
+          // Form validation and submission
+          form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            let isValid = true;
+            let firstInvalidElement = null;
+
+            if (formErrorElement) {
+                formErrorElement.style.display = 'none';
+                formErrorElement.textContent = '';
+            }
+
+            form.querySelectorAll('[required]').forEach(input => {
+              const parentDiv = input.closest('.mb-6');
+              const errorElement = parentDiv.querySelector('.error-message');
+
+              const showError = (el, container) => {
+                  if (errorElement) errorElement.style.display = 'block';
+                  (container || el).classList.add('error');
+                  if (!firstInvalidElement) firstInvalidElement = el.type === 'hidden' ? container : el;
+                  isValid = false;
+              };
+              
+              const clearError = (el, container) => {
+                  if (errorElement) errorElement.style.display = 'none';
+                  (container || el).classList.remove('error');
+              };
+
+              if (input.type === 'hidden') {
+                const container = input.previousElementSibling;
+                if (!input.value) {
+                  showError(input, container);
+                } else {
+                  clearError(input, container);
+                }
+              } else {
+                if (!input.value.trim() || (input.type === 'email' && !/^\S+@\S+\.\S+$/.test(input.value))) {
+                  showError(input);
+                } else {
+                  clearError(input);
+                }
+              }
+            });
+
+            if (isValid) {
+              const submitButton = form.querySelector('button[type="submit"]');
+              const originalButtonText = submitButton.textContent;
+              submitButton.disabled = true;
+              submitButton.textContent = form.id.includes('fr') ? 'Envoi en cours...' : 'جاري الإرسال...';
+              
+              const formData = new FormData(form);
+              fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+              }).then(response => {
+                if (response.ok) {
+                  formContainer.style.display = 'none';
+                  successMessage.style.display = 'block';
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                  return response.json().then(data => {
+                    const errorMessage = data.errors ? data.errors.map(e => e.message).join(', ') : (form.id.includes('fr') ? "Une erreur s'est produite. Veuillez réessayer." : "حدث خطأ. الرجاء المحاولة مرة أخرى.");
+                    throw new Error(errorMessage);
+                  });
+                }
+              }).catch(error => {
+                  if(formErrorElement) {
+                      formErrorElement.textContent = error.message || (form.id.includes('fr') ? "Échec de la connexion. Vérifiez votre connexion et réessayez." : "فشل الاتصال. تحقق من اتصالك وحاول مرة أخرى.");
+                      formErrorElement.style.display = 'block';
+                  }
+                  submitButton.disabled = false;
+                  submitButton.textContent = originalButtonText;
+              });
+            } else if (firstInvalidElement) {
+              firstInvalidElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+          });
+        }
+      };
+
+      // Initialize the App
+      App.init();
     });
   </script>
 </body>
