@@ -1,160 +1,124 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>استمارة التسجيل: دورة صناعة فيديوهات AI</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet"/>
-
-  <style>
-    body { font-family: 'Tajawal', sans-serif; background-color: #e2e8f0; }
-    .form-step { display: none; animation: fadeIn 0.5s ease-in-out; }
-    .form-step.active { display: block; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    .progress-bar-fill { transition: width 0.4s ease-in-out; }
-    .option-card { cursor: pointer; border: 2px solid #cbd5e1; }
-    .option-card:hover { border-color: #6366f1; color: #4338ca; }
-    .option-card.selected { border-color: #4f46e5; background-color: #eef2ff; color: #3730a3; box-shadow: 0 4px 10px rgba(79, 70, 229, 0.1); }
-    .form-input { background-color: #f8fafc; border: 1px solid #cbd5e1; }
-    .form-input:focus { border-color: #4f46e5; box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2); outline: none; }
-    .error-message { display: none; color: #ef4444; font-size: 0.875rem; margin-top: 0.25rem; }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>استمارة التسجيل: دورة صناعة فيديوهات AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #e2e8f0; /* slate-200 */
+        }
+        .smooth-transition {
+            transition: all 0.3s ease-in-out;
+        }
+        .option-card {
+            cursor: pointer;
+            border: 2px solid #cbd5e1; /* slate-300 */
+        }
+        .option-card:hover {
+            border-color: #6366f1; /* indigo-500 */
+            color: #4338ca; /* indigo-800 */
+        }
+        .option-card.selected {
+            border-color: #4f46e5; /* indigo-600 */
+            background-color: #eef2ff; /* indigo-50 */
+            color: #3730a3; /* indigo-900 */
+            box-shadow: 0 4px 10px rgba(79, 70, 229, 0.1);
+        }
+        .form-input {
+            background-color: #f8fafc; /* slate-50 */
+            border: 1px solid #cbd5e1; /* slate-300 */
+        }
+        .form-input:focus {
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+            outline: none;
+        }
+        .error-message {
+            display: none;
+            color: #ef4444; /* red-500 */
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+    </style>
 </head>
 <body class="antialiased text-slate-800">
-  <div class="container mx-auto p-4 py-8">
-    <div class="max-w-3xl mx-auto">
-      <header class="text-center mb-6">
-        <img src="https://i.imgur.com/uStA0fW.png" alt="شعار الشارع المغربي" class="w-24 h-24 mx-auto mb-4 rounded-full shadow-lg" />
-        <h1 class="text-3xl md:text-4xl font-black text-slate-900">استمارة التسجيل: دورة صناعة فيديوهات AI</h1>
-        <p class="text-md text-slate-600 mt-2">مرحبًا بك! هذه الاستمارة هي خطوتك الأولى نحو عالم صناعة المحتوى الاحترافي.</p>
-      </header>
+    <div class="container mx-auto p-4 py-8">
+        <div class="max-w-3xl mx-auto">
+            <!-- Header -->
+            <header class="text-center mb-6">
+                <img src="https://i.imgur.com/uStA0fW.png" alt="شعار الشارع المغربي" class="w-24 h-24 mx-auto mb-4 rounded-full shadow-lg" />
+                <h1 class="text-3xl md:text-4xl font-black text-slate-900">استمارة التسجيل: دورة صناعة فيديوهات AI</h1>
+                <p class="text-md text-slate-600 mt-2">مرحبًا بك! هذه الاستمارة هي خطوتك الأولى نحو عالم صناعة المحتوى الاحترافي.</p>
+            </header>
 
-      <div id="form-container" class="bg-white rounded-2xl shadow-xl overflow-hidden">
-        <!-- Progress Bar -->
-        <div class="p-6 border-b border-slate-200">
-          <div class="flex items-center justify-between mb-2">
-            <span id="progress-text" class="text-sm font-bold text-indigo-700">الخطوة 1 من 4</span>
-            <span id="progress-percent" class="text-sm font-bold text-slate-500">25%</span>
-          </div>
-          <div class="bg-slate-200 rounded-full h-2.5">
-            <div id="progress-bar-fill" class="progress-bar-fill bg-indigo-600 h-2.5 rounded-full" style="width: 25%;"></div>
-          </div>
-        </div>
+            <!-- Form -->
+            <form id="registration-form" class="bg-white rounded-2xl shadow-xl overflow-hidden p-6 md:p-8">
+                <!-- القسم الأول: معلومات أساسية -->
+                <section class="mb-10">
+                    <h2 class="text-2xl font-bold mb-6">القسم الأول: معلومات أساسية</h2>
+                    <div class="space-y-6">
+                        <div>
+                            <label for="full_name" class="block text-lg font-bold text-slate-700 mb-2">الاسم الكامل</label>
+                            <input type="text" id="full_name" name="full_name" class="w-full p-3 rounded-lg form-input smooth-transition" required />
+                            <p class="error-message">هذا الحقل مطلوب.</p>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-lg font-bold text-slate-700 mb-2">البريد الإلكتروني (للتواصل)</label>
+                            <input type="email" id="email" name="email" class="w-full p-3 rounded-lg form-input smooth-transition" required />
+                            <p class="error-message">الرجاء إدخال بريد إلكتروني صحيح.</p>
+                        </div>
+                        <div>
+                            <label class="block text-lg font-bold text-slate-700 mb-2">العمر</label>
+                            <div class="grid grid-cols-2 gap-4" data-question="age">
+                                <div class="option-card p-4 rounded-lg text-center font-semibold smooth-transition" data-value="18-24">18 - 24</div>
+                                <div class="option-card p-4 rounded-lg text-center font-semibold smooth-transition" data-value="25-34">25 - 34</div>
+                                <div class="option-card p-4 rounded-lg text-center font-semibold smooth-transition" data-value="35-44">35 - 44</div>
+                                <div class="option-card p-4 rounded-lg text-center font-semibold smooth-transition" data-value="45+">45+</div>
+                            </div>
+                            <input type="hidden" name="age" required />
+                            <p class="error-message">الرجاء اختيار فئة عمرية.</p>
+                        </div>
+                    </div>
+                </section>
 
-        <form id="registration-form" class="p-6 md:p-8"
-              action="https://formsubmit.co/azkila140@gmail.com"
-              method="POST">
-          <!-- FormSubmit Hidden Fields -->
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="#">
+                <!-- القسم الثاني: الخلفية التقنية -->
+                <section class="mb-10">
+                    <h2 class="text-2xl font-bold mb-6">القسم الثاني: الخلفية التقنية</h2>
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-lg font-bold text-slate-700 mb-2">ما هو مستوى معرفتك في صناعة المحتوى؟</label>
+                            <div class="space-y-3" data-question="experience_level">
+                                <div class="option-card p-4 rounded-lg font-semibold smooth-transition flex items-center gap-4" data-value="beginner"><i data-lucide="zap-off" class="w-6 h-6 text-red-500"></i><div><h3 class="font-bold">مبتدئ</h3><p class="text-sm font-normal text-slate-500">لا أملك أي خبرة. هذه خطوتي الأولى.</p></div></div>
+                                <div class="option-card p-4 rounded-lg font-semibold smooth-transition flex items-center gap-4" data-value="intermediate"><i data-lucide="wand-2" class="w-6 h-6 text-blue-500"></i><div><h3 class="font-bold">متوسط</h3><p class="text-sm font-normal text-slate-500">لدي تجارب بسيطة في المونتاج أو التصميم.</p></div></div>
+                                <div class="option-card p-4 rounded-lg font-semibold smooth-transition flex items-center gap-4" data-value="advanced"><i data-lucide="rocket" class="w-6 h-6 text-green-500"></i><div><h3 class="font-bold">متقدم</h3><p class="text-sm font-normal text-slate-500">أصنع محتوى بشكل جيد أو احترافي.</p></div></div>
+                            </div>
+                            <input type="hidden" name="experience_level" required />
+                            <p class="error-message">الرجاء تحديد مستواك.</p>
+                        </div>
+                        <div>
+                            <label for="previous_tools" class="block text-lg font-bold text-slate-700 mb-2">هل لديك تجارب سابقة في استخدام أدوات معينة؟ (اختياري)</label>
+                            <p class="text-sm text-slate-500 mb-2">إذا كان الجواب نعم، يرجى ذكر بعض الأدوات (مثل CapCut, Canva, Photoshop).</p>
+                            <textarea id="previous_tools" name="previous_tools" rows="3" class="w-full p-3 rounded-lg form-input smooth-transition"></textarea>
+                        </div>
+                    </div>
+                </section>
 
-          <!-- Step 1 -->
-          <div id="step-1" class="form-step active">
-            <h2 class="text-2xl font-bold mb-6">القسم الأول: معلومات أساسية</h2>
-            <div class="space-y-6">
-              <div>
-                <label for="full_name" class="block text-lg font-bold text-slate-700 mb-2">الاسم الكامل</label>
-                <input type="text" id="full_name" name="full_name" class="w-full p-3 rounded-lg form-input" required>
-              </div>
-              <div>
-                <label for="email" class="block text-lg font-bold text-slate-700 mb-2">البريد الإلكتروني</label>
-                <input type="email" id="email" name="email" class="w-full p-3 rounded-lg form-input" required>
-              </div>
-              <div>
-                <label class="block text-lg font-bold text-slate-700 mb-2">العمر</label>
-                <div class="grid grid-cols-2 gap-4" data-question="age">
-                  <div class="option-card p-4 rounded-lg text-center font-semibold" data-value="18-24">18 - 24</div>
-                  <div class="option-card p-4 rounded-lg text-center font-semibold" data-value="25-34">25 - 34</div>
-                  <div class="option-card p-4 rounded-lg text-center font-semibold" data-value="35-44">35 - 44</div>
-                  <div class="option-card p-4 rounded-lg text-center font-semibold" data-value="45+">45+</div>
-                </div>
-                <input type="hidden" name="age" required>
-              </div>
-            </div>
-          </div>
-
-          <!-- باقي الخطوات كما هي... يمكنك نسخ باقي أقسام النموذج من نسختك الحالية -->
-
-          <!-- Navigation -->
-          <div class="p-6 bg-slate-100 border-t border-slate-200">
-            <div class="flex justify-between items-center">
-              <button id="prev-btn" class="font-bold py-2 px-6 rounded-lg text-slate-600 bg-slate-200 hover:bg-slate-300" style="visibility: hidden;">السابق</button>
-              <button id="next-btn" type="button" class="font-bold py-3 px-8 rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 shadow-md hover:shadow-lg">التالي</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- Success Message (optional – use _next instead) -->
-  <div id="success-message" class="hidden max-w-3xl mx-auto text-center p-8 bg-white rounded-2xl shadow-xl">
-    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-      <i data-lucide="check-circle-2" class="w-12 h-12 text-green-600"></i>
-    </div>
-    <h1 class="text-3xl font-black text-slate-900 mb-2">شكرًا جزيلاً لك!</h1>
-    <p class="text-lg text-slate-600">تم إرسال معلوماتك بنجاح. سنتواصل معك قريبًا عبر البريد الإلكتروني.</p>
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const steps = Array.from(document.querySelectorAll('.form-step'));
-      const prevBtn = document.getElementById('prev-btn');
-      const nextBtn = document.getElementById('next-btn');
-      const form = document.getElementById('registration-form');
-      const progressText = document.getElementById('progress-text');
-      const progressPercent = document.getElementById('progress-percent');
-      const progressBarFill = document.getElementById('progress-bar-fill');
-      let currentStep = 0;
-
-      const updateProgress = () => {
-        progressText.textContent = `الخطوة ${currentStep + 1} من ${steps.length}`;
-        const percent = ((currentStep + 1) / steps.length) * 100;
-        progressPercent.textContent = `${Math.round(percent)}%`;
-        progressBarFill.style.width = `${percent}%`;
-      };
-
-      const showStep = (index) => {
-        steps.forEach((step, i) => step.classList.toggle('active', i === index));
-        prevBtn.style.visibility = index === 0 ? 'hidden' : 'visible';
-        nextBtn.textContent = index === steps.length - 1 ? 'إرسال التسجيل' : 'التالي';
-        updateProgress();
-      };
-
-      nextBtn.addEventListener('click', () => {
-        if (currentStep < steps.length - 1) {
-          currentStep++;
-          showStep(currentStep);
-        } else {
-          form.submit(); // Submit to FormSubmit
-        }
-      });
-
-      prevBtn.addEventListener('click', () => {
-        if (currentStep > 0) {
-          currentStep--;
-          showStep(currentStep);
-        }
-      });
-
-      // Handle card selections
-      document.querySelectorAll('[data-question]').forEach(container => {
-        const hiddenInput = container.parentElement.querySelector('input[type="hidden"]');
-        const options = container.querySelectorAll('.option-card');
-        options.forEach(option => {
-          option.addEventListener('click', () => {
-            options.forEach(opt => opt.classList.remove('selected'));
-            option.classList.add('selected');
-            hiddenInput.value = option.dataset.value;
-          });
-        });
-      });
-
-      showStep(currentStep);
-      lucide.createIcons();
-    });
-  </script>
-</body>
-</html>
+                <!-- القسم الثالث: أهدافك وتطلعاتك -->
+                <section class="mb-10">
+                    <h2 class="text-2xl font-bold mb-6">القسم الثالث: أهدافك وتطلعاتك</h2>
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-lg font-bold text-slate-700 mb-2">ما هو هدفك الرئيسي من الانضمام لهذه الدورة؟ (اختر كل ما ينطبق)</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" data-question="main_goal">
+                                <div class="option-card p-3 rounded-lg font-semibold smooth-transition" data-value="launch_channel">إطلاق قناة ناجحة</div>
+                                <div class="option-card p-3 rounded-lg font-semibold smooth-transition" data-value="develop_skills">تطوير مهاراتي الإبداعية</div>
+                                <div class="option-card p-3 rounded-lg font-semibold smooth-transition" data-value="business_marketing">التسويق لمشروعي الخاص</div>
+                                <div class="option-card p-3 rounded-lg font-semibold smooth-transition" data-value="extra_income">تحقيق دخل إضافي</div>
+                                <div class="option-card p-3 rounded-lg font-semibold smooth-transition" data-value="ai_curiosity">الفضول واستك_
