@@ -1,217 +1,306 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="fr" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>استمارة التسجيل: دورة إنشاء الفيديوهات بالذكاء الاصطناعي</title>
+  <title>Formulaire d'inscription / استمارة التسجيل</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
   <style>
-    body {
-      font-family: 'Tajawal', sans-serif;
-      background-color: #e2e8f0;
-    }
-    .smooth-transition {
-      transition: all 0.3s ease-in-out;
-    }
-    .option-card {
-      cursor: pointer;
-      border: 2px solid #cbd5e1;
-    }
-    .option-card:hover {
-      border-color: #6366f1;
-      color: #4338ca;
-    }
+    body.lang-fr { font-family: 'Inter', sans-serif; }
+    body.lang-ar { font-family: 'Tajawal', sans-serif; }
+    .smooth-transition { transition: all 0.3s ease-in-out; }
+    .option-card { cursor: pointer; border: 2px solid #cbd5e1; }
+    .option-card:hover { border-color: #6366f1; color: #4338ca; }
     .option-card.selected {
       border-color: #4f46e5;
-      background-color: #eef2ff;
-      color: #3730a3;
+      background-color: #e0e7ff;
+      color: #1e3a8a;
+      font-weight: 700;
       box-shadow: 0 4px 10px rgba(79, 70, 229, 0.1);
     }
-    .form-input {
-      background-color: #f8fafc;
-      border: 1px solid #cbd5e1;
-    }
+    .form-input { background-color: #f8fafc; border: 1px solid #cbd5e1; }
     .form-input:focus {
       border-color: #4f46e5;
       box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
       outline: none;
     }
-    .error-message {
-      display: none;
-      color: #ef4444;
-      font-size: 0.875rem;
-      margin-top: 0.25rem;
+    .error-message { color: #ef4444; font-size: 0.875rem; margin-top: 0.5rem; display: none; }
+    .form-input.error, .option-card-container.error { border: 1px solid #ef4444 !important; border-radius: 0.5rem; }
+    .lang-switcher button {
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      color: #475569;
+      background-color: #e2e8f0;
     }
-    .hidden {
-      display: none;
+    .lang-switcher button.active {
+      color: #ffffff;
+      background-color: #4f46e5;
+      box-shadow: 0 2px 5px rgba(79, 70, 229, 0.2);
     }
   </style>
 </head>
-<body class="antialiased text-slate-800">
-  <div class="container mx-auto p-4 py-8">
-    <div class="max-w-3xl mx-auto">
-      <!-- Language Switch Button -->
-      <div class="text-center mb-6">
-        <button id="toggleLangButton" class="px-4 py-2 bg-blue-500 text-white rounded-lg">
-          Switch to Français
-        </button>
-      </div>
+<body class="antialiased text-slate-800 bg-slate-100 lang-fr">
 
-      <!-- Arabic Version (Initially Visible) -->
-      <div id="arabic-form" class="form-container">
-        <header class="text-center mb-6">
-          <img src="https://i.imgur.com/uStA0fW.png" alt="شعار الدورة" class="w-24 h-24 mx-auto mb-4 rounded-full shadow-lg" />
-          <h1 class="text-3xl md:text-4xl font-black text-slate-900">استمارة التسجيل: دورة إنشاء الفيديوهات بالذكاء الاصطناعي</h1>
-          <p class="text-md text-slate-600 mt-2">مرحبًا! هذه الاستمارة هي أول خطوة لك نحو إنشاء محتوى فيديو احترافي.</p>
-        </header>
+  <div class="container mx-auto p-2 sm:p-4 py-8">
+    <!-- Language Switcher -->
+    <div class="lang-switcher flex justify-center items-center space-x-2 mb-6">
+        <button id="lang-fr-btn" class="active">Français</button>
+        <button id="lang-ar-btn">العربية</button>
+    </div>
 
-        <!-- Form Start -->
-        <form action="https://formspree.io/f/xqabowdq" method="POST" enctype="multipart/form-data" id="registration-form" class="bg-white rounded-2xl shadow-xl overflow-hidden p-6 md:p-8">
-          <section class="mb-10">
-            <h2 class="text-2xl font-bold mb-6">القسم الأول: معلومات شخصية</h2>
-            <div class="mb-6">
-              <label for="full_name" class="block text-lg font-bold text-slate-700 mb-2">الاسم الكامل</label>
-              <input type="text" id="full_name" name="full_name" required class="w-full p-3 rounded-lg form-input smooth-transition" />
-            </div>
+    <!-- French Version Container -->
+    <div id="fr-version" class="language-content">
+        <div class="max-w-3xl mx-auto" id="form-container-fr">
+          <header class="text-center mb-6">
+            <img src="https://pwwijduek2.space.minimax.io/logo_alshaarea_almoghrabi.jpeg" alt="Logo" class="w-24 h-24 mx-auto mb-4 rounded-full shadow-lg" />
+            <h1 class="text-3xl md:text-4xl font-black text-slate-900">Formulaire d'inscription : Cours de création de vidéos par IA</h1>
+            <p class="text-md text-slate-600 mt-2">Bienvenue ! Ce formulaire est votre premier pas vers le monde de la création de contenu professionnelle.</p>
+          </header>
+          <form action="https://formspree.io/f/xqabowdq" method="POST" id="form-fr" class="bg-white rounded-2xl shadow-xl overflow-hidden p-4 md:p-8" novalidate>
+            <!-- Partie 1: Informations de base -->
+            <section class="mb-10">
+              <h2 class="text-2xl font-bold mb-6 border-b pb-3">Partie 1 : Informations de base</h2>
+              <div class="mb-6"><label for="full_name_fr" class="block text-lg font-bold text-slate-700 mb-2">Nom complet</label><input type="text" id="full_name_fr" name="full_name" required class="w-full p-3 rounded-lg form-input smooth-transition" /><p class="error-message">Veuillez entrer votre nom complet.</p></div>
+              <div class="mb-6"><label for="email_fr" class="block text-lg font-bold text-slate-700 mb-2">Adresse e-mail</label><input type="email" id="email_fr" name="email" required class="w-full p-3 rounded-lg form-input smooth-transition" /><p class="error-message">Veuillez entrer une adresse e-mail valide.</p></div>
+              <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">Âge</label><div class="grid grid-cols-2 gap-4 option-card-container" data-question="age-fr"><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="18-24">18 - 24</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="25-34">25 - 34</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="35-44">35 - 44</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="45+">45+</div></div><input type="hidden" name="age" id="age-fr" required /><p class="error-message">Veuillez sélectionner votre tranche d'âge.</p></div>
+              <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">Sexe</label><div class="grid grid-cols-2 gap-4 option-card-container" data-question="gender-fr"><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="Homme">Homme</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="Femme">Femme</div></div><input type="hidden" name="gender" id="gender-fr" required /><p class="error-message">Veuillez sélectionner votre sexe.</p></div>
+              <div class="mb-6"><label for="country_fr" class="block text-lg font-bold text-slate-700 mb-2">Pays de résidence</label><input type="text" id="country_fr" name="country" required class="w-full p-3 rounded-lg form-input smooth-transition" /><p class="error-message">Veuillez entrer votre pays de résidence.</p></div>
+              <div class="mb-6"><label for="social_account_fr" class="block text-lg font-bold text-slate-700 mb-2">Votre compte TikTok / Instagram (facultatif)</label><input type="text" id="social_account_fr" name="social_account" class="w-full p-3 rounded-lg form-input smooth-transition" /><p class="text-sm text-slate-500 mt-1">Partager votre compte nous aide à comprendre votre point de départ.</p></div>
+            </section>
+            
+            <!-- Partie 2: Expérience -->
+            <section class="mb-10">
+              <h2 class="text-2xl font-bold mb-6 border-b pb-3">Partie 2 : Votre expérience</h2>
+              <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">Appareil principal</label><div class="grid grid-cols-2 md:grid-cols-3 gap-4 option-card-container" data-question="device-fr"><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="Ordinateur">Ordinateur</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="Smartphone">Smartphone</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="Tablette">Tablette</div></div><input type="hidden" name="device" id="device-fr" required /><p class="error-message">Veuillez sélectionner un appareil.</p></div>
+              <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">Niveau de connaissance</label><div class="space-y-3 option-card-container" data-question="skill_level-fr"><div class="option-card p-4 rounded-lg font-semibold" data-value="debutant">Débutant : Aucune expérience préalable.</div><div class="option-card p-4 rounded-lg font-semibold" data-value="intermediaire">Intermédiaire : Expériences de base (ex: CapCut, Canva).</div><div class="option-card p-4 rounded-lg font-semibold" data-value="avance">Avancé : Bonne expérience, création de contenu régulière.</div></div><input type="hidden" name="skill_level" id="skill_level-fr" required /><p class="error-message">Veuillez sélectionner votre niveau.</p></div>
+              <div class="mb-10"><label for="tools_experience_fr" class="block text-lg font-bold text-slate-700 mb-2">Expérience avec des outils (Montage, Design, IA)</label><p class="text-sm text-slate-500 mb-2">Si oui, mentionnez les outils ou projets.</p><textarea id="tools_experience_fr" name="tools_experience" rows="4" class="w-full p-3 rounded-lg form-input smooth-transition"></textarea></div>
+            </section>
 
-            <div class="mb-6">
-              <label for="email" class="block text-lg font-bold text-slate-700 mb-2">البريد الإلكتروني (للتواصل)</label>
-              <input type="email" id="email" name="email" required class="w-full p-3 rounded-lg form-input smooth-transition" />
-            </div>
+            <!-- Partie 3: Objectifs -->
+            <section class="mb-10">
+              <h2 class="text-2xl font-bold mb-6 border-b pb-3">Partie 3 : Vos objectifs</h2>
+              <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">Objectif principal (plusieurs choix possibles)</label><div class="grid grid-cols-1 sm:grid-cols-2 gap-3 option-card-container" data-question="main_goals-fr"><div class="option-card p-3 rounded-lg font-semibold" data-value="Lancer une chaîne à succès">Lancer une chaîne à succès</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Développer mes compétences">Développer mes compétences</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Marketing pour mon projet">Marketing pour mon projet</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Revenu supplémentaire">Générer un revenu supplémentaire</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Explorer l'IA">Explorer l'IA</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Autre">Autre...</div></div><input type="hidden" name="main_goals" id="main_goals-fr" required /><p class="error-message">Veuillez sélectionner au moins un objectif.</p></div>
+            </section>
+            
+            <!-- Partie 4: Défis et Préférences -->
+            <section class="mb-10">
+                <h2 class="text-2xl font-bold mb-6 border-b pb-3">Partie 4 : Défis et Préférences</h2>
+                <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">Quel est votre plus grand obstacle ?</label><div class="grid grid-cols-1 sm:grid-cols-2 gap-3 option-card-container" data-question="main_challenges-fr"><div class="option-card p-3 rounded-lg font-semibold" data-value="Peur de l'échec">Peur de l'échec / manque de vues</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Manque d'idées">Manque d'idées / ne pas savoir par où commencer</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Faibles compétences techniques">Faibles compétences techniques (montage, design)</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Manque de temps">Manque de temps / difficulté à s'engager</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Manque de confiance">Manque de confiance dans la qualité du contenu</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Autre">Autre...</div></div><input type="hidden" name="main_challenges" id="main_challenges-fr" required /><p class="error-message">Veuillez sélectionner un obstacle.</p></div>
+                <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">Quels types de contenu vous intéressent ?</label><div class="grid grid-cols-1 sm:grid-cols-2 gap-3 option-card-container" data-question="content_types-fr"><div class="option-card p-3 rounded-lg font-semibold" data-value="Histoires (mystère, histoire, documentaire)">Histoires (mystère, histoire, documentaire)</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Éducatif (science, finances, etc.)">Éducatif (science, finances, etc.)</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Divertissement et artistique">Divertissement et artistique</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Style de vie">Style de vie</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Marketing (produits/services)">Marketing (produits/services)</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Autre">Autre...</div></div><input type="hidden" name="content_types" id="content_types-fr" required /><p class="error-message">Veuillez sélectionner un type de contenu.</p></div>
+                <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">Votre approche des outils payants ?</label><div class="grid grid-cols-1 gap-3 option-card-container" data-question="tools_payment-fr"><div class="option-card p-3 rounded-lg font-semibold" data-value="Prêt à payer">Oui, prêt à payer pour la meilleure qualité</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Préfère le gratuit">Je préfère commencer avec des options gratuites</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Pas encore sûr">Pas encore sûr, je déciderai plus tard</div></div><input type="hidden" name="tools_payment" id="tools_payment-fr" required /><p class="error-message">Veuillez sélectionner une option.</p></div>
+            </section>
 
-            <div class="mb-6">
-              <label class="block text-lg font-bold text-slate-700 mb-2">العمر</label>
-              <div class="grid grid-cols-2 gap-4" data-question="age">
-                <div class="option-card p-4 rounded-lg text-center font-semibold smooth-transition" data-value="18-24">18 - 24</div>
-                <div class="option-card p-4 rounded-lg text-center font-semibold smooth-transition" data-value="25-34">25 - 34</div>
-                <div class="option-card p-4 rounded-lg text-center font-semibold smooth-transition" data-value="35-44">35 - 44</div>
-                <div class="option-card p-4 rounded-lg text-center font-semibold smooth-transition" data-value="45+">45+</div>
-              </div>
-              <input type="hidden" name="age" required />
-            </div>
+            <!-- Partie 5: Questions supplémentaires -->
+            <section class="mb-10">
+                <h2 class="text-2xl font-bold mb-6 border-b pb-3">Partie 5 : Questions supplémentaires</h2>
+                <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2" for="how_heard_fr">Comment avez-vous entendu parler du cours ?</label><input type="text" name="how_heard" id="how_heard_fr" class="form-input w-full p-3 rounded-lg smooth-transition" /></div>
+                <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2" for="success_criteria_fr">Qu'est-ce qui ferait de ce cours un succès pour vous ?</label><textarea id="success_criteria_fr" name="success_criteria" rows="3" class="form-input w-full p-3 rounded-lg smooth-transition"></textarea></div>
+                <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2" for="final_questions_fr">Avez-vous des questions ou des préoccupations ?</label><textarea id="final_questions_fr" name="final_questions" rows="3" class="form-input w-full p-3 rounded-lg smooth-transition"></textarea></div>
+            </section>
 
-            <div class="mb-6">
-              <label class="block text-lg font-bold text-slate-700 mb-2">الجنس</label>
-              <div class="grid grid-cols-2 gap-4" data-question="gender">
-                <div class="option-card p-4 rounded-lg text-center font-semibold smooth-transition" data-value="ذكر">ذكر</div>
-                <div class="option-card p-4 rounded-lg text-center font-semibold smooth-transition" data-value="أنثى">أنثى</div>
-              </div>
-              <input type="hidden" name="gender" required />
-            </div>
+            <div class="text-center"><button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-2xl smooth-transition w-full sm:w-auto">Envoyer le formulaire</button></div>
+          </form>
+        </div>
+        <div id="success-message-fr" class="max-w-3xl mx-auto text-center bg-white rounded-2xl shadow-xl p-8" style="display: none;"><svg class="w-16 h-16 mx-auto text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><h2 class="text-3xl font-black text-slate-900 mt-4">Merci !</h2><p class="text-lg text-slate-600 mt-2">Votre formulaire a été envoyé avec succès.</p></div>
+        <footer class="max-w-3xl mx-auto mt-12 text-center"><div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 text-left"><h2 class="text-3xl font-bold text-slate-900 mb-6 text-center">Tarifs et Contact</h2><div class="border-t pt-6"><h3 class="text-xl font-bold text-slate-800 mb-2">Prix du cours complet</h3><p class="text-4xl font-black text-indigo-600 mb-2">39€ <span class="text-lg font-medium text-slate-500">/ paiement unique</span></p><p class="text-slate-600 mb-6">Accès à vie à toutes les leçons, aux mises à jour et à la communauté privée.</p><h3 class="text-xl font-bold text-slate-800 mb-4 mt-8">Vous avez des questions ?</h3><p class="text-slate-600 mb-6">Contactez-nous directement sur WhatsApp.</p><a href="https://wa.me/12342797144" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg smooth-transition w-full"><svg class="mr-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.487 5.235 3.487 8.413 0 6.557-5.338 11.892-11.894 11.892-1.99 0-3.903-.52-5.687-1.475L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.886-.001 2.267.655 4.398 1.908 6.161l-1.317 4.814 4.901-1.295z"/></svg>Contacter sur WhatsApp</a></div></div></footer>
+    </div>
 
-            <div class="mb-6">
-              <label for="country" class="block text-lg font-bold text-slate-700 mb-2">دولة الإقامة الحالية</label>
-              <input type="text" id="country" name="country" required class="w-full p-3 rounded-lg form-input smooth-transition" />
-            </div>
-          </section>
+    <!-- Arabic Version Container -->
+    <div id="ar-version" class="language-content" style="display: none;">
+        <div class="max-w-3xl mx-auto" id="form-container-ar">
+            <header class="text-center mb-6">
+                <img src="https://i.imgur.com/uStA0fW.png" alt="شعار" class="w-24 h-24 mx-auto mb-4 rounded-full shadow-lg" />
+                <h1 class="text-3xl md:text-4xl font-black text-slate-900">استمارة التسجيل: دورة صناعة فيديوهات AI</h1>
+                <p class="text-md text-slate-600 mt-2">مرحبًا بك! هذه الاستمارة هي خطوتك الأولى نحو عالم صناعة المحتوى الاحترافي.</p>
+            </header>
+            <form action="https://formspree.io/f/xqabowdq" method="POST" id="form-ar" class="bg-white rounded-2xl shadow-xl overflow-hidden p-4 md:p-8" novalidate>
+                <!-- القسم الأول: المعلومات الأساسية -->
+                <section class="mb-10">
+                    <h2 class="text-2xl font-bold mb-6 border-b pb-3">القسم الأول: المعلومات الأساسية</h2>
+                    <div class="mb-6"><label for="full_name_ar" class="block text-lg font-bold text-slate-700 mb-2">الاسم الكامل</label><input type="text" id="full_name_ar" name="full_name" required class="w-full p-3 rounded-lg form-input smooth-transition" /><p class="error-message">الرجاء إدخال اسمك الكامل.</p></div>
+                    <div class="mb-6"><label for="email_ar" class="block text-lg font-bold text-slate-700 mb-2">البريد الإلكتروني</label><input type="email" id="email_ar" name="email" required class="w-full p-3 rounded-lg form-input smooth-transition" /><p class="error-message">الرجاء إدخال بريد إلكتروني صحيح.</p></div>
+                    <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">العمر</label><div class="grid grid-cols-2 gap-4 option-card-container" data-question="age-ar"><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="18-24">18 - 24</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="25-34">25 - 34</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="35-44">35 - 44</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="45+">45+</div></div><input type="hidden" name="age" id="age-ar" required /><p class="error-message">الرجاء اختيار الفئة العمرية.</p></div>
+                    <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">الجنس</label><div class="grid grid-cols-2 gap-4 option-card-container" data-question="gender-ar"><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="ذكر">ذكر</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="أنثى">أنثى</div></div><input type="hidden" name="gender" id="gender-ar" required /><p class="error-message">الرجاء اختيار الجنس.</p></div>
+                    <div class="mb-6"><label for="country_ar" class="block text-lg font-bold text-slate-700 mb-2">بلد الإقامة</label><input type="text" id="country_ar" name="country" required class="w-full p-3 rounded-lg form-input smooth-transition" /><p class="error-message">الرجاء إدخال بلد الإقامة.</p></div>
+                    <div class="mb-6"><label for="social_account_ar" class="block text-lg font-bold text-slate-700 mb-2">حسابك على تيك توك / انستغرام (اختياري)</label><input type="text" id="social_account_ar" name="social_account" class="w-full p-3 rounded-lg form-input smooth-transition" /><p class="text-sm text-slate-500 mt-1">مشاركة حسابك يساعدنا على فهم نقطة انطلاقك.</p></div>
+                </section>
 
-          <!-- Submit Button -->
-          <div class="text-center">
-            <button type="submit" class="w-full py-3 bg-indigo-600 text-white rounded-lg font-bold hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-500 transition duration-300">
-              إرسال
-            </button>
-          </div>
-        </form>
+                <!-- القسم الثاني: الخبرة التقنية -->
+                <section class="mb-10">
+                    <h2 class="text-2xl font-bold mb-6 border-b pb-3">القسم الثاني: الخبرة التقنية</h2>
+                    <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">الجهاز الرئيسي</label><div class="grid grid-cols-2 md:grid-cols-3 gap-4 option-card-container" data-question="device-ar"><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="حاسوب">حاسوب</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="هاتف ذكي">هاتف ذكي</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="جهاز لوحي">جهاز لوحي</div></div><input type="hidden" name="device" id="device-ar" required /><p class="error-message">الرجاء اختيار جهاز.</p></div>
+                    <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">مستوى المعرفة</label><div class="space-y-3 option-card-container" data-question="skill_level-ar"><div class="option-card p-4 rounded-lg font-semibold" data-value="مبتدئ">مبتدئ: لا أملك أي خبرة سابقة.</div><div class="option-card p-4 rounded-lg font-semibold" data-value="متوسط">متوسط: لدي تجارب بسيطة (مثل CapCut, Canva).</div><div class="option-card p-4 rounded-lg font-semibold" data-value="متقدم">متقدم: لدي خبرة جيدة وأصنع محتوى بانتظام.</div></div><input type="hidden" name="skill_level" id="skill_level-ar" required /><p class="error-message">الرجاء اختيار مستواك.</p></div>
+                    <div class="mb-10"><label for="tools_experience_ar" class="block text-lg font-bold text-slate-700 mb-2">خبرة سابقة مع الأدوات (مونتاج، تصميم، ذكاء اصطناعي)</label><p class="text-sm text-slate-500 mb-2">إذا كان الجواب نعم، يرجى ذكر الأدوات أو المشاريع.</p><textarea id="tools_experience_ar" name="tools_experience" rows="4" class="w-full p-3 rounded-lg form-input smooth-transition"></textarea></div>
+                </section>
 
-        <!-- Footer Section -->
-        <footer class="mt-16 text-center p-4 bg-gray-800 text-white">
-          <h2 class="text-xl font-semibold mb-4">التسعير والتواصل</h2>
-          <p class="mb-2">سعر الدورة: 50€</p>
-          <p class="mb-4">للمزيد من المعلومات، يمكنك التواصل معنا عبر WhatsApp: 
-            <a href="https://wa.me/11234567890" class="text-indigo-400 hover:underline">اضغط هنا</a>
-          </p>
-        </footer>
-      </div>
+                <!-- القسم الثالث: الأهداف -->
+                <section class="mb-10">
+                    <h2 class="text-2xl font-bold mb-6 border-b pb-3">القسم الثالث: أهدافك</h2>
+                    <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">ما هو هدفك الرئيسي؟ (يمكن اختيار أكثر من خيار)</label><div class="grid grid-cols-1 sm:grid-cols-2 gap-3 option-card-container" data-question="main_goals-ar"><div class="option-card p-3 rounded-lg font-semibold" data-value="إطلاق قناة ناجحة">إطلاق قناة ناجحة</div><div class="option-card p-3 rounded-lg font-semibold" data-value="تطوير المهارات">تطوير مهاراتي</div><div class="option-card p-3 rounded-lg font-semibold" data-value="التسويق لمشروعي">التسويق لمشروعي</div><div class="option-card p-3 rounded-lg font-semibold" data-value="دخل إضافي">تحقيق دخل إضافي</div><div class="option-card p-3 rounded-lg font-semibold" data-value="استكشاف AI">استكشاف الذكاء الاصطناعي</div><div class="option-card p-3 rounded-lg font-semibold" data-value="أخرى">أخرى...</div></div><input type="hidden" name="main_goals" id="main_goals-ar" required /><p class="error-message">الرجاء اختيار هدف واحد على الأقل.</p></div>
+                </section>
+                
+                <!-- القسم الرابع: التحديات والتفضيلات -->
+                <section class="mb-10">
+                    <h2 class="text-2xl font-bold mb-6 border-b pb-3">القسم الرابع: التحديات وأنواع المحتوى</h2>
+                    <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">ما هو أكبر عائق يمنعك من البدء؟</label><div class="grid grid-cols-1 sm:grid-cols-2 gap-3 option-card-container" data-question="main_challenges-ar"><div class="option-card p-3 rounded-lg font-semibold" data-value="الخوف من الفشل">الخوف من الفشل أو عدم الحصول على مشاهدات</div><div class="option-card p-3 rounded-lg font-semibold" data-value="نقص الأفكار">نقص الأفكار أو عدم معرفة من أين أبدأ</div><div class="option-card p-3 rounded-lg font-semibold" data-value="ضعف المهارات التقنية">ضعف المهارات التقنية (مونتاج، تصميم)</div><div class="option-card p-3 rounded-lg font-semibold" data-value="ضيق الوقت">ضيق الوقت وصعوبة الالتزام</div><div class="option-card p-3 rounded-lg font-semibold" data-value="عدم الثقة">عدم الثقة في جودة المحتوى</div><div class="option-card p-3 rounded-lg font-semibold" data-value="أخرى">أخرى...</div></div><input type="hidden" name="main_challenges" id="main_challenges-ar" required /><p class="error-message">الرجاء اختيار عائق واحد.</p></div>
+                    <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">ما أنواع المحتوى التي تهمك لإنشائها؟</label><div class="grid grid-cols-1 sm:grid-cols-2 gap-3 option-card-container" data-question="content_types-ar"><div class="option-card p-3 rounded-lg font-semibold" data-value="قصص غامضة / تاريخية / وثائقية">قصص غامضة / تاريخية / وثائقية</div><div class="option-card p-3 rounded-lg font-semibold" data-value="تعليمي">محتوى تعليمي (تبسيط العلوم، نصائح مالية...)</div><div class="option-card p-3 rounded-lg font-semibold" data-value="ترفيهي">محتوى ترفيهي وفني</div><div class="option-card p-3 rounded-lg font-semibold" data-value="أسلوب حياة">محتوى متعلق بأسلوب الحياة</div><div class="option-card p-3 rounded-lg font-semibold" data-value="تسويق">محتوى تسويقي لمنتجات أو خدمات</div><div class="option-card p-3 rounded-lg font-semibold" data-value="أخرى">أخرى...</div></div><input type="hidden" name="content_types" id="content_types-ar" required /><p class="error-message">الرجاء اختيار نوع محتوى واحد.</p></div>
+                    <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">ما هو توجهك بالنسبة للأدوات المدفوعة؟</label><div class="grid grid-cols-1 gap-3 option-card-container" data-question="tools_payment-ar"><div class="option-card p-3 rounded-lg font-semibold" data-value="مستعد للدفع">نعم، مستعد للدفع للحصول على أفضل جودة</div><div class="option-card p-3 rounded-lg font-semibold" data-value="أفضل المجاني">أفضل البدء بالخطط المجانية مع القيود</div><div class="option-card p-3 rounded-lg font-semibold" data-value="لست متأكداً">لست متأكداً بعد، سأقرر لاحقاً</div></div><input type="hidden" name="tools_payment" id="tools_payment-ar" required /><p class="error-message">الرجاء اختيار توجهك.</p></div>
+                </section>
 
-      <!-- French Version (Initially Hidden) -->
-      <div id="french-form" class="form-container hidden">
-        <header class="text-center mb-6">
-          <img src="https://i.imgur.com/uStA0fW.png" alt="Logo du cours" class="w-24 h-24 mx-auto mb-4 rounded-full shadow-lg" />
-          <h1 class="text-3xl md:text-4xl font-black text-slate-900">Formulaire d'inscription : Cours de création de vidéos AI</h1>
-          <p class="text-md text-slate-600 mt-2">Bienvenue ! Ce formulaire est votre première étape vers la création de vidéos professionnelles.</p>
-        </header>
+                <!-- القسم الخامس: أسئلة مفتوحة -->
+                <section class="mb-10">
+                    <h2 class="text-2xl font-bold mb-6 border-b pb-3">القسم الخامس: أسئلة إضافية</h2>
+                    <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2" for="how_heard_ar">كيف سمعت عن الدورة؟</label><input type="text" name="how_heard" id="how_heard_ar" class="form-input w-full p-3 rounded-lg smooth-transition" /></div>
+                    <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2" for="success_criteria_ar">ما الشيء الذي سيجعل الدورة ناجحة بالنسبة لك؟</label><textarea id="success_criteria_ar" name="success_criteria" rows="3" class="form-input w-full p-3 rounded-lg smooth-transition"></textarea></div>
+                    <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2" for="final_questions_ar">هل لديك أي أسئلة أو استفسارات؟</label><textarea id="final_questions_ar" name="final_questions" rows="3" class="form-input w-full p-3 rounded-lg smooth-transition"></textarea></div>
+                </section>
 
-        <!-- Form Start -->
-        <form action="https://formspree.io/f/xqabowdq" method="POST" enctype="multipart/form-data" id="registration-form" class="bg-white rounded-2xl shadow-xl overflow-hidden p-6 md:p-8">
-          <section class="mb-10">
-            <h2 class="text-2xl font-bold mb-6">Section 1: Informations Personnelles</h2>
-            <div class="mb-6">
-              <label for="full_name" class="block text-lg font-bold text-slate-700 mb-2">Nom Complet</label>
-              <input type="text" id="full_name" name="full_name" required class="w-full p-3 rounded-lg form-input smooth-transition" />
-            </div>
-
-            <div class="mb-6">
-              <label for="email" class="block text-lg font-bold text-slate-700 mb-2">E-mail (pour contact)</label>
-              <input type="email" id="email" name="email" required class="w-full p-3 rounded-lg form-input smooth-transition" />
-            </div>
-
-            <div class="mb-6">
-              <label class="block text-lg font-bold text-slate-700 mb-2">Âge</label>
-              <div class="grid grid-cols-2 gap-4" data-question="age">
-                <div class="option-card p-4 rounded-lg text-center font-semibold smooth-transition" data-value="18-24">18 - 24</div>
-                <div class="option-card p-4 rounded-lg text-center font-semibold smooth-transition" data-value="25-34">25 - 34</div>
-                <div class="option-card p-4 rounded-lg text-center font-semibold smooth-transition" data-value="35-44">35 - 44</div>
-                <div class="option-card p-4 rounded-lg text-center font-semibold smooth-transition" data-value="45+">45+</div>
-              </div>
-              <input type="hidden" name="age" required />
-            </div>
-
-            <div class="mb-6">
-              <label class="block text-lg font-bold text-slate-700 mb-2">Genre</label>
-              <div class="grid grid-cols-2 gap-4" data-question="gender">
-                <div class="option-card p-4 rounded-lg text-center font-semibold smooth-transition" data-value="Homme">Homme</div>
-                <div class="option-card p-4 rounded-lg text-center font-semibold smooth-transition" data-value="Femme">Femme</div>
-              </div>
-              <input type="hidden" name="gender" required />
-            </div>
-
-            <div class="mb-6">
-              <label for="country" class="block text-lg font-bold text-slate-700 mb-2">Pays de Résidence</label>
-              <input type="text" id="country" name="country" required class="w-full p-3 rounded-lg form-input smooth-transition" />
-            </div>
-          </section>
-
-          <!-- Submit Button -->
-          <div class="text-center">
-            <button type="submit" class="w-full py-3 bg-indigo-600 text-white rounded-lg font-bold hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-500 transition duration-300">
-              Envoyer
-            </button>
-          </div>
-        </form>
-
-        <!-- Footer Section -->
-        <footer class="mt-16 text-center p-4 bg-gray-800 text-white">
-          <h2 class="text-xl font-semibold mb-4">Tarification et Contact</h2>
-          <p class="mb-2">Prix du Cours: 50€</p>
-          <p class="mb-4">Pour plus d'informations, contactez-nous via WhatsApp: 
-            <a href="https://wa.me/11234567890" class="text-indigo-400 hover:underline">Cliquez ici</a>
-          </p>
-        </footer>
-      </div>
-
+                <div class="text-center"><button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-2xl smooth-transition w-full sm:w-auto">إرسال الاستمارة</button></div>
+            </form>
+        </div>
+        <div id="success-message-ar" class="max-w-3xl mx-auto text-center bg-white rounded-2xl shadow-xl p-8" style="display: none;"><svg class="w-16 h-16 mx-auto text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><h2 class="text-3xl font-black text-slate-900 mt-4">شكرًا لك!</h2><p class="text-lg text-slate-600 mt-2">تم إرسال طلبك بنجاح.</p></div>
+        <footer class="max-w-3xl mx-auto mt-12 text-center"><div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 text-right"><h2 class="text-3xl font-bold text-slate-900 mb-6 text-center">الأسعار والتواصل</h2><div class="border-t pt-6"><h3 class="text-xl font-bold text-slate-800 mb-2">سعر الدورة الكاملة</h3><p class="text-4xl font-black text-indigo-600 mb-2">39€ <span class="text-lg font-medium text-slate-500">/ دفعة واحدة</span></p><p class="text-slate-600 mb-6">وصول مدى الحياة لجميع الدروس، التحديثات المستقبلية، والمجتمع الخاص.</p><h3 class="text-xl font-bold text-slate-800 mb-4 mt-8">هل لديك أسئلة؟</h3><p class="text-slate-600 mb-6">تواصل معنا مباشرة عبر واتساب للحصول على إجابة سريعة.</p><a href="https://wa.me/12342797144" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg smooth-transition w-full"><svg class="ml-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.487 5.235 3.487 8.413 0 6.557-5.338 11.892-11.894 11.892-1.99 0-3.903-.52-5.687-1.475L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.886-.001 2.267.655 4.398 1.908 6.161l-1.317 4.814 4.901-1.295z"/></svg>تواصل عبر واتساب</a></div></div></footer>
     </div>
   </div>
 
-  <!-- Language Switch Script -->
   <script>
-    const toggleLangButton = document.getElementById('toggleLangButton');
-    const arabicForm = document.getElementById('arabic-form');
-    const frenchForm = document.getElementById('french-form');
+    document.addEventListener('DOMContentLoaded', function () {
+      const frBtn = document.getElementById('lang-fr-btn');
+      const arBtn = document.getElementById('lang-ar-btn');
+      const frVersion = document.getElementById('fr-version');
+      const arVersion = document.getElementById('ar-version');
+      const body = document.body;
+      const html = document.documentElement;
 
-    toggleLangButton.addEventListener('click', () => {
-      if (arabicForm.classList.contains('hidden')) {
-        arabicForm.classList.remove('hidden');
-        frenchForm.classList.add('hidden');
-        toggleLangButton.textContent = "Switch to Français";
-      } else {
-        arabicForm.classList.add('hidden');
-        frenchForm.classList.remove('hidden');
-        toggleLangButton.textContent = "Switch to العربية";
+      // --- Language Switcher Logic ---
+      frBtn.addEventListener('click', () => {
+        arVersion.style.display = 'none';
+        frVersion.style.display = 'block';
+        frBtn.classList.add('active');
+        arBtn.classList.remove('active');
+        html.dir = 'ltr';
+        body.classList.remove('lang-ar');
+        body.classList.add('lang-fr');
+      });
+
+      arBtn.addEventListener('click', () => {
+        frVersion.style.display = 'none';
+        arVersion.style.display = 'block';
+        arBtn.classList.add('active');
+        frBtn.classList.remove('active');
+        html.dir = 'rtl';
+        body.classList.remove('lang-fr');
+        body.classList.add('lang-ar');
+      });
+
+      // --- Generic Form Initialization Function ---
+      function initializeForm(formId) {
+        const form = document.getElementById(formId);
+        if (!form) return;
+
+        const formContainer = form.parentElement;
+        const successMessage = document.getElementById(formContainer.id.replace('form-container', 'success-message'));
+
+        // Card selection logic
+        form.querySelectorAll('.option-card-container').forEach(section => {
+          const cards = section.querySelectorAll('.option-card');
+          const input = form.querySelector('#' + section.dataset.question);
+          const isMultiSelect = input.name.includes('goals') || input.name.includes('challenges') || input.name.includes('types');
+
+          cards.forEach(card => {
+            card.addEventListener('click', () => {
+              section.classList.remove('error');
+              const errorElement = input.parentElement.querySelector('.error-message');
+              if (errorElement) errorElement.style.display = 'none';
+
+              if (isMultiSelect) {
+                card.classList.toggle('selected');
+                let selectedValues = Array.from(section.querySelectorAll('.selected')).map(c => c.dataset.value);
+                input.value = selectedValues.join(', ');
+              } else {
+                cards.forEach(c => c.classList.remove('selected'));
+                card.classList.add('selected');
+                input.value = card.dataset.value;
+              }
+            });
+          });
+        });
+
+        // Form validation and submission
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+          let isValid = true;
+          
+          form.querySelectorAll('[required]').forEach(input => {
+            const parentDiv = input.closest('div');
+            const errorElement = parentDiv.querySelector('.error-message');
+            let isFieldValid = true;
+
+            if (input.type === 'hidden') {
+              if (!input.value) {
+                isFieldValid = false;
+                input.previousElementSibling.classList.add('error');
+              } else {
+                input.previousElementSibling.classList.remove('error');
+              }
+            } else {
+              if (!input.value.trim() || (input.type === 'email' && !/^\S+@\S+\.\S+$/.test(input.value))) {
+                isFieldValid = false;
+                input.classList.add('error');
+              } else {
+                input.classList.remove('error');
+              }
+            }
+            
+            if (!isFieldValid) {
+                isValid = false;
+                if(errorElement) errorElement.style.display = 'block';
+            } else {
+                if(errorElement) errorElement.style.display = 'none';
+            }
+          });
+
+          if (isValid) {
+            const submitButton = form.querySelector('button[type="submit"]');
+            submitButton.disabled = true;
+            submitButton.textContent = form.id.includes('fr') ? 'Envoi en cours...' : 'جاري الإرسال...';
+            
+            const formData = new FormData(form);
+            fetch(form.action, {
+              method: 'POST',
+              body: formData,
+              headers: { 'Accept': 'application/json' }
+            }).then(response => {
+              if (response.ok) {
+                formContainer.style.display = 'none';
+                successMessage.style.display = 'block';
+                window.scrollTo(0, 0);
+              } else {
+                response.json().then(data => {
+                  const errorMessage = data.errors ? data.errors.map(e => e.message).join(', ') : "Une erreur s'est produite.";
+                  alert(errorMessage);
+                }).finally(() => {
+                    submitButton.disabled = false;
+                    submitButton.textContent = form.id.includes('fr') ? 'Envoyer le formulaire' : 'إرسال الاستمارة';
+                });
+              }
+            }).catch(error => {
+              alert("Échec de la connexion.");
+              submitButton.disabled = false;
+              submitButton.textContent = form.id.includes('fr') ? 'Envoyer le formulaire' : 'إرسال الاستمارة';
+            });
+          }
+        });
       }
+
+      // Initialize both forms
+      initializeForm('form-fr');
+      initializeForm('form-ar');
     });
   </script>
 </body>
