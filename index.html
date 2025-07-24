@@ -1,485 +1,811 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Formulaire d'inscription / استمارة التسجيل</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
-  <style>
-    /* Base font styles for each language */
-    body.lang-fr { font-family: 'Inter', sans-serif; }
-    body.lang-ar { font-family: 'Tajawal', sans-serif; }
-
-    /* Smooth transition for interactive elements */
-    .smooth-transition { transition: all 0.3s ease-in-out; }
-
-    /* Styles for selectable option cards */
-    .option-card {
-      cursor: pointer;
-      border: 2px solid #cbd5e1;
-    }
-    .option-card:hover {
-      border-color: #6366f1; /* Indigo-400 */
-      color: #4338ca; /* Indigo-700 */
-    }
-    .option-card.selected {
-      border-color: #4f46e5; /* Indigo-600 */
-      background-color: #e0e7ff; /* Indigo-100 */
-      color: #1e3a8a; /* Indigo-900 */
-      font-weight: 700;
-      box-shadow: 0 4px 10px rgba(79, 70, 229, 0.1);
-    }
-
-    /* Styles for form text inputs */
-    .form-input {
-      background-color: #f8fafc; /* Slate-50 */
-      border: 1px solid #cbd5e1; /* Slate-300 */
-    }
-    .form-input:focus {
-      border-color: #4f46e5; /* Indigo-600 */
-      box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
-      outline: none;
-    }
-
-    /* Styles for validation errors */
-    .error-message {
-      color: #ef4444; /* Red-500 */
-      font-size: 0.875rem;
-      margin-top: 0.5rem;
-      display: none; /* Hidden by default */
-    }
-    .form-input.error {
-        border-color: #ef4444 !important;
-    }
-    .option-card-container.error .option-card:not(.selected) {
-        border-color: #ef4444 !important;
-    }
-
-    /* Language switcher button styles */
-    .lang-switcher button {
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
-      font-weight: 600;
-      color: #475569; /* Slate-600 */
-      background-color: #e2e8f0; /* Slate-200 */
-    }
-    .lang-switcher button.active {
-      color: #ffffff;
-      background-color: #4f46e5; /* Indigo-600 */
-      box-shadow: 0 2px 5px rgba(79, 70, 229, 0.2);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دورة صناعة فيديوهات AI الاحترافية | الشارع المغربي</title>
+    <meta name="description" content="انضم إلى دورة الشارع المغربي لتعلم صناعة فيديوهات احترافية باستخدام أحدث تقنيات الذكاء الاصطناعي. من الفكرة إلى النشر، نغطي كل ما تحتاجه للنجاح.">
     
-    /* Modal Styles */
-    body.modal-open {
-        overflow: hidden;
-    }
-    #course-modal-overlay {
-        transition: opacity 0.3s ease;
-    }
-    #course-modal-container {
-        transition: transform 0.3s ease;
-    }
-  </style>
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dawra.live">
+    <meta property="og:title" content="دورة صناعة فيديوهات AI الاحترافية | الشارع المغربي">
+    <meta property="og:description" content="تعلم صناعة فيديوهات احترافية باستخدام أحدث تقنيات الذكاء الاصطناعي.">
+    <meta property="og:image" content="https://pwwijduek2.space.minimax.io/logo_alshaarea_almoghrabi.jpeg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://dawra.live">
+    <meta property="twitter:title" content="دورة صناعة فيديوهات AI الاحترافية | الشارع المغربي">
+    <meta property="twitter:description" content="تعلم صناعة فيديوهات احترافية باستخدام أحدث تقنيات الذكاء الاصطناعي.">
+    <meta property="twitter:image" content="https://pwwijduek2.space.minimax.io/logo_alshaarea_almoghrabi.jpeg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #0d0d0d;
+            color: #f9fafb;
+            overflow-x: hidden;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        html[lang="fr"] body { font-family: 'Inter', sans-serif; }
+        .text-brand-burgundy { color: #8B1538; }
+        .bg-brand-burgundy { background-color: #8B1538; }
+        .border-brand-burgundy { border-color: #8B1538; }
+        .shadow-brand-burgundy { box-shadow: 0 0 25px rgba(139, 21, 56, 0.6); }
+        .text-brand-gold { color: #D4AF37; }
+        .bg-brand-gold { background-color: #D4AF37; }
+        .border-brand-gold { border-color: #D4AF37; }
+        .shadow-brand-gold { box-shadow: 0 0 25px rgba(212, 175, 55, 0.6); }
+        .scroll-smooth { scroll-behavior: smooth; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .hero-bg {
+            background-image: linear-gradient(rgba(13, 13, 13, 0.8), rgba(13, 13, 13, 0.8)), url('https://images.unsplash.com/photo-1581092918056-0c7c35234657?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease-in-out;
+        }
+        .faq-content.open {
+            max-height: 500px;
+            padding-top: 1rem;
+        }
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .modal-open { overflow: hidden; }
+        .form-input {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .form-input:focus {
+            border-color: #8B1538;
+            box-shadow: 0 0 0 2px rgba(139, 21, 56, 0.4);
+            outline: none;
+        }
+        .image-frame {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
+        .image-frame img { transition: transform 0.3s ease; }
+        .btn-primary {
+            background: linear-gradient(135deg, #8B1538 0%, #A91B47 100%);
+            border: 2px solid #D4AF37;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        .btn-primary:hover::before { left: 100%; }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #A91B47 0%, #8B1538 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 21, 56, 0.4);
+        }
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .gradient-text {
+            background: linear-gradient(-45deg, #8B1538, #D4AF37, #A91B47, #FFD700);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 3s ease infinite;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .card-hover:hover { transform: translateY(-8px) scale(1.02); }
+        .lang-btn.active {
+            background-color: #8B1538;
+            color: #ffffff;
+        }
+    </style>
 </head>
-<body class="antialiased text-slate-800 bg-slate-100 lang-fr">
+<body class="scroll-smooth">
 
-  <div class="container mx-auto p-2 sm:p-4 py-8">
-    <!-- Language Switcher -->
-    <div class="lang-switcher flex justify-center items-center space-x-2 mb-6">
-        <button id="lang-fr-btn" class="active">Français</button>
-        <button id="lang-ar-btn">العربية</button>
-    </div>
+    <header class="bg-black/50 backdrop-blur-lg shadow-lg shadow-brand-gold/10 sticky top-0 z-50">
+        <!-- Flexbox with justify-between provides a stable, direction-agnostic layout -->
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo on the left -->
+            <div class="flex-shrink-0">
+                <a href="https://dawra.live" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3">
+                    <img src="https://pwwijduek2.space.minimax.io/logo_alshaarea_almoghrabi.jpeg" alt="شعار الشارع المغربي" class="w-12 h-12 rounded-full border-2 border-brand-gold" onerror="this.onerror=null;this.src='https://placehold.co/48x48/8B1538/ffffff?text=AI';">
+                    <h1 data-lang-key="brandName" class="text-xl font-bold text-white hidden sm:block"></h1>
+                </a>
+            </div>
+            
+            <!-- Menu and buttons on the right -->
+            <div class="flex items-center gap-4 md:gap-6">
+                <div class="hidden md:flex items-center gap-6 text-lg">
+                    <a href="#hero" data-lang-key="navHome" class="text-slate-300 hover:text-brand-gold transition"></a>
+                    <a href="#features" data-lang-key="navCourse" class="text-slate-300 hover:text-brand-gold transition"></a>
+                    <a href="#curriculum" data-lang-key="navCurriculum" class="text-slate-300 hover:text-brand-gold transition"></a>
+                    <a href="#instructor" data-lang-key="navInstructor" class="text-slate-300 hover:text-brand-gold transition"></a>
+                    <a href="#pricing" data-lang-key="navPricing" class="text-slate-300 hover:text-brand-gold transition"></a>
+                    <a href="#knowledge-base" data-lang-key="navKnowledge" class="text-slate-300 hover:text-brand-gold transition"></a>
+                    <a href="#contact" data-lang-key="navContact" class="text-slate-300 hover:text-brand-gold transition"></a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="flex border border-slate-700 rounded-lg">
+                        <button data-lang="fr" class="lang-btn text-slate-300 font-semibold py-2 px-4 rounded-l-lg transition-colors duration-200">FR</button>
+                        <button data-lang="ar" class="lang-btn text-slate-300 font-semibold py-2 px-4 rounded-r-lg transition-colors duration-200 active">AR</button>
+                    </div>
+                    <div>
+                        <a href="#pricing" data-lang-key="navStartNow" class="cta-btn hidden lg:inline-block btn-primary text-white font-bold py-2 px-4 rounded-lg hover:scale-105 transition-transform"></a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-    <!-- French Version Container -->
-    <div id="fr-version" class="language-content">
-        <div class="max-w-3xl mx-auto" id="form-container-fr">
-          <header class="text-center mb-6">
-            <img src="https://pwwijduek2.space.minimax.io/logo_alshaarea_almoghrabi.jpeg" alt="Logo" class="w-24 h-24 mx-auto mb-4 rounded-full shadow-lg" onerror="this.onerror=null;this.src='https://placehold.co/96x96/e0e7ff/4338ca?text=Logo';" />
-            <h1 class="text-3xl md:text-4xl font-black text-slate-900">Formulaire d'inscription : Cours de création de vidéos par IA</h1>
-            <p class="text-md text-slate-600 mt-2">Bienvenue ! Ce formulaire est votre premier pas vers le monde de la création de contenu professionnelle.</p>
-            <div class="mt-6">
-                <button class="open-modal-btn bg-white hover:bg-slate-50 text-indigo-600 font-semibold py-2 px-4 border border-slate-300 rounded-lg shadow-sm smooth-transition">
-                    Voir les détails du cours
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="hero" class="text-center my-12 md:my-16 hero-bg rounded-3xl py-16 px-4">
+            <span data-lang-key="heroCertified" class="text-brand-gold font-bold bg-brand-burgundy/20 py-2 px-4 rounded-full border border-brand-gold"></span>
+            <h1 data-lang-key="heroTitle" class="text-4xl md:text-7xl font-black text-white leading-tight mt-4"></h1>
+            <p data-lang-key="heroSubtitle" class="mt-6 text-xl text-slate-400 max-w-3xl mx-auto"></p>
+            <div class="flex flex-wrap justify-center items-center gap-6 md:gap-8 mt-8 text-slate-300">
+                <span class="flex items-center"><i class="inline-block ml-2 rtl:mr-2 rtl:ml-0 text-brand-gold" data-lucide="users"></i><span data-lang-key="heroStudents"></span></span>
+                <span class="flex items-center"><i class="inline-block ml-2 rtl:mr-2 rtl:ml-0 text-brand-gold" data-lucide="calendar-weeks"></i><span data-lang-key="heroWeeks"></span></span>
+                <span class="flex items-center"><i class="inline-block ml-2 rtl:mr-2 rtl:ml-0 text-brand-gold" data-lucide="star"></i><span data-lang-key="heroRating"></span></span>
+            </div>
+            <div class="mt-10 flex flex-wrap justify-center items-center gap-4">
+                <a href="#pricing" data-lang-key="heroBtnStart" class="cta-btn btn-primary text-white font-bold py-3 px-8 rounded-lg text-lg hover:scale-105 transition-transform duration-300"></a>
+                <button id="play-video-btn" class="glass-card text-white font-bold py-3 px-8 rounded-lg text-lg hover:border-brand-gold transition duration-300 flex items-center gap-2">
+                    <i data-lucide="play"></i> <span data-lang-key-inner="heroBtnWatch"></span>
                 </button>
             </div>
-          </header>
-          <form action="https://formspree.io/f/xqabowdq" method="POST" id="form-fr" class="bg-white rounded-2xl shadow-xl overflow-hidden p-4 md:p-8" novalidate>
-            <!-- Form content is identical for both languages, just with different text -->
-            <section class="mb-10">
-              <h2 class="text-2xl font-bold mb-6 border-b pb-3">Partie 1 : Informations de base</h2>
-              <div class="mb-6"><label for="full_name_fr" class="block text-lg font-bold text-slate-700 mb-2">Nom complet</label><input type="text" id="full_name_fr" name="full_name" required class="w-full p-3 rounded-lg form-input smooth-transition" /><p class="error-message">Veuillez entrer votre nom complet.</p></div>
-              <div class="mb-6"><label for="email_fr" class="block text-lg font-bold text-slate-700 mb-2">Adresse e-mail</label><input type="email" id="email_fr" name="email" required class="w-full p-3 rounded-lg form-input smooth-transition" /><p class="error-message">Veuillez entrer une adresse e-mail valide.</p></div>
-              <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">Âge</label><div class="grid grid-cols-2 gap-4 option-card-container" data-question="age-fr"><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="18-24">18 - 24</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="25-34">25 - 34</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="35-44">35 - 44</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="45+">45+</div></div><input type="hidden" name="age" id="age-fr" required /><p class="error-message">Veuillez sélectionner votre tranche d'âge.</p></div>
-              <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">Sexe</label><div class="grid grid-cols-2 gap-4 option-card-container" data-question="gender-fr"><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="Homme">Homme</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="Femme">Femme</div></div><input type="hidden" name="gender" id="gender-fr" required /><p class="error-message">Veuillez sélectionner votre sexe.</p></div>
-              <div class="mb-6"><label for="country_fr" class="block text-lg font-bold text-slate-700 mb-2">Pays de résidence</label><input type="text" id="country_fr" name="country" required class="w-full p-3 rounded-lg form-input smooth-transition" /><p class="error-message">Veuillez entrer votre pays de résidence.</p></div>
-              <div class="mb-6"><label for="social_account_fr" class="block text-lg font-bold text-slate-700 mb-2">Votre compte TikTok / Instagram (facultatif)</label><input type="text" id="social_account_fr" name="social_account" class="w-full p-3 rounded-lg form-input smooth-transition" /><p class="text-sm text-slate-500 mt-1">Partager votre compte nous aide à comprendre votre point de départ.</p></div>
-            </section>
-            
-            <section class="mb-10">
-              <h2 class="text-2xl font-bold mb-6 border-b pb-3">Partie 2 : Votre expérience</h2>
-              <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">Appareil principal</label><div class="grid grid-cols-2 md:grid-cols-3 gap-4 option-card-container" data-question="device-fr"><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="Ordinateur">Ordinateur</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="Smartphone">Smartphone</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="Tablette">Tablette</div></div><input type="hidden" name="device" id="device-fr" required /><p class="error-message">Veuillez sélectionner un appareil.</p></div>
-              <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">Niveau de connaissance</label><div class="space-y-3 option-card-container" data-question="skill_level-fr"><div class="option-card p-4 rounded-lg font-semibold" data-value="debutant">Débutant : Aucune expérience préalable.</div><div class="option-card p-4 rounded-lg font-semibold" data-value="intermediaire">Intermédiaire : Expériences de base (ex: CapCut, Canva).</div><div class="option-card p-4 rounded-lg font-semibold" data-value="avance">Avancé : Bonne expérience, création de contenu régulière.</div></div><input type="hidden" name="skill_level" id="skill_level-fr" required /><p class="error-message">Veuillez sélectionner votre niveau.</p></div>
-              <div class="mb-10"><label for="tools_experience_fr" class="block text-lg font-bold text-slate-700 mb-2">Expérience avec des outils (Montage, Design, IA)</label><p class="text-sm text-slate-500 mb-2">Si oui, mentionnez les outils ou projets.</p><textarea id="tools_experience_fr" name="tools_experience" rows="4" class="w-full p-3 rounded-lg form-input smooth-transition"></textarea></div>
-            </section>
+        </section>
 
-            <section class="mb-10">
-              <h2 class="text-2xl font-bold mb-6 border-b pb-3">Partie 3 : Vos objectifs</h2>
-              <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">Objectif principal (plusieurs choix possibles)</label><div class="grid grid-cols-1 sm:grid-cols-2 gap-3 option-card-container" data-question="main_goals-fr"><div class="option-card p-3 rounded-lg font-semibold" data-value="Lancer une chaîne à succès">Lancer une chaîne à succès</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Développer mes compétences">Développer mes compétences</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Marketing pour mon projet">Marketing pour mon projet</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Revenu supplémentaire">Générer un revenu supplémentaire</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Explorer l'IA">Explorer l'IA</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Autre">Autre...</div></div><input type="hidden" name="main_goals" id="main_goals-fr" required /><p class="error-message">Veuillez sélectionner au moins un objectif.</p></div>
-            </section>
-            
-            <section class="mb-10">
-                <h2 class="text-2xl font-bold mb-6 border-b pb-3">Partie 4 : Défis et Préférences</h2>
-                <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">Quel est votre plus grand obstacle ?</label><div class="grid grid-cols-1 sm:grid-cols-2 gap-3 option-card-container" data-question="main_challenges-fr"><div class="option-card p-3 rounded-lg font-semibold" data-value="Peur de l'échec">Peur de l'échec / manque de vues</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Manque d'idées">Manque d'idées / ne pas savoir par où commencer</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Faibles compétences techniques">Faibles compétences techniques (montage, design)</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Manque de temps">Manque de temps / difficulté à s'engager</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Manque de confiance">Manque de confiance dans la qualité du contenu</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Autre">Autre...</div></div><input type="hidden" name="main_challenges" id="main_challenges-fr" required /><p class="error-message">Veuillez sélectionner un obstacle.</p></div>
-                <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">Quels types de contenu vous intéressent ?</label><div class="grid grid-cols-1 sm:grid-cols-2 gap-3 option-card-container" data-question="content_types-fr"><div class="option-card p-3 rounded-lg font-semibold" data-value="Histoires (mystère, histoire, documentaire)">Histoires (mystère, histoire, documentaire)</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Éducatif (science, finances, etc.)">Éducatif (science, finances, etc.)</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Divertissement et artistique">Divertissement et artistique</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Style de vie">Style de vie</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Marketing (produits/services)">Marketing (produits/services)</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Autre">Autre...</div></div><input type="hidden" name="content_types" id="content_types-fr" required /><p class="error-message">Veuillez sélectionner un type de contenu.</p></div>
-                <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">Votre approche des outils payants ?</label><div class="grid grid-cols-1 gap-3 option-card-container" data-question="tools_payment-fr"><div class="option-card p-3 rounded-lg font-semibold" data-value="Prêt à payer">Oui, prêt à payer pour la meilleure qualité</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Préfère le gratuit">Je préfère commencer avec des options gratuites</div><div class="option-card p-3 rounded-lg font-semibold" data-value="Pas encore sûr">Pas encore sûr, je déciderai plus tard</div></div><input type="hidden" name="tools_payment" id="tools_payment-fr" required /><p class="error-message">Veuillez sélectionner une option.</p></div>
-            </section>
-
-            <section class="mb-10">
-                <h2 class="text-2xl font-bold mb-6 border-b pb-3">Partie 5 : Questions supplémentaires</h2>
-                <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2" for="how_heard_fr">Comment avez-vous entendu parler du cours ?</label><input type="text" name="how_heard" id="how_heard_fr" class="form-input w-full p-3 rounded-lg smooth-transition" /></div>
-                <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2" for="success_criteria_fr">Qu'est-ce qui ferait de ce cours un succès pour vous ?</label><textarea id="success_criteria_fr" name="success_criteria" rows="3" class="form-input w-full p-3 rounded-lg smooth-transition"></textarea></div>
-                <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2" for="final_questions_fr">Avez-vous des questions ou des préoccupations ?</label><textarea id="final_questions_fr" name="final_questions" rows="3" class="form-input w-full p-3 rounded-lg smooth-transition"></textarea></div>
-            </section>
-
-            <div class="text-center">
-                <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-2xl smooth-transition w-full sm:w-auto">Envoyer le formulaire</button>
-                <p id="form-error-fr" class="error-message text-center mt-4"></p>
-            </div>
-          </form>
-        </div>
-        <div id="success-message-fr" class="max-w-3xl mx-auto text-center bg-white rounded-2xl shadow-xl p-8" style="display: none;"><svg class="w-16 h-16 mx-auto text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><h2 class="text-3xl font-black text-slate-900 mt-4">Merci !</h2><p class="text-lg text-slate-600 mt-2">Votre formulaire a été envoyé avec succès.</p></div>
-        <footer class="max-w-3xl mx-auto mt-12 text-center"><div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 text-left"><h2 class="text-3xl font-bold text-slate-900 mb-6 text-center">Tarifs et Contact</h2><div class="border-t pt-6"><h3 class="text-xl font-bold text-slate-800 mb-2">Prix du cours complet</h3><p class="text-4xl font-black text-indigo-600 mb-2">39€ <span class="text-lg font-medium text-slate-500">/ paiement unique</span></p><p class="text-slate-600 mb-6">Accès à vie à toutes les leçons, aux mises à jour et à la communauté privée.</p><h3 class="text-xl font-bold text-slate-800 mb-4 mt-8">Vous avez des questions ?</h3><p class="text-slate-600 mb-6">Contactez-nous directement sur WhatsApp.</p><a href="https://wa.me/12342797741" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg smooth-transition w-full"><svg class="mr-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.487 5.235 3.487 8.413 0 6.557-5.338 11.892-11.894 11.892-1.99 0-3.903-.52-5.687-1.475L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.886-.001 2.267.655 4.398 1.908 6.161l-1.317 4.814 4.901-1.295z"/></svg>Contacter sur WhatsApp</a></div></div></footer>
-    </div>
-
-    <!-- Arabic Version Container -->
-    <div id="ar-version" class="language-content" style="display: none;">
-        <div class="max-w-3xl mx-auto" id="form-container-ar">
-            <header class="text-center mb-6">
-                <img src="https://pwwijduek2.space.minimax.io/logo_alshaarea_almoghrabi.jpeg" alt="شعار" class="w-24 h-24 mx-auto mb-4 rounded-full shadow-lg" onerror="this.onerror=null;this.src='https://placehold.co/96x96/e0e7ff/4338ca?text=Logo';" />
-                <h1 class="text-3xl md:text-4xl font-black text-slate-900">استمارة التسجيل: دورة صناعة فيديوهات AI</h1>
-                <p class="text-md text-slate-600 mt-2">مرحبًا بك! هذه الاستمارة هي خطوتك الأولى نحو عالم صناعة المحتوى الاحترافي.</p>
-                <div class="mt-6">
-                    <button class="open-modal-btn bg-white hover:bg-slate-50 text-indigo-600 font-semibold py-2 px-4 border border-slate-300 rounded-lg shadow-sm smooth-transition">
-                        عرض تفاصيل الدورة
-                    </button>
+        <section id="limited-offer" class="my-24 scroll-animate">
+            <div class="glass-card max-w-4xl mx-auto p-6 rounded-2xl border border-brand-burgundy shadow-brand-burgundy">
+                <h3 data-lang-key="offerTitle" class="text-2xl font-bold text-center text-white"></h3>
+                <p data-lang-key="offerSubtitle" class="text-slate-400 mt-2 text-center"></p>
+                <div id="countdown" class="flex justify-center gap-4 md:gap-8 my-4 text-white">
+                    <div><span id="days" class="text-4xl font-bold text-brand-gold">00</span><p data-lang-key="offerDays" class="text-sm text-slate-400"></p></div>
+                    <div class="text-4xl font-bold text-brand-gold">:</div>
+                    <div><span id="hours" class="text-4xl font-bold text-brand-gold">00</span><p data-lang-key="offerHours" class="text-sm text-slate-400"></p></div>
+                    <div class="text-4xl font-bold text-brand-gold">:</div>
+                    <div><span id="minutes" class="text-4xl font-bold text-brand-gold">00</span><p data-lang-key="offerMinutes" class="text-sm text-slate-400"></p></div>
+                    <div class="text-4xl font-bold text-brand-gold">:</div>
+                    <div><span id="seconds" class="text-4xl font-bold text-brand-gold">00</span><p data-lang-key="offerSeconds" class="text-sm text-slate-400"></p></div>
                 </div>
-            </header>
-            <form action="https://formspree.io/f/xqabowdq" method="POST" id="form-ar" class="bg-white rounded-2xl shadow-xl overflow-hidden p-4 md:p-8" novalidate>
-                <!-- Sections are duplicated for Arabic -->
-                <section class="mb-10">
-                    <h2 class="text-2xl font-bold mb-6 border-b pb-3">القسم الأول: المعلومات الأساسية</h2>
-                    <div class="mb-6"><label for="full_name_ar" class="block text-lg font-bold text-slate-700 mb-2">الاسم الكامل</label><input type="text" id="full_name_ar" name="full_name" required class="w-full p-3 rounded-lg form-input smooth-transition" /><p class="error-message">الرجاء إدخال اسمك الكامل.</p></div>
-                    <div class="mb-6"><label for="email_ar" class="block text-lg font-bold text-slate-700 mb-2">البريد الإلكتروني</label><input type="email" id="email_ar" name="email" required class="w-full p-3 rounded-lg form-input smooth-transition" /><p class="error-message">الرجاء إدخال بريد إلكتروني صحيح.</p></div>
-                    <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">العمر</label><div class="grid grid-cols-2 gap-4 option-card-container" data-question="age-ar"><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="18-24">18 - 24</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="25-34">25 - 34</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="35-44">35 - 44</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="45+">45+</div></div><input type="hidden" name="age" id="age-ar" required /><p class="error-message">الرجاء اختيار الفئة العمرية.</p></div>
-                    <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">الجنس</label><div class="grid grid-cols-2 gap-4 option-card-container" data-question="gender-ar"><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="ذكر">ذكر</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="أنثى">أنثى</div></div><input type="hidden" name="gender" id="gender-ar" required /><p class="error-message">الرجاء اختيار الجنس.</p></div>
-                    <div class="mb-6"><label for="country_ar" class="block text-lg font-bold text-slate-700 mb-2">بلد الإقامة</label><input type="text" id="country_ar" name="country" required class="w-full p-3 rounded-lg form-input smooth-transition" /><p class="error-message">الرجاء إدخال بلد الإقامة.</p></div>
-                    <div class="mb-6"><label for="social_account_ar" class="block text-lg font-bold text-slate-700 mb-2">حسابك على تيك توك / انستغرام (اختياري)</label><input type="text" id="social_account_ar" name="social_account" class="w-full p-3 rounded-lg form-input smooth-transition" /><p class="text-sm text-slate-500 mt-1">مشاركة حسابك يساعدنا على فهم نقطة انطلاقك.</p></div>
-                </section>
+                <div class="w-full bg-slate-700 rounded-full h-2.5 mt-4">
+                    <div class="bg-brand-burgundy h-2.5 rounded-full" style="width: 90%"></div>
+                </div>
+                <p data-lang-key="offerSeats" class="text-sm text-slate-300 mt-2 text-center"></p>
+            </div>
+        </section>
 
-                <section class="mb-10">
-                    <h2 class="text-2xl font-bold mb-6 border-b pb-3">القسم الثاني: الخبرة التقنية</h2>
-                    <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">الجهاز الرئيسي</label><div class="grid grid-cols-2 md:grid-cols-3 gap-4 option-card-container" data-question="device-ar"><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="حاسوب">حاسوب</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="هاتف ذكي">هاتف ذكي</div><div class="option-card p-4 rounded-lg text-center font-semibold" data-value="جهاز لوحي">جهاز لوحي</div></div><input type="hidden" name="device" id="device-ar" required /><p class="error-message">الرجاء اختيار جهاز.</p></div>
-                    <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">مستوى المعرفة</label><div class="space-y-3 option-card-container" data-question="skill_level-ar"><div class="option-card p-4 rounded-lg font-semibold" data-value="مبتدئ">مبتدئ: لا أملك أي خبرة سابقة.</div><div class="option-card p-4 rounded-lg font-semibold" data-value="متوسط">متوسط: لدي تجارب بسيطة (مثل CapCut, Canva).</div><div class="option-card p-4 rounded-lg font-semibold" data-value="متقدم">متقدم: لدي خبرة جيدة وأصنع محتوى بانتظام.</div></div><input type="hidden" name="skill_level" id="skill_level-ar" required /><p class="error-message">الرجاء اختيار مستواك.</p></div>
-                    <div class="mb-10"><label for="tools_experience_ar" class="block text-lg font-bold text-slate-700 mb-2">خبرة سابقة مع الأدوات (مونتاج، تصميم، ذكاء اصطناعي)</label><p class="text-sm text-slate-500 mb-2">إذا كان الجواب نعم، يرجى ذكر الأدوات أو المشاريع.</p><textarea id="tools_experience_ar" name="tools_experience" rows="4" class="w-full p-3 rounded-lg form-input smooth-transition"></textarea></div>
-                </section>
+        <section id="features" class="my-24 scroll-animate">
+            <h2 data-lang-key="whyTitle" class="text-3xl md:text-4xl font-bold text-center text-white mb-4"></h2>
+            <p data-lang-key="whySubtitle" class="text-center text-slate-400 max-w-2xl mx-auto mb-12"></p>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
+                <div class="glass-card p-6 rounded-2xl border-brand-gold border-2 hover:shadow-brand-gold transition-all duration-300 card-hover"><i class="mx-auto text-brand-gold w-10 h-10 mb-3" data-lucide="play-circle"></i><h3 data-lang-key="feature1" class="font-bold text-white"></h3></div>
+                <div class="glass-card p-6 rounded-2xl border-brand-gold border-2 hover:shadow-brand-gold transition-all duration-300 card-hover"><i class="mx-auto text-brand-gold w-10 h-10 mb-3" data-lucide="lightbulb"></i><h3 data-lang-key="feature2" class="font-bold text-white"></h3></div>
+                <div class="glass-card p-6 rounded-2xl border-brand-gold border-2 hover:shadow-brand-gold transition-all duration-300 card-hover"><i class="mx-auto text-brand-gold w-10 h-10 mb-3" data-lucide="messages-square"></i><h3 data-lang-key="feature3" class="font-bold text-white"></h3></div>
+                <div class="glass-card p-6 rounded-2xl border-brand-gold border-2 hover:shadow-brand-gold transition-all duration-300 card-hover"><i class="mx-auto text-brand-gold w-10 h-10 mb-3" data-lucide="award"></i><h3 data-lang-key="feature4" class="font-bold text-white"></h3></div>
+                <div class="glass-card p-6 rounded-2xl border-brand-gold border-2 hover:shadow-brand-gold transition-all duration-300 card-hover"><i class="mx-auto text-brand-gold w-10 h-10 mb-3" data-lucide="infinity"></i><h3 data-lang-key="feature5" class="font-bold text-white"></h3></div>
+                <div class="glass-card p-6 rounded-2xl border-brand-gold border-2 hover:shadow-brand-gold transition-all duration-300 card-hover"><i class="mx-auto text-brand-gold w-10 h-10 mb-3" data-lucide="refresh-cw"></i><h3 data-lang-key="feature6" class="font-bold text-white"></h3></div>
+                <div class="glass-card p-6 rounded-2xl border-brand-gold border-2 hover:shadow-brand-gold transition-all duration-300 card-hover"><i class="mx-auto text-brand-gold w-10 h-10 mb-3" data-lucide="cpu"></i><h3 data-lang-key="feature7" class="font-bold text-white"></h3></div>
+                <div class="glass-card p-6 rounded-2xl border-brand-gold border-2 hover:shadow-brand-gold transition-all duration-300 card-hover"><i class="mx-auto text-brand-gold w-10 h-10 mb-3" data-lucide="wrench"></i><h3 data-lang-key="feature8" class="font-bold text-white"></h3></div>
+                <div class="glass-card p-6 rounded-2xl border-brand-gold border-2 hover:shadow-brand-gold transition-all duration-300 card-hover"><i class="mx-auto text-brand-gold w-10 h-10 mb-3" data-lucide="sparkles"></i><h3 data-lang-key="feature9" class="font-bold text-white"></h3></div>
+                <div class="glass-card p-6 rounded-2xl border-brand-gold border-2 hover:shadow-brand-gold transition-all duration-300 card-hover"><i class="mx-auto text-brand-gold w-10 h-10 mb-3" data-lucide="shield-check"></i><h3 data-lang-key="feature10" class="font-bold text-white"></h3></div>
+            </div>
+        </section>
 
-                <section class="mb-10">
-                    <h2 class="text-2xl font-bold mb-6 border-b pb-3">القسم الثالث: أهدافك</h2>
-                    <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">ما هو هدفك الرئيسي؟ (يمكن اختيار أكثر من خيار)</label><div class="grid grid-cols-1 sm:grid-cols-2 gap-3 option-card-container" data-question="main_goals-ar"><div class="option-card p-3 rounded-lg font-semibold" data-value="إطلاق قناة ناجحة">إطلاق قناة ناجحة</div><div class="option-card p-3 rounded-lg font-semibold" data-value="تطوير المهارات">تطوير مهاراتي</div><div class="option-card p-3 rounded-lg font-semibold" data-value="التسويق لمشروعي">التسويق لمشروعي</div><div class="option-card p-3 rounded-lg font-semibold" data-value="دخل إضافي">تحقيق دخل إضافي</div><div class="option-card p-3 rounded-lg font-semibold" data-value="استكشاف AI">استكشاف الذكاء الاصطناعي</div><div class="option-card p-3 rounded-lg font-semibold" data-value="أخرى">أخرى...</div></div><input type="hidden" name="main_goals" id="main_goals-ar" required /><p class="error-message">الرجاء اختيار هدف واحد على الأقل.</p></div>
-                </section>
-                
-                <section class="mb-10">
-                    <h2 class="text-2xl font-bold mb-6 border-b pb-3">القسم الرابع: التحديات وأنواع المحتوى</h2>
-                    <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">ما هو أكبر عائق يمنعك من البدء؟</label><div class="grid grid-cols-1 sm:grid-cols-2 gap-3 option-card-container" data-question="main_challenges-ar"><div class="option-card p-3 rounded-lg font-semibold" data-value="الخوف من الفشل">الخوف من الفشل أو عدم الحصول على مشاهدات</div><div class="option-card p-3 rounded-lg font-semibold" data-value="نقص الأفكار">نقص الأفكار أو عدم معرفة من أين أبدأ</div><div class="option-card p-3 rounded-lg font-semibold" data-value="ضعف المهارات التقنية">ضعف المهارات التقنية (مونتاج، تصميم)</div><div class="option-card p-3 rounded-lg font-semibold" data-value="ضيق الوقت">ضيق الوقت وصعوبة الالتزام</div><div class="option-card p-3 rounded-lg font-semibold" data-value="عدم الثقة">عدم الثقة في جودة المحتوى</div><div class="option-card p-3 rounded-lg font-semibold" data-value="أخرى">أخرى...</div></div><input type="hidden" name="main_challenges" id="main_challenges-ar" required /><p class="error-message">الرجاء اختيار عائق واحد.</p></div>
-                    <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">ما أنواع المحتوى التي تهمك لإنشائها؟</label><div class="grid grid-cols-1 sm:grid-cols-2 gap-3 option-card-container" data-question="content_types-ar"><div class="option-card p-3 rounded-lg font-semibold" data-value="قصص غامضة / تاريخية / وثائقية">قصص غامضة / تاريخية / وثائقية</div><div class="option-card p-3 rounded-lg font-semibold" data-value="تعليمي">محتوى تعليمي (تبسيط العلوم، نصائح مالية...)</div><div class="option-card p-3 rounded-lg font-semibold" data-value="ترفيهي">محتوى ترفيهي وفني</div><div class="option-card p-3 rounded-lg font-semibold" data-value="أسلوب حياة">محتوى متعلق بأسلوب الحياة</div><div class="option-card p-3 rounded-lg font-semibold" data-value="تسويق">محتوى تسويقي لمنتجات أو خدمات</div><div class="option-card p-3 rounded-lg font-semibold" data-value="أخرى">أخرى...</div></div><input type="hidden" name="content_types" id="content_types-ar" required /><p class="error-message">الرجاء اختيار نوع محتوى واحد.</p></div>
-                    <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2">ما هو توجهك بالنسبة للأدوات المدفوعة؟</label><div class="grid grid-cols-1 gap-3 option-card-container" data-question="tools_payment-ar"><div class="option-card p-3 rounded-lg font-semibold" data-value="مستعد للدفع">نعم، مستعد للدفع للحصول على أفضل جودة</div><div class="option-card p-3 rounded-lg font-semibold" data-value="أفضل المجاني">أفضل البدء بالخطط المجانية مع القيود</div><div class="option-card p-3 rounded-lg font-semibold" data-value="لست متأكداً">لست متأكداً بعد، سأقرر لاحقاً</div></div><input type="hidden" name="tools_payment" id="tools_payment-ar" required /><p class="error-message">الرجاء اختيار توجهك.</p></div>
-                </section>
+        <section id="learning-objectives" class="my-24 scroll-animate">
+            <h2 data-lang-key="learnTitle" class="text-3xl md:text-4xl font-bold text-center text-white mb-4"></h2>
+            <p data-lang-key="learnSubtitle" class="text-center text-slate-400 max-w-2xl mx-auto mb-12"></p>
+            <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="glass-card p-6 rounded-xl flex items-center gap-4 border-l-4 rtl:border-l-0 rtl:border-r-4 border-brand-burgundy"><i class="text-brand-gold w-8 h-8 flex-shrink-0" data-lucide="video"></i><p data-lang-key="learn1" class="font-semibold text-white"></p></div>
+                <div class="glass-card p-6 rounded-xl flex items-center gap-4 border-l-4 rtl:border-l-0 rtl:border-r-4 border-brand-burgundy"><i class="text-brand-gold w-8 h-8 flex-shrink-0" data-lucide="zap"></i><p data-lang-key="learn2" class="font-semibold text-white"></p></div>
+                <div class="glass-card p-6 rounded-xl flex items-center gap-4 border-l-4 rtl:border-l-0 rtl:border-r-4 border-brand-burgundy"><i class="text-brand-gold w-8 h-8 flex-shrink-0" data-lucide="scissors"></i><p data-lang-key="learn3" class="font-semibold text-white"></p></div>
+                <div class="glass-card p-6 rounded-xl flex items-center gap-4 border-l-4 rtl:border-l-0 rtl:border-r-4 border-brand-burgundy"><i class="text-brand-gold w-8 h-8 flex-shrink-0" data-lucide="gem"></i><p data-lang-key="learn4" class="font-semibold text-white"></p></div>
+                <div class="glass-card p-6 rounded-xl flex items-center gap-4 md:col-span-2 border-l-4 rtl:border-l-0 rtl:border-r-4 border-brand-burgundy"><i class="text-brand-gold w-8 h-8 flex-shrink-0" data-lucide="dollar-sign"></i><p data-lang-key="learn5" class="font-semibold text-white"></p></div>
+            </div>
+        </section>
 
-                <section class="mb-10">
-                    <h2 class="text-2xl font-bold mb-6 border-b pb-3">القسم الخامس: أسئلة إضافية</h2>
-                    <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2" for="how_heard_ar">كيف سمعت عن الدورة؟</label><input type="text" name="how_heard" id="how_heard_ar" class="form-input w-full p-3 rounded-lg smooth-transition" /></div>
-                    <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2" for="success_criteria_ar">ما الشيء الذي سيجعل الدورة ناجحة بالنسبة لك؟</label><textarea id="success_criteria_ar" name="success_criteria" rows="3" class="form-input w-full p-3 rounded-lg smooth-transition"></textarea></div>
-                    <div class="mb-6"><label class="block text-lg font-bold text-slate-700 mb-2" for="final_questions_ar">هل لديك أي أسئلة أو استفسارات؟</label><textarea id="final_questions_ar" name="final_questions" rows="3" class="form-input w-full p-3 rounded-lg smooth-transition"></textarea></div>
-                </section>
+        <section id="curriculum" class="my-24 scroll-animate">
+            <h2 data-lang-key="journeyTitle" class="text-3xl md:text-4xl font-bold text-center text-white mb-12"></h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="glass-card p-8 rounded-2xl border-b-4 border-brand-burgundy hover:shadow-brand-burgundy transition-all duration-300"><i class="mx-auto text-brand-gold w-12 h-12 mb-4" data-lucide="book-open"></i><h3 data-lang-key="journey1Title" class="text-2xl font-bold text-white mb-2"></h3><p data-lang-key="journey1Desc" class="text-slate-400"></p></div>
+                <div class="glass-card p-8 rounded-2xl border-b-4 border-brand-burgundy hover:shadow-brand-burgundy transition-all duration-300"><i class="mx-auto text-brand-gold w-12 h-12 mb-4" data-lucide="tool"></i><h3 data-lang-key="journey2Title" class="text-2xl font-bold text-white mb-2"></h3><p data-lang-key="journey2Desc" class="text-slate-400"></p></div>
+                <div class="glass-card p-8 rounded-2xl border-b-4 border-brand-burgundy hover:shadow-brand-burgundy transition-all duration-300"><i class="mx-auto text-brand-gold w-12 h-12 mb-4" data-lucide="graduation-cap"></i><h3 data-lang-key="journey3Title" class="text-2xl font-bold text-white mb-2"></h3><p data-lang-key="journey3Desc" class="text-slate-400"></p></div>
+            </div>
+             <div class="text-center mt-8">
+                <a href="coursedetailes.html" data-lang-key="journeyBtn" class="btn-primary text-white font-bold py-3 px-8 rounded-lg text-lg hover:scale-105 transition-transform duration-300"></a>
+            </div>
+        </section>
 
-                <div class="text-center">
-                    <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-2xl smooth-transition w-full sm:w-auto">إرسال الاستمارة</button>
-                    <p id="form-error-ar" class="error-message text-center mt-4"></p>
+        <section id="instructor" class="my-24 scroll-animate glass-card p-8 md:p-12 rounded-3xl flex flex-col md:flex-row items-center gap-12 border border-brand-gold">
+            <div class="md:w-1/3 text-center">
+                <div class="image-frame w-48 h-48 mx-auto mb-4">
+                    <img src="https://pwwijduek2.space.minimax.io/logo_alshaarea_almoghrabi.jpeg" alt="المدرب مهدي الشارع المغربي" class="w-full h-full rounded-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/192x192/1f2937/D4AF37?text=Logo'; this.classList.add('missing-image');" loading="lazy">
+                </div>
+                <h3 data-lang-key="instructorName" class="text-3xl font-bold text-white"></h3>
+                <p data-lang-key="instructorTitle" class="text-brand-gold"></p>
+                <div class="flex justify-center gap-4 mt-4">
+                    <span data-lang-key="instructorExp" class="bg-brand-burgundy/20 text-brand-gold text-sm font-bold px-3 py-1 rounded-full border border-brand-gold"></span>
+                    <span data-lang-key="instructorStudents" class="bg-brand-burgundy/20 text-brand-gold text-sm font-bold px-3 py-1 rounded-full border border-brand-gold"></span>
+                </div>
+            </div>
+            <div class="md:w-2/3">
+                <h4 data-lang-key="instructorPhilosophy" class="text-2xl font-bold text-white mb-4"></h4>
+                <p data-lang-key="instructorQuote" class="text-slate-300 text-lg leading-relaxed"></p>
+                <div class="mt-6 grid grid-cols-2 gap-4">
+                    <div class="glass-card p-4 rounded-lg border-l-4 rtl:border-l-0 rtl:border-r-4 border-brand-gold"><h5 data-lang-key="instructorPillar1" class="font-bold text-white"></h5></div>
+                    <div class="glass-card p-4 rounded-lg border-l-4 rtl:border-l-0 rtl:border-r-4 border-brand-gold"><h5 data-lang-key="instructorPillar2" class="font-bold text-white"></h5></div>
+                    <div class="glass-card p-4 rounded-lg border-l-4 rtl:border-l-0 rtl:border-r-4 border-brand-gold"><h5 data-lang-key="instructorPillar3" class="font-bold text-white"></h5></div>
+                    <div class="glass-card p-4 rounded-lg border-l-4 rtl:border-l-0 rtl:border-r-4 border-brand-gold"><h5 data-lang-key="instructorPillar4" class="font-bold text-white"></h5></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="my-24 scroll-animate">
+            <h2 data-lang-key="testimonialsTitle" class="text-3xl md:text-4xl font-bold text-center text-white mb-12"></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="glass-card p-6 rounded-2xl border-t-2 border-brand-gold hover:shadow-brand-gold transition-all duration-300">
+                    <p data-lang-key="testimonial1Quote" class="text-slate-300 mb-4"></p>
+                    <div class="flex items-center">
+                        <div class="image-frame w-12 h-12 ml-4 rtl:mr-4 rtl:ml-0">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop" alt="فاطمة الزهراء" class="w-full h-full rounded-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/48x48/8B1538/ffffff?text=ف'; this.classList.add('missing-image');" loading="lazy">
+                        </div>
+                        <div>
+                            <p data-lang-key="testimonial1Name" class="font-bold text-white"></p>
+                            <p data-lang-key="testimonial1Role" class="text-sm text-slate-400"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-2xl border-t-2 border-brand-gold hover:shadow-brand-gold transition-all duration-300">
+                    <p data-lang-key="testimonial2Quote" class="text-slate-300 mb-4"></p>
+                    <div class="flex items-center">
+                        <div class="image-frame w-12 h-12 ml-4 rtl:mr-4 rtl:ml-0">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1887&auto=format&fit=crop" alt="محمد الأمين" class="w-full h-full rounded-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/48x48/8B1538/ffffff?text=م'; this.classList.add('missing-image');" loading="lazy">
+                        </div>
+                        <div>
+                            <p data-lang-key="testimonial2Name" class="font-bold text-white"></p>
+                            <p data-lang-key="testimonial2Role" class="text-sm text-slate-400"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card p-6 rounded-2xl border-t-2 border-brand-gold hover:shadow-brand-gold transition-all duration-300">
+                    <p data-lang-key="testimonial3Quote" class="text-slate-300 mb-4"></p>
+                    <div class="flex items-center">
+                        <div class="image-frame w-12 h-12 ml-4 rtl:mr-4 rtl:ml-0">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1887&auto=format&fit=crop" alt="سارة الحسني" class="w-full h-full rounded-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/48x48/8B1538/ffffff?text=س'; this.classList.add('missing-image');" loading="lazy">
+                        </div>
+                        <div>
+                            <p data-lang-key="testimonial3Name" class="font-bold text-white"></p>
+                            <p data-lang-key="testimonial3Role" class="text-sm text-slate-400"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="pricing" class="my-24 scroll-animate">
+            <h2 data-lang-key="pricingTitle" class="text-3xl md:text-4xl font-bold text-center text-white mb-12"></h2>
+            <div class="max-w-md mx-auto">
+                <div class="glass-card p-8 rounded-2xl border-2 border-brand-gold shadow-brand-gold relative">
+                    <span data-lang-key="pricingTag" class="absolute -top-4 right-6 bg-brand-burgundy text-white text-sm font-bold px-4 py-1 rounded-full border border-brand-gold"></span>
+                    <h3 data-lang-key="pricingPackage" class="text-3xl font-bold text-white text-center"></h3>
+                    <p data-lang-key="pricingPrice" class="text-5xl font-black text-brand-gold my-6 text-center"></p>
+                    <ul class="space-y-3 text-slate-300 mb-8">
+                        <li class="flex items-center gap-3"><i class="text-brand-gold w-5 h-5" data-lucide="check"></i> <span data-lang-key="pricingFeature1"></span></li>
+                        <li class="flex items-center gap-3"><i class="text-brand-gold w-5 h-5" data-lucide="check"></i> <span data-lang-key="pricingFeature2"></span></li>
+                        <li class="flex items-center gap-3"><i class="text-brand-gold w-5 h-5" data-lucide="check"></i> <span data-lang-key="pricingFeature3"></span></li>
+                        <li class="flex items-center gap-3"><i class="text-brand-gold w-5 h-5" data-lucide="check"></i> <span data-lang-key="pricingFeature4"></span></li>
+                        <li class="flex items-center gap-3"><i class="text-brand-gold w-5 h-5" data-lucide="check"></i> <span data-lang-key="pricingFeature5"></span></li>
+                        <li class="flex items-center gap-3"><i class="text-brand-gold w-5 h-5" data-lucide="check"></i> <span data-lang-key="pricingFeature6"></span></li>
+                    </ul>
+                    <button data-lang-key="pricingBtnBook" class="cta-btn w-full btn-primary text-white font-bold py-4 text-lg rounded-lg hover:scale-105 transition-transform"></button>
+                    <a href="AIform.html" data-lang-key="pricingLinkRegister" class="block text-center mt-4 text-brand-gold hover:underline"></a>
+                </div>
+            </div>
+             <div class="text-center mt-12 glass-card max-w-2xl mx-auto p-6 rounded-2xl border border-brand-burgundy">
+                <h4 data-lang-key="guaranteeTitle" class="text-xl font-bold text-white"></h4>
+                <p data-lang-key="guaranteeDesc" class="text-slate-400 mt-2"></p>
+            </div>
+        </section>
+        
+        <section id="faq" class="my-24 max-w-3xl mx-auto scroll-animate">
+            <h2 data-lang-key="faqTitle" class="text-3xl md:text-4xl font-bold text-center text-white mb-12"></h2>
+            <div class="space-y-4">
+                <div class="faq-item glass-card rounded-xl p-6 cursor-pointer border-l-4 rtl:border-l-0 rtl:border-r-4 border-brand-gold hover:shadow-brand-gold transition-all duration-300">
+                    <div class="faq-question flex justify-between items-center font-bold text-lg text-white"><span data-lang-key="faq1q"></span><i data-lucide="plus" class="faq-icon transition-transform text-brand-gold"></i></div>
+                    <div class="faq-content text-slate-300 border-t border-slate-700 mt-4"><p data-lang-key="faq1a"></p></div>
+                </div>
+                <div class="faq-item glass-card rounded-xl p-6 cursor-pointer border-l-4 rtl:border-l-0 rtl:border-r-4 border-brand-gold hover:shadow-brand-gold transition-all duration-300">
+                    <div class="faq-question flex justify-between items-center font-bold text-lg text-white"><span data-lang-key="faq2q"></span><i data-lucide="plus" class="faq-icon transition-transform text-brand-gold"></i></div>
+                    <div class="faq-content text-slate-300 border-t border-slate-700 mt-4"><p data-lang-key="faq2a"></p></div>
+                </div>
+                <div class="faq-item glass-card rounded-xl p-6 cursor-pointer border-l-4 rtl:border-l-0 rtl:border-r-4 border-brand-gold hover:shadow-brand-gold transition-all duration-300">
+                    <div class="faq-question flex justify-between items-center font-bold text-lg text-white"><span data-lang-key="faq3q"></span><i data-lucide="plus" class="faq-icon transition-transform text-brand-gold"></i></div>
+                    <div class="faq-content text-slate-300 border-t border-slate-700 mt-4"><p data-lang-key="faq3a"></p></div>
+                </div>
+                <div class="faq-item glass-card rounded-xl p-6 cursor-pointer border-l-4 rtl:border-l-0 rtl:border-r-4 border-brand-gold hover:shadow-brand-gold transition-all duration-300">
+                    <div class="faq-question flex justify-between items-center font-bold text-lg text-white"><span data-lang-key="faq4q"></span><i data-lucide="plus" class="faq-icon transition-transform text-brand-gold"></i></div>
+                    <div class="faq-content text-slate-300 border-t border-slate-700 mt-4"><p data-lang-key="faq4a"></p></div>
+                </div>
+                 <div class="faq-item glass-card rounded-xl p-6 cursor-pointer border-l-4 rtl:border-l-0 rtl:border-r-4 border-brand-gold hover:shadow-brand-gold transition-all duration-300">
+                    <div class="faq-question flex justify-between items-center font-bold text-lg text-white"><span data-lang-key="faq5q"></span><i data-lucide="plus" class="faq-icon transition-transform text-brand-gold"></i></div>
+                    <div class="faq-content text-slate-300 border-t border-slate-700 mt-4"><p data-lang-key="faq5a"></p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="knowledge-base" class="my-24 scroll-animate">
+            <h2 data-lang-key="knowledgeTitle" class="text-3xl md:text-4xl font-bold text-center text-white mb-12"></h2>
+            <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <a href="AIStyleBank.html" class="glass-card p-8 rounded-2xl border-brand-gold border-2 hover:shadow-brand-gold transition-all duration-300 card-hover text-center block">
+                    <i data-lucide="palette" class="mx-auto text-brand-gold w-16 h-16 mb-4"></i>
+                    <h3 data-lang-key="knowledge1Title" class="text-2xl font-bold text-white mb-2"></h3>
+                    <p data-lang-key="knowledge1Desc" class="text-slate-400"></p>
+                </a>
+                <a href="bankprompt.html" class="glass-card p-8 rounded-2xl border-brand-gold border-2 hover:shadow-brand-gold transition-all duration-300 card-hover text-center block">
+                    <i data-lucide="terminal" class="mx-auto text-brand-gold w-16 h-16 mb-4"></i>
+                    <h3 data-lang-key="knowledge2Title" class="text-2xl font-bold text-white mb-2"></h3>
+                    <p data-lang-key="knowledge2Desc" class="text-slate-400"></p>
+                </a>
+                <a href="AIToolsDirectory.html" class="glass-card p-8 rounded-2xl border-brand-gold border-2 hover:shadow-brand-gold transition-all duration-300 card-hover text-center block">
+                    <i data-lucide="layout-grid" class="mx-auto text-brand-gold w-16 h-16 mb-4"></i>
+                    <h3 data-lang-key="knowledge3Title" class="text-2xl font-bold text-white mb-2"></h3>
+                    <p data-lang-key="knowledge3Desc" class="text-slate-400"></p>
+                </a>
+                <a href="exercices.html" class="glass-card p-8 rounded-2xl border-brand-gold border-2 hover:shadow-brand-gold transition-all duration-300 card-hover text-center block">
+                    <i data-lucide="edit-3" class="mx-auto text-brand-gold w-16 h-16 mb-4"></i>
+                    <h3 data-lang-key="knowledge4Title" class="text-2xl font-bold text-white mb-2"></h3>
+                    <p data-lang-key="knowledge4Desc" class="text-slate-400"></p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="border-t border-slate-800">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <a href="https://dawra.live" target="_blank" rel="noopener noreferrer" class="image-frame w-12 h-12">
+                            <img src="https://pwwijduek2.space.minimax.io/logo_alshaarea_almoghrabi.jpeg" alt="شعار الشارع المغربي" class="w-full h-full rounded-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/48x48/8B1538/ffffff?text=AI'; this.classList.add('missing-image');" loading="lazy">
+                        </a>
+                        <h3 data-lang-key="brandName" class="text-xl font-bold text-white"></h3>
+                    </div>
+                    <p data-lang-key="footerDesc" class="text-slate-400"></p>
+                </div>
+                <div>
+                    <h3 data-lang-key="footerSupportTitle" class="text-xl font-bold text-white mb-4"></h3>
+                     <ul class="space-y-2 text-slate-400">
+                        <li><a href="http://wa.me/12342797741" data-lang-key="footerSupport1" target="_blank" class="hover:text-brand-gold transition"></a></li>
+                        <li><a href="#" data-lang-key="footerSupport2" class="hover:text-brand-gold transition"></a></li>
+                        <li><a href="#knowledge-base" data-lang-key="footerSupport3" class="hover:text-brand-gold transition"></a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 data-lang-key="footerContactTitle" class="text-xl font-bold text-white mb-4"></h3>
+                    <p class="text-slate-400">contact@toolify.biz</p>
+                    <p class="text-slate-400">+212 6 12 34 56 78</p>
+                </div>
+            </div>
+            <div class="text-center text-slate-500 mt-8 pt-8 border-t border-slate-800">
+                <p data-lang-key="footerCopyright" class="text-slate-500 text-sm"></p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="registration-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="glass-card rounded-2xl shadow-2xl w-full max-w-lg relative" id="modal-content">
+            <button id="close-modal-btn" class="absolute top-4 text-slate-400 hover:text-brand-gold ltr:right-4 rtl:left-4"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <form action="https://formspree.io/f/xqabowdq" method="POST" id="registration-form" class="p-8" novalidate>
+                <h3 data-lang-key="modalTitle" class="text-3xl font-bold text-white text-center mb-2"></h3>
+                <p data-lang-key="modalSubtitle" class="text-slate-400 text-center mb-6"></p>
+                <div class="space-y-4">
+                    <div>
+                        <label for="full_name" data-lang-key="modalName" class="block text-sm font-bold text-slate-300 mb-2"></label>
+                        <input type="text" id="full_name" name="full_name" required class="w-full p-3 rounded-lg form-input transition">
+                    </div>
+                    <div>
+                        <label for="email" data-lang-key="modalEmail" class="block text-sm font-bold text-slate-300 mb-2"></label>
+                        <input type="email" id="email" name="email" required class="w-full p-3 rounded-lg form-input transition">
+                    </div>
+                    <div>
+                        <label for="phone" data-lang-key="modalPhone" class="block text-sm font-bold text-slate-300 mb-2"></label>
+                        <input type="tel" id="phone" name="phone" required class="w-full p-3 rounded-lg form-input transition">
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <button type="submit" data-lang-key="modalBtn" class="w-full btn-primary text-white font-bold py-3 text-lg rounded-lg hover:scale-105 transition-transform"></button>
                 </div>
             </form>
         </div>
-        <div id="success-message-ar" class="max-w-3xl mx-auto text-center bg-white rounded-2xl shadow-xl p-8" style="display: none;"><svg class="w-16 h-16 mx-auto text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><h2 class="text-3xl font-black text-slate-900 mt-4">شكرًا لك!</h2><p class="text-lg text-slate-600 mt-2">تم إرسال طلبك بنجاح.</p></div>
-        <footer class="max-w-3xl mx-auto mt-12 text-center"><div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 text-right"><h2 class="text-3xl font-bold text-slate-900 mb-6 text-center">الأسعار والتواصل</h2><div class="border-t pt-6"><h3 class="text-xl font-bold text-slate-800 mb-2">سعر الدورة الكاملة</h3><p class="text-4xl font-black text-indigo-600 mb-2">39€ <span class="text-lg font-medium text-slate-500">/ دفعة واحدة</span></p><p class="text-slate-600 mb-6">وصول مدى الحياة لجميع الدروس، التحديثات المستقبلية، والمجتمع الخاص.</p><h3 class="text-xl font-bold text-slate-800 mb-4 mt-8">هل لديك أسئلة؟</h3><p class="text-slate-600 mb-6">تواصل معنا مباشرة عبر واتساب للحصول على إجابة سريعة.</p><a href="https://wa.me/12342797741" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg smooth-transition w-full"><svg class="ml-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.487 5.235 3.487 8.413 0 6.557-5.338 11.892-11.894 11.892-1.99 0-3.903-.52-5.687-1.475L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.886-.001 2.267.655 4.398 1.908 6.161l-1.317 4.814 4.901-1.295z"/></svg>تواصل عبر واتساب</a></div></div></footer>
     </div>
-  </div>
 
-  <!-- Modal Structure -->
-  <div id="course-modal-overlay" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center p-4 z-50">
-      <div id="course-modal-container" class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 md:p-8 relative transform scale-95">
-          <!-- Modal content injected by JavaScript -->
-      </div>
-  </div>
-
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-
-      // --- Main Application Object ---
-      const App = {
-        // Application state
-        state: {
-          lang: 'fr',
-        },
-
-        // Internationalization strings
-        i18n: {
-          fr: {
-            modalTitle: "Détails du cours de création de contenu",
-            modalWhatYouLearn: "Qu'allez-vous apprendre ?",
-            learnPoints: ["Lancer une chaîne à succès sur YouTube/TikTok.", "Maîtriser l'écriture de scénarios avec l'IA.", "Générer et animer des images de manière professionnelle.", "Maîtriser le montage sur CapCut et Canva.", "Stratégies de publication et de croissance (SEO)."],
-            modalStructure: "Structure du cours",
-            structurePoints: ["3 semaines intensives de formation pratique.", "9 sessions en direct et interactives.", "Exercices pratiques après chaque session."],
-            modalTools: "Outils que vous maîtriserez",
-            modalFooter: "Prêt à commencer votre voyage ?",
-          },
-          ar: {
-            modalTitle: "تفاصيل دورة صناعة المحتوى",
-            modalWhatYouLearn: "ماذا ستتعلم؟",
-            learnPoints: ["إطلاق قناة ناجحة على يوتيوب/تيك توك.", "إتقان كتابة السيناريو بالذكاء الاصطناعي.", "توليد الصور وتحريكها باحترافية.", "إتقان المونتاج على CapCut و Canva.", "استراتيجيات النشر والنمو (SEO)."],
-            modalStructure: "هيكل الدورة",
-            structurePoints: ["3 أسابيع مكثفة من التدريب العملي.", "9 لقاءات مباشرة وتفاعلية.", "تمارين تطبيقية بعد كل لقاء."],
-            modalTools: "الأدوات التي ستتقنها",
-            modalFooter: "هل أنت مستعد لبدء رحلتك؟",
-          }
-        },
-
-        // Initialize the application
-        init() {
-          this.cacheDOM();
-          this.bindEvents();
-          this.initializeForm('form-fr');
-          this.initializeForm('form-ar');
-        },
-
-        // Cache DOM elements for performance
-        cacheDOM() {
-          this.frBtn = document.getElementById('lang-fr-btn');
-          this.arBtn = document.getElementById('lang-ar-btn');
-          this.frVersion = document.getElementById('fr-version');
-          this.arVersion = document.getElementById('ar-version');
-          this.body = document.body;
-          this.html = document.documentElement;
-          this.modalOverlay = document.getElementById('course-modal-overlay');
-          this.modalContainer = document.getElementById('course-modal-container');
-          this.openModalBtns = document.querySelectorAll('.open-modal-btn');
-        },
-
-        // Bind all event listeners
-        bindEvents() {
-          this.frBtn.addEventListener('click', () => this.setLanguage('fr'));
-          this.arBtn.addEventListener('click', () => this.setLanguage('ar'));
-          
-          this.openModalBtns.forEach(btn => {
-            btn.addEventListener('click', () => this.openModal());
-          });
-
-          this.modalOverlay.addEventListener('click', (e) => {
-            if (e.target === this.modalOverlay) {
-              this.closeModal();
+    <script>
+        // --- Translations Object ---
+        const translations = {
+            ar: {
+                brandName: "الشارع المغربي",
+                navHome: "🏠 الرئيسية",
+                navCourse: "📚 الدورة",
+                navCurriculum: "📋 المنهج",
+                navInstructor: "👨‍🏫 المدرب",
+                navPricing: "💰 الأسعار",
+                navKnowledge: "📚 المعرفة",
+                navContact: "📞 تواصل",
+                navStartNow: "ابدأ الآن",
+                heroCertified: "دورة معتمدة ومضمونة النتائج",
+                heroTitle: "صناعة فيديوهات <span class='gradient-text'>AI الاحترافية</span>",
+                heroSubtitle: "تعلم إنتاج الفيديوهات بتقنيات الذكاء الاصطناعي المتقدمة",
+                heroStudents: "50+ طالب",
+                heroWeeks: "3 أسابيع",
+                heroRating: "4.9/5 تقييم",
+                heroBtnStart: "ابدأ رحلتك الآن",
+                heroBtnWatch: "شاهد الفيديو التعريفي",
+                offerTitle: "عرض محدود الوقت!",
+                offerSubtitle: "احجز مقعدك قبل انتهاء العرض الخاص. تبدأ الدورة في 15 أغسطس 2025.",
+                offerDays: "يوم",
+                offerHours: "ساعة",
+                offerMinutes: "دقيقة",
+                offerSeconds: "ثانية",
+                offerSeats: "المقاعد محدودة - فقط <span class='font-bold text-brand-gold'>50</span> مقعد متبقي!",
+                whyTitle: "لماذا تختار دورتنا؟",
+                whySubtitle: "تجربة تعليمية شاملة ومتكاملة لإتقان صناعة الفيديوهات بتقنيات الذكاء الاصطناعي.",
+                feature1: "9 لقاءات تفاعلية",
+                feature2: "مشاريع حقيقية",
+                feature3: "دعم مباشر",
+                feature4: "شهادة إتمام",
+                feature5: "وصول مدى الحياة",
+                feature6: "تحديثات مجانية",
+                feature7: "تقنيات AI متقدمة",
+                feature8: "أدوات احترافية",
+                feature9: "إبداع لا محدود",
+                feature10: "نتائج مضمونة",
+                learnTitle: "ماذا ستتعلم في هذه الدورة؟",
+                learnSubtitle: "أهداف واضحة ونتائج مضمونة.",
+                learn1: "إتقان استخدام أدوات AI لإنتاج الفيديو",
+                learn2: "إنشاء محتوى فيديو احترافي بسرعة",
+                learn3: "تطوير مهارات التحرير والمونتاج الذكي",
+                learn4: "بناء علامة تجارية شخصية مميزة",
+                learn5: "تحقيق الربح من المحتوى المرئي",
+                journeyTitle: "رحلة تعليمية متكاملة",
+                journey1Title: "تعلم النظريات",
+                journey1Desc: "فهم أساسيات الذكاء الاصطناعي وتطبيقاته في إنتاج الفيديو.",
+                journey2Title: "تطبيق عملي",
+                journey2Desc: "ممارسة الأدوات والتقنيات على مشاريع حقيقية.",
+                journey3Title: "إتقان المهارات",
+                journey3Desc: "إنتاج محتوى احترافي والحصول على شهادة معتمدة.",
+                journeyBtn: "عرض المنهج الدراسي الكامل",
+                instructorName: "مهدي الشارع المغربي",
+                instructorTitle: "خبير تقنيات الذكاء الاصطناعي",
+                instructorExp: "10+ سنوات خبرة",
+                instructorStudents: "5000+ طالب",
+                instructorPhilosophy: "فلسفة التدريس",
+                instructorQuote: "\"أؤمن بأن التعلم يجب أن يكون عملياً وممتعاً. هدفي ليس فقط تعليم التقنيات، بل إلهام الطلاب لإطلاق إبداعهم وتحويل أفكارهم إلى واقع ملموس.\"",
+                instructorPillar1: "التعلم العملي",
+                instructorPillar2: "الإبداع والابتكار",
+                instructorPillar3: "النتائج المضمونة",
+                instructorPillar4: "الدعم المستمر",
+                testimonialsTitle: "ماذا يقول طلابنا؟",
+                testimonial1Quote: "\"دورة رائعة غيرت مسار عملي بالكامل. تعلمت كيفية إنتاج فيديوهات احترافية في وقت قياسي.\"",
+                testimonial1Name: "فاطمة الزهراء",
+                testimonial1Role: "منتجة محتوى",
+                testimonial2Quote: "\"المدرب محترف جداً والمحتوى عملي ومفيد. أصبحت قادراً على إنتاج فيديوهات تسويقية احترافية لعملائي.\"",
+                testimonial2Name: "محمد الأمين",
+                testimonial2Role: "مصمم جرافيك",
+                testimonial3Quote: "\"الدورة ساعدتني في بناء علامتي التجارية وإنشاء محتوى مرئي جذاب لمنتجاتي. النتائج فاقت توقعاتي.\"",
+                testimonial3Name: "سارة الحسني",
+                testimonial3Role: "رائدة أعمال",
+                pricingTitle: "استثمارك في مستقبلك الإبداعي",
+                pricingTag: "عرض حصري",
+                pricingPackage: "الباقة المتكاملة",
+                pricingPrice: "49$<span class='text-lg text-slate-400'> / وصول مدى الحياة</span>",
+                pricingFeature1: "9 لقاءات تفاعلية مباشرة",
+                pricingFeature2: "جميع الدروس والمحتوى",
+                pricingFeature3: "مشاريع عملية تطبيقية",
+                pricingFeature4: "دعم مباشر من المدرب",
+                pricingFeature5: "وصول مدى الحياة للتسجيلات",
+                pricingFeature6: "تحديثات مجانية ومستمرة",
+                pricingBtnBook: "احجز مقعدك الآن",
+                pricingLinkRegister: "أو قم بالتسجيل الكامل هنا",
+                guaranteeTitle: "ضمان استرداد الأموال 100%",
+                guaranteeDesc: "نحن واثقون من جودة دورتنا. إذا لم تكن راضياً تماماً خلال أول 7 يوماً، سنعيد لك أموالك كاملة.",
+                faqTitle: "الأسئلة الشائعة",
+                faq1q: "هل الدورة مناسبة للمبتدئين تماماً؟",
+                faq1a: "نعم بالتأكيد. الدورة مصممة لتبدأ معك من الصفر. لا تحتاج لأي خبرة مسبقة في المونتاج أو التصميم.",
+                faq2q: "ما هي الأدوات التي سنتعلمها بالتحديد؟",
+                faq2a: "سنركز على الأدوات الأقوى والأكثر فعالية: ChatGPT لكتابة السكريبت، Midjourney لتوليد الصور، ElevenLabs للتعليق الصوتي، و CapCut للمونتاج النهائي.",
+                faq3q: "هل اللقاءات مباشرة أم مسجلة؟",
+                faq3a: "الدورة تتكون من 9 لقاءات مباشرة وتفاعلية مع المدرب لطرح الأسئلة والحصول على إجابات فورية. جميع اللقاءات يتم تسجيلها ويمكنك الوصول إليها مدى الحياة.",
+                faq4q: "هل أحتاج إلى كمبيوتر قوي؟",
+                faq4a: "لا. جميع الأدوات التي سنستخدمها هي أدوات سحابية (تعمل عبر الإنترنت)، لذلك لا تحتاج إلى جهاز كمبيوتر بمواصفات خارقة. أي جهاز كمبيوتر حديث سيكون كافياً.",
+                faq5q: "ماذا لو فاتني أحد اللقاءات المباشرة؟",
+                faq5a: "لا تقلق. يتم تسجيل جميع اللقاءات المباشرة وإتاحتها على منصة الدورة في اليوم التالي مباشرة، مع وصول مدى الحياة.",
+                knowledgeTitle: "قاعدة المعرفة",
+                knowledge1Title: "بنك الأنماط",
+                knowledge1Desc: "استكشف وانسخ أنماطًا فنية متنوعة لتوليد صور فريدة ومذهلة.",
+                knowledge2Title: "بنك الأوامر",
+                knowledge2Desc: "مجموعة شاملة من الأوامر (Prompts) موجهة خصيصًا لصناع المحتوى.",
+                knowledge3Title: "بنك الأدوات",
+                knowledge3Desc: "دليل شامل لأدوات الذكاء الاصطناعي، يتيح لك استكشاف أفضل الأدوات لمشاريعك.",
+                knowledge4Title: "بنك التمارين",
+                knowledge4Desc: "تمارين عملية لتطبيق ما تعلمته في الدورة وترسيخ المهارات.",
+                footerDesc: "نهدف إلى تمكين الشباب العربي من إتقان أحدث التقنيات الرقمية وتطوير مهاراتهم في مجال إنتاج المحتوى.",
+                footerSupportTitle: "خيارات الدعم",
+                footerSupport1: "دعم فوري (واتساب)",
+                footerSupport2: "احجز مكالمة مجانية",
+                footerSupport3: "قاعدة المعرفة",
+                footerContactTitle: "تواصل معنا",
+                footerCopyright: `&copy; 2025 <a href="https://dawra.live" target="_blank" class="gradient-text font-bold">الشارع المغربي</a>. جميع الحقوق محفوظة.`,
+                modalTitle: "سجل اهتمامك الآن",
+                modalSubtitle: "املأ الاستمارة وسنتواصل معك لتأكيد تسجيلك.",
+                modalName: "الاسم الكامل",
+                modalEmail: "البريد الإلكتروني",
+                modalPhone: "رقم الهاتف (مع رمز الدولة)",
+                modalBtn: "إرسال",
+            },
+            fr: {
+                brandName: "الشارع المغربي",
+                navHome: "🏠 Accueil",
+                navCourse: "📚 Le Cours",
+                navCurriculum: "📋 Programme",
+                navInstructor: "👨‍🏫 Instructeur",
+                navPricing: "💰 Tarifs",
+                navKnowledge: "📚 Ressources",
+                navContact: "📞 Contact",
+                navStartNow: "Commencer",
+                heroCertified: "Formation certifiée, résultats garantis",
+                heroTitle: "Création de Vidéos <span class='gradient-text'>Pro avec l'IA</span>",
+                heroSubtitle: "Apprenez à produire des vidéos avec des technologies d'IA avancées",
+                heroStudents: "+50 étudiants",
+                heroWeeks: "3 semaines",
+                heroRating: "Évaluation 4.9/5",
+                heroBtnStart: "Commencez votre voyage",
+                heroBtnWatch: "Voir la vidéo",
+                offerTitle: "Offre à durée limitée !",
+                offerSubtitle: "Réservez votre place avant la fin de l'offre. Le cours commence le 15 août 2025.",
+                offerDays: "Jours",
+                offerHours: "Heures",
+                offerMinutes: "Min",
+                offerSeconds: "Sec",
+                offerSeats: "Places limitées - plus que <span class='font-bold text-brand-gold'>50</span> places disponibles !",
+                whyTitle: "Pourquoi choisir notre cours ?",
+                whySubtitle: "Une expérience d'apprentissage complète pour maîtriser la création de vidéos avec l'IA.",
+                feature1: "9 sessions interactives",
+                feature2: "Projets réels",
+                feature3: "Support direct",
+                feature4: "Certificat",
+                feature5: "Accès à vie",
+                feature6: "Mises à jour gratuites",
+                feature7: "IA avancée",
+                feature8: "Outils Pro",
+                feature9: "Créativité illimitée",
+                feature10: "Résultats garantis",
+                learnTitle: "Qu'allez-vous apprendre ?",
+                learnSubtitle: "Des objectifs clairs et des résultats garantis.",
+                learn1: "Maîtriser les outils d'IA pour la production vidéo",
+                learn2: "Créer rapidement du contenu vidéo professionnel",
+                learn3: "Développer des compétences en montage intelligent",
+                learn4: "Construire une marque personnelle distinctive",
+                learn5: "Monétiser votre contenu visuel",
+                journeyTitle: "Un parcours d'apprentissage complet",
+                journey1Title: "Apprendre la Théorie",
+                journey1Desc: "Comprendre les bases de l'IA et ses applications dans la production vidéo.",
+                journey2Title: "Application Pratique",
+                journey2Desc: "Pratiquer avec les outils et techniques sur des projets réels.",
+                journey3Title: "Maîtriser les Compétences",
+                journey3Desc: "Produire du contenu professionnel et obtenir une certification.",
+                journeyBtn: "Voir le Programme Complet",
+                instructorName: "Mehdi Alshaarea Almoghrabi",
+                instructorTitle: "Expert en technologies d'IA",
+                instructorExp: "+10 ans d'expérience",
+                instructorStudents: "+5000 étudiants",
+                instructorPhilosophy: "Philosophie d'enseignement",
+                instructorQuote: "\"Je crois que l'apprentissage doit être pratique et amusant. Mon but n'est pas seulement d'enseigner des techniques, mais d'inspirer les étudiants à libérer leur créativité.\"",
+                instructorPillar1: "Apprentissage pratique",
+                instructorPillar2: "Créativité & Innovation",
+                instructorPillar3: "Résultats garantis",
+                instructorPillar4: "Support continu",
+                testimonialsTitle: "Ce que disent nos étudiants",
+                testimonial1Quote: "\"Un cours incroyable qui a complètement changé ma carrière. J'ai appris à produire des vidéos professionnelles en un temps record.\"",
+                testimonial1Name: "Fatima Ezzahra",
+                testimonial1Role: "Créatrice de contenu",
+                testimonial2Quote: "\"L'instructeur est très professionnel et le contenu est pratique. Je peux maintenant produire des vidéos marketing pour mes clients.\"",
+                testimonial2Name: "Mohammed Al-Amine",
+                testimonial2Role: "Graphiste",
+                testimonial3Quote: "\"Ce cours m'a aidé à construire ma marque et à créer un contenu visuel attrayant pour mes produits. Les résultats ont dépassé mes attentes.\"",
+                testimonial3Name: "Sara El Hassani",
+                testimonial3Role: "Entrepreneure",
+                pricingTitle: "Votre investissement dans votre avenir créatif",
+                pricingTag: "Offre Exclusive",
+                pricingPackage: "Le Forfait Complet",
+                pricingPrice: "49$<span class='text-lg text-slate-400'> / accès à vie</span>",
+                pricingFeature1: "9 sessions interactives en direct",
+                pricingFeature2: "Toutes les leçons et contenus",
+                pricingFeature3: "Projets pratiques et applicatifs",
+                pricingFeature4: "Support direct de l'instructeur",
+                pricingFeature5: "Accès à vie aux enregistrements",
+                pricingFeature6: "Mises à jour gratuites et continues",
+                pricingBtnBook: "Réservez votre place",
+                pricingLinkRegister: "Ou inscription complète ici",
+                guaranteeTitle: "Garantie de remboursement à 100%",
+                guaranteeDesc: "Nous sommes confiants dans la qualité de notre cours. Si vous n'êtes pas entièrement satisfait dans les 7 premiers jours, nous vous rembourserons intégralement.",
+                faqTitle: "Questions Fréquemment Posées",
+                faq1q: "Le cours est-il adapté aux débutants complets ?",
+                faq1a: "Oui, absolument. Le cours est conçu pour vous prendre de zéro. Aucune expérience préalable en montage ou en design n'est requise.",
+                faq2q: "Quels outils allons-nous apprendre exactement ?",
+                faq2a: "Nous nous concentrerons sur les outils les plus puissants : ChatGPT pour les scripts, Midjourney pour les images, ElevenLabs pour la voix off et CapCut pour le montage final.",
+                faq3q: "Les sessions sont-elles en direct ou enregistrées ?",
+                faq3a: "Le cours comprend 9 sessions interactives en direct. Toutes les sessions sont enregistrées et disponibles à vie.",
+                faq4q: "Ai-je besoin d'un ordinateur puissant ?",
+                faq4a: "Non. Tous les outils que nous utiliserons sont basés sur le cloud, donc aucun ordinateur ultra-performant n'est nécessaire.",
+                faq5q: "Que se passe-t-il si je manque une session en direct ?",
+                faq5a: "Ne vous inquiétez pas. Toutes les sessions sont enregistrées et mises à votre disposition sur la plateforme de cours le lendemain, avec un accès à vie.",
+                knowledgeTitle: "Ressources",
+                knowledge1Title: "Banque de Styles",
+                knowledge1Desc: "Explorez et copiez divers styles artistiques pour générer des images uniques et époustouflantes.",
+                knowledge2Title: "Banque de Prompts",
+                knowledge2Desc: "Une collection complète de prompts spécialement conçus pour les créateurs de contenu.",
+                knowledge3Title: "Annuaire d'Outils IA",
+                knowledge3Desc: "Un guide complet des outils d'IA pour explorer les meilleures options pour vos projets.",
+                knowledge4Title: "Banque d'Exercices",
+                knowledge4Desc: "Des exercices pratiques pour appliquer ce que vous avez appris et renforcer vos compétences.",
+                footerDesc: "Notre objectif est de permettre à la jeunesse arabe de maîtriser les dernières technologies numériques et de développer leurs compétences en création de contenu.",
+                footerSupportTitle: "Options de Support",
+                footerSupport1: "Support instantané (WhatsApp)",
+                footerSupport2: "Réserver un appel gratuit",
+                footerSupport3: "Base de connaissances",
+                footerContactTitle: "Contactez-nous",
+                footerCopyright: `&copy; 2025 <a href="https://dawra.live" target="_blank" class="gradient-text font-bold">الشارع المغربي</a>. Tous droits réservés.`,
+                modalTitle: "Inscrivez votre intérêt",
+                modalSubtitle: "Remplissez le formulaire et nous vous contacterons pour confirmer.",
+                modalName: "Nom complet",
+                modalEmail: "Adresse e-mail",
+                modalPhone: "Numéro de téléphone",
+                modalBtn: "Envoyer",
             }
-          });
-        },
+        };
 
-        // --- Language Management ---
-        setLanguage(lang) {
-          this.state.lang = lang;
-          const isAr = lang === 'ar';
-          this.arVersion.style.display = isAr ? 'block' : 'none';
-          this.frVersion.style.display = isAr ? 'none' : 'block';
-          this.frBtn.classList.toggle('active', !isAr);
-          this.arBtn.classList.toggle('active', isAr);
-          this.html.dir = isAr ? 'rtl' : 'ltr';
-          this.body.classList.toggle('lang-ar', isAr);
-          this.body.classList.toggle('lang-fr', !isAr);
-        },
+        let currentLang = 'ar';
 
-        // --- Modal Management ---
-        openModal() {
-            const T = this.i18n[this.state.lang];
-            const isAr = this.state.lang === 'ar';
+        const setLanguage = (lang) => {
+            currentLang = lang;
+            const isAr = lang === 'ar';
+            document.documentElement.lang = lang;
+            document.documentElement.dir = isAr ? 'rtl' : 'ltr';
 
-            this.modalContainer.innerHTML = `
-                <button id="modal-close-btn" class="absolute top-4 ${isAr ? 'left-4' : 'right-4'} text-slate-400 hover:text-slate-800 smooth-transition">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
-                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-6 text-center">${T.modalTitle}</h2>
-                
-                <div class="space-y-6 text-slate-700">
-                    <div>
-                        <h3 class="text-lg font-bold mb-2 text-indigo-600">${T.modalWhatYouLearn}</h3>
-                        <ul class="space-y-2 list-disc ${isAr ? 'list-inside' : 'ml-5'}">
-                            ${T.learnPoints.map(p => `<li>${p}</li>`).join('')}
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold mb-2 text-indigo-600">${T.modalStructure}</h3>
-                        <ul class="space-y-2 list-disc ${isAr ? 'list-inside' : 'ml-5'}">
-                            ${T.structurePoints.map(p => `<li>${p}</li>`).join('')}
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold mb-2 text-indigo-600">${T.modalTools}</h3>
-                        <p>CapCut, Canva, Midjourney, Runway, Pika Labs, ElevenLabs, et plus...</p>
-                    </div>
-                </div>
-
-                <footer class="mt-8 pt-4 border-t text-center font-semibold text-slate-600">
-                    ${T.modalFooter}
-                </footer>
-            `;
+            document.querySelectorAll('[data-lang-key]').forEach(elem => {
+                const key = elem.dataset.langKey;
+                if (translations[lang][key]) {
+                    if (['heroTitle', 'pricingPrice', 'offerSeats', 'footerCopyright'].includes(key)) {
+                        elem.innerHTML = translations[lang][key];
+                    } else if (elem.tagName === 'SPAN' && elem.previousElementSibling && elem.previousElementSibling.tagName === 'I') {
+                        // Handle text nodes next to icons
+                        elem.textContent = translations[lang][key];
+                    }
+                    else {
+                        elem.textContent = translations[lang][key];
+                    }
+                }
+            });
             
-            this.body.classList.add('modal-open');
-            this.modalOverlay.classList.remove('hidden');
-            setTimeout(() => {
-                this.modalOverlay.classList.add('opacity-100');
-                this.modalContainer.classList.add('scale-100');
-                this.modalContainer.classList.remove('scale-95');
-            }, 10);
+            const watchBtnInner = document.querySelector('[data-lang-key-inner="heroBtnWatch"]');
+            if(watchBtnInner) watchBtnInner.textContent = translations[lang].heroBtnWatch;
 
-            document.getElementById('modal-close-btn').addEventListener('click', () => this.closeModal());
-        },
-
-        closeModal() {
-            this.modalOverlay.classList.remove('opacity-100');
-            this.modalContainer.classList.remove('scale-100');
-            this.modalContainer.classList.add('scale-95');
-            setTimeout(() => {
-                this.modalOverlay.classList.add('hidden');
-                this.body.classList.remove('modal-open');
-            }, 300);
-        },
-
-        // --- Form Management ---
-        initializeForm(formId) {
-          const form = document.getElementById(formId);
-          if (!form) return;
-
-          const formContainer = form.parentElement;
-          const successMessage = document.getElementById(formContainer.id.replace('form-container', 'success-message'));
-          const formErrorElement = document.getElementById(formId.replace('form', 'form-error'));
-
-          // Card selection logic
-          form.querySelectorAll('.option-card-container').forEach(container => {
-            const cards = container.querySelectorAll('.option-card');
-            const input = form.querySelector('#' + container.dataset.question);
-            const isMultiSelect = ['main_goals', 'main_challenges', 'content_types'].includes(input.name);
-
-            cards.forEach(card => {
-              card.addEventListener('click', () => {
-                container.classList.remove('error');
-                const errorMsg = input.parentElement.querySelector('.error-message');
-                if (errorMsg) errorMsg.style.display = 'none';
-
-                if (isMultiSelect) {
-                  card.classList.toggle('selected');
-                  const selectedValues = Array.from(container.querySelectorAll('.selected')).map(c => c.dataset.value);
-                  input.value = selectedValues.join(', ');
-                } else {
-                  cards.forEach(c => c.classList.remove('selected'));
-                  card.classList.add('selected');
-                  input.value = card.dataset.value;
-                }
-              });
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
             });
-          });
+        };
 
-          // Form validation and submission
-          form.addEventListener('submit', (event) => {
-            event.preventDefault();
-            let isValid = true;
-            let firstInvalidElement = null;
+        document.querySelectorAll('.lang-btn').forEach(button => {
+            button.addEventListener('click', (e) => setLanguage(e.target.dataset.lang));
+        });
+        
+        lucide.createIcons();
+        setLanguage(currentLang);
 
-            if (formErrorElement) {
-                formErrorElement.style.display = 'none';
-                formErrorElement.textContent = '';
-            }
-
-            form.querySelectorAll('[required]').forEach(input => {
-              const parentDiv = input.closest('.mb-6');
-              const errorElement = parentDiv.querySelector('.error-message');
-
-              const showError = (el, container) => {
-                  if (errorElement) errorElement.style.display = 'block';
-                  (container || el).classList.add('error');
-                  if (!firstInvalidElement) firstInvalidElement = el.type === 'hidden' ? container : el;
-                  isValid = false;
-              };
-              
-              const clearError = (el, container) => {
-                  if (errorElement) errorElement.style.display = 'none';
-                  (container || el).classList.remove('error');
-              };
-
-              if (input.type === 'hidden') {
-                const container = input.previousElementSibling;
-                if (!input.value) {
-                  showError(input, container);
-                } else {
-                  clearError(input, container);
+        // Countdown, FAQ, Scroll Animations, Modal Logic...
+        const countdownDate = new Date("August 15, 2025 00:00:00").getTime();
+        const countdownElement = document.getElementById('countdown');
+        if (countdownElement) {
+            const interval = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
+                if (distance < 0) {
+                    clearInterval(interval);
+                    countdownElement.innerHTML = `<p class='text-xl font-bold text-brand-gold'>${currentLang === 'ar' ? 'انتهى العرض!' : 'Offre terminée !'}</p>`;
+                    return;
                 }
-              } else {
-                if (!input.value.trim() || (input.type === 'email' && !/^\S+@\S+\.\S+$/.test(input.value))) {
-                  showError(input);
-                } else {
-                  clearError(input);
-                }
-              }
-            });
-
-            if (isValid) {
-              const submitButton = form.querySelector('button[type="submit"]');
-              const originalButtonText = submitButton.textContent;
-              submitButton.disabled = true;
-              submitButton.textContent = form.id.includes('fr') ? 'Envoi en cours...' : 'جاري الإرسال...';
-              
-              const formData = new FormData(form);
-              fetch(form.action, {
-                method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-              }).then(response => {
-                if (response.ok) {
-                  formContainer.style.display = 'none';
-                  successMessage.style.display = 'block';
-                  window.scrollTo({ top: 0, behavior: 'smooth' });
-                } else {
-                  return response.json().then(data => {
-                    const errorMessage = data.errors ? data.errors.map(e => e.message).join(', ') : (form.id.includes('fr') ? "Une erreur s'est produite. Veuillez réessayer." : "حدث خطأ. الرجاء المحاولة مرة أخرى.");
-                    throw new Error(errorMessage);
-                  });
-                }
-              }).catch(error => {
-                  if(formErrorElement) {
-                      formErrorElement.textContent = error.message || (form.id.includes('fr') ? "Échec de la connexion. Vérifiez votre connexion et réessayez." : "فشل الاتصال. تحقق من اتصالك وحاول مرة أخرى.");
-                      formErrorElement.style.display = 'block';
-                  }
-                  submitButton.disabled = false;
-                  submitButton.textContent = originalButtonText;
-              });
-            } else if (firstInvalidElement) {
-              firstInvalidElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-          });
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                document.getElementById('days').innerText = days.toString().padStart(2, '0');
+                document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+            }, 1000);
         }
-      };
 
-      // Initialize the App
-      App.init();
-    });
-  </script>
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const content = item.querySelector('.faq-content');
+                const icon = item.querySelector('.faq-icon');
+                content.classList.toggle('open');
+                icon.classList.toggle('rotate-45');
+            });
+        });
+
+        const scrollElements = document.querySelectorAll('.scroll-animate');
+        const elementInView = (el) => el.getBoundingClientRect().top <= (window.innerHeight || document.documentElement.clientHeight) / 1.25;
+        const handleScrollAnimation = () => scrollElements.forEach(el => {
+            if (elementInView(el)) el.classList.add('visible');
+        });
+        window.addEventListener('scroll', handleScrollAnimation);
+        handleScrollAnimation();
+        
+        const modal = document.getElementById('registration-modal');
+        const openModalBtns = document.querySelectorAll('.cta-btn');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const openModal = () => {
+            if(modal) {
+                modal.classList.remove('hidden');
+                document.body.classList.add('modal-open');
+            }
+        };
+        const closeModal = () => {
+            if(modal) {
+                modal.classList.add('hidden');
+                document.body.classList.remove('modal-open');
+            }
+        };
+        openModalBtns.forEach(btn => btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal();
+        }));
+        if(closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+        if(modal) modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+    </script>
 </body>
 </html>
