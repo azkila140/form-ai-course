@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عالم أدوات الذكاء الاصطناعي | الشارع المغربي</title>
+    <meta name="description" content="دليل شامل لأفضل أدوات الذكاء الاصطناعي المجانية والمدفوعة. ابحث وصنف الأدوات حسب الفئة للعثور على ما تحتاجه لمشاريعك الإبداعية والتقنية.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dawra.live">
+    <meta property="og:title" content="عالم أدوات الذكاء الاصطناعي | الشارع المغربي">
+    <meta property="og:description" content="دليل شامل لأفضل أدوات الذكاء الاصطناعي. ابحث وصنف الأدوات حسب الفئة للعثور على ما تحتاجه لمشاريعك.">
+    <meta property="og:image" content="https://pwwijduek2.space.minimax.io/logo_alshaarea_almoghrabi.jpeg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://dawra.live">
+    <meta property="twitter:title" content="عالم أدوات الذكاء الاصطناعي | الشارع المغربي">
+    <meta property="twitter:description" content="دليل شامل لأفضل أدوات الذكاء الاصطناعي. ابحث وصنف الأدوات حسب الفئة للعثور على ما تحتاجه لمشاريعك.">
+    <meta property="twitter:image" content="https://pwwijduek2.space.minimax.io/logo_alshaarea_almoghrabi.jpeg">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #0d0d0d;
+            color: #f9fafb;
+            min-height: 100vh;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .text-brand-gold { color: #D4AF37; }
+        .bg-brand-gold { background-color: #D4AF37; }
+        .border-brand-gold { border-color: #D4AF37; }
+        .shadow-brand-gold { box-shadow: 0 0 25px rgba(212, 175, 55, 0.6); }
+        .bg-brand-burgundy { background-color: #8B1538; }
+        .border-brand-burgundy { border-color: #8B1538; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .tool-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s ease-in-out;
+            animation: fadeIn 0.5s ease-out forwards;
+            opacity: 0;
+        }
+        .tool-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 20px -5px rgba(212, 175, 55, 0.25);
+            border-color: #D4AF37;
+        }
+        .tool-logo {
+            width: 64px;
+            height: 64px;
+            min-height: 64px;
+            margin: 0 auto 0.75rem;
+            border-radius: 9999px;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .tool-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .lang-btn.active {
+            background-color: #8B1538;
+            color: #ffffff;
+        }
+        .category-btn {
+            transition: background-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+        }
+        .category-btn.active {
+            background-color: #8B1538;
+            color: #ffffff;
+            border-color: #D4AF37;
+            transform: scale(1.05);
+            box-shadow: 0 4px 14px 0 rgba(212, 175, 55, 0.3);
+        }
+        #search-input::placeholder { text-align: right; }
+        html[dir="ltr"] #search-input::placeholder { text-align: left; }
+        
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(-45deg, #8B1538, #D4AF37, #A91B47, #FFD700);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 3s ease infinite;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-black/50 backdrop-blur-lg shadow-lg shadow-brand-gold/10 sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex-shrink-0">
+                <a href="https://dawra.live" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3">
+                    <img src="https://pwwijduek2.space.minimax.io/logo_alshaarea_almoghrabi.jpeg" alt="شعار الشارع المغربي" class="w-12 h-12 rounded-full border-2 border-brand-gold" onerror="this.onerror=null;this.src='https://placehold.co/48x48/8B1538/ffffff?text=AI';">
+                    <h1 class="text-xl font-bold text-white hidden sm:block">الشارع المغربي</h1>
+                </a>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="flex border border-slate-700 rounded-lg">
+                    <button id="lang-fr" class="lang-btn text-slate-300 font-semibold py-2 px-4 rounded-l-lg transition-colors duration-200">FR</button>
+                    <button id="lang-ar" class="lang-btn text-slate-300 font-semibold py-2 px-4 rounded-r-lg transition-colors duration-200 active">AR</button>
+                </div>
+                <a href="../index.html" id="back-to-home-link" class="text-slate-300 hover:text-brand-gold transition">العودة إلى الرئيسية</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-8">
+            <h1 id="main-title" class="gradient-text text-4xl md:text-5xl font-extrabold tracking-tight"></h1>
+            <p id="subtitle" class="text-lg text-slate-400 mt-2"></p>
+        </header>
+
+        <div class="max-w-xl mx-auto mb-8 relative">
+             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none rtl:left-auto rtl:right-0 rtl:pr-3">
+                 <i data-lucide="search" class="w-5 h-5 text-slate-400"></i>
+             </div>
+            <input type="text" id="search-input" class="w-full glass-card pl-10 pr-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-brand-gold transition-all rounded-lg rtl:pr-10 rtl:pl-4">
+        </div>
+        
+        <div id="category-buttons" class="flex flex-wrap justify-center gap-3 mb-12">
+            </div>
+
+        <div id="tools-container" class="mt-12">
+            <h2 id="category-title-display" class="text-3xl font-bold text-center mb-8"></h2>
+            <div id="tools-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
+            </div>
+            <p id="no-results" class="hidden text-slate-400 col-span-full text-center text-xl mt-8"></p>
+        </div>
+    </div>
+    
+    <footer class="text-center py-6 mt-12 border-t border-slate-800/50">
+        <p id="footer-text" class="text-slate-500 text-sm"></p>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const appData = {
+                tools: [
+                    // --- CATEGORY: Chat LLM ---
+                    { name: 'ChatGPT', categoryKey: 'chat_llm', domain: 'openai.com' },
+                    { name: 'Gemini', categoryKey: 'chat_llm', domain: 'gemini.google.com' },
+                    { name: 'Claude', categoryKey: 'chat_llm', domain: 'claude.ai' },
+                    { name: 'Perplexity', categoryKey: 'chat_llm', domain: 'perplexity.ai' },
+                    { name: 'Microsoft Copilot', categoryKey: 'chat_llm', domain: 'copilot.microsoft.com' },
+                    { name: 'Meta AI (Llama 3)', categoryKey: 'chat_llm', domain: 'meta.ai' },
+                    { name: 'Poe', categoryKey: 'chat_llm', domain: 'poe.com' },
+                    { name: 'Pi, a personal AI', categoryKey: 'chat_llm', domain: 'pi.ai' },
+                    { name: 'HuggingChat', categoryKey: 'chat_llm', domain: 'huggingface.co/chat' },
+                    { name: 'Character.ai', categoryKey: 'chat_llm', domain: 'character.ai' },
+                    { name: 'Le Chat (Mistral)', categoryKey: 'chat_llm', domain: 'chat.mistral.ai' },
+                    { name: 'Phind', categoryKey: 'chat_llm', domain: 'phind.com' },
+                    { name: 'You.com', categoryKey: 'chat_llm', domain: 'you.com' },
+                    { name: 'Chatsonic', categoryKey: 'chat_llm', domain: 'writesonic.com/chat' },
+                    { name: 'Exa', categoryKey: 'chat_llm', domain: 'exa.ai' },
+                    { name: 'Liner AI', categoryKey: 'chat_llm', domain: 'liner.ai' },
+                    { name: 'Kompas AI', categoryKey: 'chat_llm', domain: 'kompas.ai' },
+                    { name: 'Andi', categoryKey: 'chat_llm', domain: 'andisearch.com' },
+                    { name: 'Grok', categoryKey: 'chat_llm', domain: 'x.ai' },
+                    { name: 'Ollama', categoryKey: 'chat_llm', domain: 'ollama.com' },
+                    { name: 'Mistral AI', categoryKey: 'chat_llm', domain: 'mistral.ai' },
+                    { name: 'Together AI', categoryKey: 'chat_llm', domain: 'api.together.ai' },
+                    { name: 'Jan AI', categoryKey: 'chat_llm', domain: 'jan.ai' },
+                    { name: 'OpenRouter', categoryKey: 'chat_llm', domain: 'openrouter.ai' },
+                    { name: 'GroqChat', categoryKey: 'chat_llm', domain: 'groq.com' },
+                    { name: 'DeepSeek', categoryKey: 'chat_llm', domain: 'deepseek.com' },
+                    { name: 'Manus', categoryKey: 'chat_llm', domain: 'manus.ai' },
+                    { name: 'Qwen', categoryKey: 'chat_llm', domain: 'qwen.aliyun.com' },
+                    { name: 'Minimax', categoryKey: 'chat_llm', domain: 'minimax.chat' },
+                    
+                    // --- CATEGORY: Writing ---
+                    { name: 'Writesonic', categoryKey: 'writing', domain: 'writesonic.com' }, 
+                    { name: 'HyperWrite', categoryKey: 'writing', domain: 'hyperwriteai.com' }, 
+                    { name: 'Rytr', categoryKey: 'writing', domain: 'rytr.me' }, 
+                    { name: 'Grammarly', categoryKey: 'writing', domain: 'grammarly.com' }, 
+                    { name: 'Copy.ai', categoryKey: 'writing', domain: 'copy.ai' }, 
+                    { name: 'QuillBot', categoryKey: 'writing', domain: 'quillbot.com' }, 
+                    { name: 'Notion AI', categoryKey: 'writing', domain: 'notion.so' },
+                    { name: 'Taskade', categoryKey: 'writing', domain: 'taskade.com' },
+                    { name: 'Monica', categoryKey: 'writing', domain: 'monica.im' },
+                    { name: 'Text FX', categoryKey: 'writing', domain: 'textfx.withgoogle.com' },
+                    { name: 'Jenni AI', categoryKey: 'writing', domain: 'jenni.ai' },
+                    { name: 'Hix', categoryKey: 'writing', domain: 'hix.ai' },
+                    { name: 'MagickPen', categoryKey: 'writing', domain: 'magickpen.com' },
+                    { name: 'Paperpal', categoryKey: 'writing', domain: 'paperpal.com' },
+                    { name: 'Hemingway Editor', categoryKey: 'writing', domain: 'hemingwayapp.com' },
+                    { name: 'Hypernatural AI', categoryKey: 'writing', domain: 'hypernatural.ai' },
+
+                    // --- CATEGORY: Website ---
+                    { name: 'Framer', categoryKey: 'website', domain: 'framer.com' }, 
+                    { name: 'Wix ADI', categoryKey: 'website', domain: 'wix.com' }, 
+                    { name: 'Durable', categoryKey: 'website', domain: 'durable.co' }, 
+                    { name: '10web', categoryKey: 'website', domain: '10web.io' }, 
+                    { name: 'Hocoos', categoryKey: 'website', domain: 'hocoos.com' },
+                    { name: 'Jimdo', categoryKey: 'website', domain: 'jimdo.com' },
+                    { name: 'TeleportHQ', categoryKey: 'website', domain: 'teleporthq.io' },
+                    { name: 'Site123', categoryKey: 'website', domain: 'site123.com' },
+                    { name: 'Webflow', categoryKey: 'website', domain: 'webflow.com' },
+                    { name: 'Dorik', categoryKey: 'website', domain: 'dorik.com' },
+                    { name: 'Pineapple AI', categoryKey: 'website', domain: 'pineapplebuilder.com' },
+                    { name: 'Gamma', categoryKey: 'website', domain: 'gamma.app' },
+                    { name: 'Imagica', categoryKey: 'website', domain: 'imagica.ai' },
+                    { name: 'Carrd', categoryKey: 'website', domain: 'carrd.co' },
+
+                    // --- CATEGORY: Video ---
+                    { name: 'Pika Labs', categoryKey: 'video', domain: 'pika.art' },
+                    { name: 'Gen-2 (Runway ML)', categoryKey: 'video', domain: 'runwayml.com' },
+                    { name: 'Stable Video Diffusion', categoryKey: 'video', domain: 'stability.ai' },
+                    { name: 'Genmo', categoryKey: 'video', domain: 'alpha.genmo.ai' },
+                    { name: 'Sora (OpenAI)', categoryKey: 'video', domain: 'openai.com/sora' },
+                    { name: 'Vidu', categoryKey: 'video', domain: 'vidu.com' },
+                    { name: 'Haiper', categoryKey: 'video', domain: 'haiper.ai' },
+                    { name: 'Lumen5', categoryKey: 'video', domain: 'lumen5.com' },
+                    { name: 'Synthesia', categoryKey: 'video', domain: 'synthesia.io' },
+                    { name: 'Pictory', categoryKey: 'video', domain: 'pictory.ai' },
+                    { name: 'Wisecut', categoryKey: 'video', domain: 'wisecut.video' },
+                    { name: 'Descript (Video)', categoryKey: 'video', domain: 'descript.com' },
+                    { name: 'Colossyan', categoryKey: 'video', domain: 'colossyan.com' },
+                    { name: 'Elai.io', categoryKey: 'video', domain: 'elai.io' },
+                    { name: 'HeyGen (Avatar)', categoryKey: 'video', domain: 'heygen.com' },
+                    { name: 'Steve AI', categoryKey: 'video', domain: 'steve.ai' },
+                    { name: 'InVideo', categoryKey: 'video', domain: 'invideo.io' },
+                    { name: 'Hour One', categoryKey: 'video', domain: 'hourone.ai' },
+                    { name: 'DeepBrain AI', categoryKey: 'video', domain: 'deepbrain.io' },
+                    { name: 'Virbo', categoryKey: 'video', domain: 'virbo.wondershare.com' },
+                    { name: 'Fliki', categoryKey: 'video', domain: 'fliki.ai' },
+                    { name: 'Kuaishou KLING', categoryKey: 'video', domain: 'kling.kuaishou.com' },
+                    { name: 'Hedra', categoryKey: 'video', domain: 'hedra.com' },
+                    { name: 'PixVerse AI', categoryKey: 'video', domain: 'pixverse.ai' },
+                    { name: 'Viggle AI', categoryKey: 'video', domain: 'viggle.ai' },
+                    { name: 'Wonder Studio', categoryKey: 'video', domain: 'wonderdynamics.com' },
+                    { name: 'Moonvalley', categoryKey: 'video', domain: 'moonvalley.ai' },
+                    { name: 'Animate Anyone', categoryKey: 'video', domain: 'humanaigc.github.io/animate-anyone' },
+                    { name: 'AnimateDiff', categoryKey: 'video', domain: 'animatediff.github.io' },
+                    { name: 'InvokeAI', categoryKey: 'video', domain: 'invoke.ai' },
+                    { name: 'Luma Labs', categoryKey: 'video', domain: 'lumalabs.ai' },
+                    { name: 'Hailu AI', categoryKey: 'video', domain: 'hailu.com' },
+                    { name: 'NIM Video', categoryKey: 'video', domain: 'nvidia.com' },
+                    { name: 'Animov', categoryKey: 'video', domain: 'animov.ai' },
+                    { name: 'Dyno', categoryKey: 'video', domain: 'dyno.ai' },
+                    { name: 'Movio', categoryKey: 'video', domain: 'movio.la' },
+                    { name: 'Magic Animate', categoryKey: 'video', domain: 'magic-animate.github.io' },
+                    { name: 'Emu Video (Baidu)', categoryKey: 'video', domain: 'baidu.com' },
+                    { name: 'CogVideo (Zhipu AI)', categoryKey: 'video', domain: 'zhipuai.cn' },
+                    { name: 'VideoPoet (Google)', categoryKey: 'video', domain: 'google.com' },
+                    { name: 'Imagen Video (Google)', categoryKey: 'video', domain: 'google.com' },
+                    { name: 'Phenaki (Google)', categoryKey: 'video', domain: 'google.com' },
+                    { name: 'Make-A-Video (Meta)', categoryKey: 'video', domain: 'meta.ai' },
+                    { name: 'Make-A-Scene (Meta)', categoryKey: 'video', domain: 'meta.ai' },
+                    { name: 'Audio2Gestures', categoryKey: 'video', domain: 'audio2gestures.github.io' },
+                    { name: 'GeneFace++', categoryKey: 'video', domain: 'genefaceplusplus.github.io' },
+                    { name: 'EpicFriends', categoryKey: 'video', domain: 'epicfriends.ai' },
+                    { name: 'Rerender A Video', categoryKey: 'video', domain: 'aliyendong.com' },
+                    { name: 'MotionDirector', categoryKey: 'video', domain: 'motiondirector.github.io' },
+                    { name: 'DragAnything', categoryKey: 'video', domain: 'draganything.github.io' },
+                    { name: 'Frame Interpolation (DAIN)', categoryKey: 'video', domain: 'github.com/baowenbo/DAIN' },
+                    { name: 'Frame Interpolation (AMT)', categoryKey: 'video', domain: 'github.com/MCG-NJU/AMT' },
+                    { name: 'Video Inference (ComfyUI)', categoryKey: 'video', domain: 'github.com/comfyanonymous/ComfyUI' },
+
+                    // --- CATEGORY: Image ---
+                    { name: 'Midjourney', categoryKey: 'image', domain: 'midjourney.com' }, 
+                    { name: 'Ideogram', categoryKey: 'image', domain: 'ideogram.ai' }, 
+                    { name: 'Leonardo.Ai', categoryKey: 'image', domain: 'leonardo.ai' }, 
+                    { name: 'DALL-E 3 (via Bing)', categoryKey: 'image', domain: 'bing.com/images/create' }, 
+                    { name: 'Adobe Firefly', categoryKey: 'image', domain: 'firefly.adobe.com' },
+                    { name: 'Playground AI', categoryKey: 'image', domain: 'playgroundai.com' },
+                    { name: 'SeaArt', categoryKey: 'image', domain: 'seaart.ai' },
+                    { name: 'Microsoft Designer', categoryKey: 'image', domain: 'designer.microsoft.com' },
+                    { name: 'NightCafe', categoryKey: 'image', domain: 'nightcafe.studio' },
+                    { name: 'Dream by WOMBO', categoryKey: 'image', domain: 'dream.ai' },
+                    { name: 'Stable Diffusion Online', categoryKey: 'image', domain: 'stability.ai' },
+                    { name: 'DeepAI Image Toolkit', categoryKey: 'image', domain: 'deepai.org' },
+                    { name: 'Artbreeder', categoryKey: 'image', domain: 'artbreeder.com' },
+                    { name: 'Craiyon', categoryKey: 'image', domain: 'craiyon.com' },
+                    { name: 'Pixlr', categoryKey: 'image', domain: 'pixlr.com' },
+                    { name: 'Fotor', categoryKey: 'image', domain: 'fotor.com' },
+                    { name: 'Clipdrop', categoryKey: 'image', domain: 'clipdrop.co' },
+                    { name: 'Lexica', categoryKey: 'image', domain: 'lexica.art' },
+                    { name: 'Remove.bg', categoryKey: 'image', domain: 'remove.bg' },
+                    { name: 'Erase.bg', categoryKey: 'image', domain: 'erase.bg' },
+                    { name: 'Cleanup.pictures', categoryKey: 'image', domain: 'cleanup.pictures' },
+                    { name: 'Watermark Remover', categoryKey: 'image', domain: 'watermarkremover.io' },
+                    { name: 'Vectorizer.io', categoryKey: 'image', domain: 'vectorizer.io' },
+                    { name: 'Bigjpg', categoryKey: 'image', domain: 'bigjpg.com' },
+                    { name: 'Upscayl', categoryKey: 'image', domain: 'upscayl.org' },
+                    { name: 'Photopea', categoryKey: 'image', domain: 'photopea.com' },
+                    { name: 'GIMP', categoryKey: 'image', domain: 'gimp.org' },
+                    { name: 'Krita', categoryKey: 'image', domain: 'krita.org' },
+                    { name: 'Paint.NET', categoryKey: 'image', domain: 'getpaint.net' },
+                    { name: 'Piclumen', categoryKey: 'image', domain: 'piclumen.com' },
+                    { name: 'Pollo AI', categoryKey: 'image', domain: 'pollo.ai' },
+                    { name: 'Dreamina', categoryKey: 'image', domain: 'dreamina.com' },
+                    { name: 'MyEdit', categoryKey: 'image', domain: 'myedit.online' },
+                    { name: 'Stable Diffusion (Hugging Face)', categoryKey: 'image', domain: 'huggingface.co/spaces/stabilityai/stable-diffusion' },
+                    { name: 'Synthesys', categoryKey: 'image', domain: 'synthesys.io' },
+                    { name: 'Leap', categoryKey: 'image', domain: 'tryleap.ai' },
+                    { name: 'Pebblely', categoryKey: 'image', domain: 'pebblely.com' },
+                    { name: 'Lucidpic', categoryKey: 'image', domain: 'lucidpic.com' },
+                    { name: 'Canva', categoryKey: 'image', domain: 'canva.com' },
+                    { name: 'ImageFX', categoryKey: 'image', domain: 'imagefx.withgoogle.com' },
+                    { name: 'Deep Dream Generator', categoryKey: 'image', domain: 'deepdreamgenerator.com' },
+                    { name: 'Pikazo', categoryKey: 'image', domain: 'pikazo.com' },
+                    { name: 'Designify', categoryKey: 'image', domain: 'designify.com' },
+
+                    // --- CATEGORY: Logos ---
+                    { name: 'LogoAI', categoryKey: 'logos', domain: 'logo.ai' }, 
+                    { name: 'Looka', categoryKey: 'logos', domain: 'looka.com' }, 
+                    { name: 'Designs.ai', categoryKey: 'logos', domain: 'designs.ai' }, 
+                    { name: 'Hatchful', categoryKey: 'logos', domain: 'hatchful.shopify.com' }, 
+                    { name: 'Brandmark', categoryKey: 'logos', domain: 'brandmark.io' },
+                    { name: 'MakeLogo', categoryKey: 'logos', domain: 'makelogo.ai' },
+                    { name: 'Kittl', categoryKey: 'logos', domain: 'kittl.com' },
+                    { name: 'Logo Diffusion', categoryKey: 'logos', domain: 'logodiffusion.com' },
+                    { name: 'Namecheap', categoryKey: 'logos', domain: 'namecheap.com' },
+                    { name: 'Turbologo', categoryKey: 'logos', domain: 'turbologo.com' },
+
+                    // --- CATEGORY: Code ---
+                    { name: 'Replit', categoryKey: 'code', domain: 'replit.com' }, 
+                    { name: 'GitHub Copilot', categoryKey: 'code', domain: 'github.com/features/copilot' }, 
+                    { name: 'CodiumAI', categoryKey: 'code', domain: 'codium.ai' }, 
+                    { name: 'Tabnine', categoryKey: 'code', domain: 'tabnine.com' },
+                    { name: 'Codeium', categoryKey: 'code', domain: 'codeium.com' },
+                    { name: 'Amazon CodeWhisperer', categoryKey: 'code', domain: 'aws.amazon.com/codewhisperer' },
+                    { name: 'Bito AI', categoryKey: 'code', domain: 'bito.ai' },
+                    { name: 'CodePal', categoryKey: 'code', domain: 'codepal.ai' },
+                    { name: 'Blackbox AI', categoryKey: 'code', domain: 'blackbox.ai' },
+                    { name: 'MarsCode', categoryKey: 'code', domain: 'marscode.com' },
+                    { name: 'CodeGeeX', categoryKey: 'code', domain: 'codegeex.cn' },
+                    { name: 'Hugging Face Inference', categoryKey: 'code', domain: 'huggingface.co/inference-api' },
+                    { name: 'Continue', categoryKey: 'code', domain: 'continue.dev' },
+                    { name: 'Supermaven', categoryKey: 'code', domain: 'supermaven.com' },
+                    { name: 'Cody (Sourcegraph)', categoryKey: 'code', domain: 'sourcegraph.com/cody' },
+                    { name: 'Kodezi', categoryKey: 'code', domain: 'kodezi.com' },
+                    { name: 'Metabob', categoryKey: 'code', domain: 'metabob.com' },
+                    { name: 'CodePen', categoryKey: 'code', domain: 'codepen.io' },
+                    { name: 'JSFiddle', categoryKey: 'code', domain: 'jsfiddle.net' },
+                    { name: 'StackBlitz', categoryKey: 'code', domain: 'stackblitz.com' },
+                    { name: 'CodeSandbox', categoryKey: 'code', domain: 'codesandbox.io' },
+                    { name: 'GitFluence', categoryKey: 'code', domain: 'gitfluence.com' },
+                    { name: 'Abacus.AI', categoryKey: 'code', domain: 'abacus.ai' },
+                    { name: 'Mutable AI', categoryKey: 'code', domain: 'mutable.ai' },
+                    { name: 'Adrenaline', categoryKey: 'code', domain: 'useadrenaline.com' },
+
+                    // --- CATEGORY: Chatbots ---
+                    { name: 'Chatfuel', categoryKey: 'chatbots', domain: 'chatfuel.com' }, 
+                    { name: 'Tidio', categoryKey: 'chatbots', domain: 'tidio.com' }, 
+                    { name: 'ManyChat', categoryKey: 'chatbots', domain: 'manychat.com' },
+                    { name: 'Botsonic', categoryKey: 'chatbots', domain: 'botsonic.ai' },
+                    { name: 'Landbot', categoryKey: 'chatbots', domain: 'landbot.io' },
+                    { name: 'Chatbase', categoryKey: 'chatbots', domain: 'chatbase.co' },
+                    { name: 'FlowXO', categoryKey: 'chatbots', domain: 'flowxo.com' },
+                    { name: 'Dialogflow', categoryKey: 'chatbots', domain: 'cloud.google.com' },
+                    { name: 'Chatsimple', categoryKey: 'chatbots', domain: 'chatsimple.ai' },
+                    { name: 'Bright Eye', categoryKey: 'chatbots', domain: 'brighteye.app' },
+
+                    // --- CATEGORY: Audio & Music ---
+                    { name: 'Suno', categoryKey: 'audio_music', domain: 'suno.ai' }, 
+                    { name: 'ElevenLabs', categoryKey: 'audio_music', domain: 'elevenlabs.io' }, 
+                    { name: 'Udio', categoryKey: 'audio_music', domain: 'udio.com' },
+                    { name: 'Murf.ai', categoryKey: 'audio_music', domain: 'murf.ai' }, 
+                    { name: 'Lovo.ai', categoryKey: 'audio_music', domain: 'lovo.ai' },
+                    { name: 'PlayHT', categoryKey: 'audio_music', domain: 'play.ht' },
+                    { name: 'Resemble AI', categoryKey: 'audio_music', domain: 'resemble.ai' },
+                    { name: 'Descript', categoryKey: 'audio_music', domain: 'descript.com' }, 
+                    { name: 'AIVA', categoryKey: 'audio_music', domain: 'aiva.ai' },
+                    { name: 'Soundraw', categoryKey: 'audio_music', domain: 'soundraw.io' },
+                    { name: 'Beatoven.ai', categoryKey: 'audio_music', domain: 'beatoven.ai' },
+                    { name: 'Soundful', categoryKey: 'audio_music', domain: 'soundful.com' },
+                    { name: 'Mubert', categoryKey: 'audio_music', domain: 'mubert.com' },
+                    { name: 'LALAL.AI', categoryKey: 'audio_music', domain: 'lalal.ai' },
+                    { name: 'Vocal Remover', categoryKey: 'audio_music', domain: 'vocalremover.org' },
+                    { name: 'Audacity', categoryKey: 'audio_music', domain: 'audacityteam.org' },
+                    { name: 'AssemblyAI', categoryKey: 'audio_music', domain: 'assemblyai.com' },
+                    { name: 'Uberduck', categoryKey: 'audio_music', domain: 'uberduck.ai' },
+                    { name: 'TTSMaker', categoryKey: 'audio_music', domain: 'ttsmaker.com' },
+                    { name: 'Auphonic', categoryKey: 'audio_music', domain: 'auphonic.com' },
+                    { name: 'OpenTTS', categoryKey: 'audio_music', domain: 'opentts.com' },
+                    { name: 'openai.fm', categoryKey: 'audio_music', domain: 'openai.fm' },
+                    { name: 'Media.io Vocal Remover', categoryKey: 'audio_music', domain: 'media.io/vocal-remover.html' },
+                    { name: 'AudioMass', categoryKey: 'audio_music', domain: 'audiomass.co' },
+                    { name: 'Chrome Music Lab', categoryKey: 'audio_music', domain: 'musiclab.chromeexperiments.com' },
+                    { name: 'Otter.ai (Free)', categoryKey: 'audio_music', domain: 'otter.ai' },
+                    { name: 'Rev.com (Transcription)', categoryKey: 'audio_music', domain: 'rev.com' },
+                    { name: 'Natural Reader', categoryKey: 'audio_music', domain: 'naturalreaders.com' },
+                    { name: 'Text to Speech (TTS)', categoryKey: 'audio_music', domain: 'ttsreader.com' },
+                    { name: 'Online Tone Generator', categoryKey: 'audio_music', domain: 'onlinetonegenerator.com' },
+                    
+                    // --- CATEGORY: SEO ---
+                    { name: 'VidIQ', categoryKey: 'seo', domain: 'vidiq.com' }, 
+                    { name: 'Semrush', categoryKey: 'seo', domain: 'semrush.com' }, 
+                    { name: 'Ubersuggest', categoryKey: 'seo', domain: 'neilpatel.com' },
+
+                    // --- CATEGORY: Research ---
+                    { name: 'Perplexity AI', categoryKey: 'research', domain: 'perplexity.ai' },
+                    { name: 'Consensus', categoryKey: 'research', domain: 'consensus.app' },
+                    { name: 'Elicit', categoryKey: 'research', domain: 'elicit.org' },
+                    { name: 'Scite', categoryKey: 'research', domain: 'scite.ai' },
+                    { name: 'Connected Papers', categoryKey: 'research', domain: 'connectedpapers.com' },
+                    { name: 'Zapier', categoryKey: 'research', domain: 'zapier.com' },
+                    { name: 'Seona AI', categoryKey: 'research', domain: 'seona.ai' },
+                    { name: 'Bing', categoryKey: 'research', domain: 'bing.com' },
+                    { name: 'Behance', categoryKey: 'research', domain: 'behance.net' },
+                    { name: 'Dribbble', categoryKey: 'research', domain: 'dribbble.com' },
+                    { name: 'Pinterest', categoryKey: 'research', domain: 'pinterest.com' },
+
+                    // --- CATEGORY: Ideas & Presentations ---
+                    { name: 'Miro', categoryKey: 'ideas', domain: 'miro.com' }, 
+                    { name: 'Tome', categoryKey: 'ideas', domain: 'tome.app' }, 
+                    { name: 'Beautiful.ai', categoryKey: 'ideas', domain: 'beautiful.ai' },
+                    { name: 'Slidesgo', categoryKey: 'ideas', domain: 'slidesgo.com' },
+                    { name: 'GitMind', categoryKey: 'ideas', domain: 'gitmind.com' },
+                    { name: 'MindMeister', categoryKey: 'ideas', domain: 'mindmeister.com' },
+                    { name: 'XMind', categoryKey: 'ideas', domain: 'xmind.net' },
+                    { name: 'Coggle', categoryKey: 'ideas', domain: 'coggle.it' },
+                    { name: 'Whimsical', categoryKey: 'ideas', domain: 'whimsical.com' },
+                    { name: 'Milanote', categoryKey: 'ideas', domain: 'milanote.com' },
+                    { name: 'Ideaflip', categoryKey: 'ideas', domain: 'ideaflip.com' },
+                    { name: 'Padlet', categoryKey: 'ideas', domain: 'padlet.com' },
+                    { name: 'IdeaBoardz', categoryKey: 'ideas', domain: 'ideaboardz.com' },
+                    { name: 'Creately', categoryKey: 'ideas', domain: 'creately.com' },
+                    { name: 'Ayoa', categoryKey: 'ideas', domain: 'ayoa.com' },
+                    { name: 'WiseMapping', categoryKey: 'ideas', domain: 'wisemapping.org' },
+                    { name: 'Lucidchart', categoryKey: 'ideas', domain: 'lucidchart.com' },
+                    { name: 'LongShot', categoryKey: 'ideas', domain: 'longshot.ai' },
+                    { name: 'Blogseo', categoryKey: 'ideas', domain: 'blogseo.ai' },
+                    { name: 'Plai', categoryKey: 'ideas', domain: 'plai.so' },
+
+                    // --- CATEGORY: Marketing ---
+                    { name: 'Mailchimp', categoryKey: 'marketing', domain: 'mailchimp.com' },
+                    { name: 'HubSpot', categoryKey: 'marketing', domain: 'hubspot.com' },
+                    
+                    // --- CATEGORY: Editing ---
+                    { name: 'CapCut', categoryKey: 'editing', domain: 'capcut.com' }, 
+                    { name: 'Clipchamp', categoryKey: 'editing', domain: 'clipchamp.com' }, 
+                    { name: 'Kapwing', categoryKey: 'editing', domain: 'kapwing.com' },
+                    { name: 'Adobe Express', categoryKey: 'editing', domain: 'adobe.com/express' },
+                    { name: 'Veed.io', categoryKey: 'editing', domain: 'veed.io' },
+                    { name: '123apps', categoryKey: 'editing', domain: '123apps.com' },
+                    { name: 'Canva Video', categoryKey: 'editing', domain: 'canva.com/video-editor' },
+                    { name: 'Flixier', categoryKey: 'editing', domain: 'flixier.com' },
+                    { name: 'WeVideo', categoryKey: 'editing', domain: 'wevideo.com' },
+                    { name: 'Renderforest (Video)', categoryKey: 'editing', domain: 'renderforest.com' },
+                    { name: 'FlexClip', categoryKey: 'editing', domain: 'flexclip.com' },
+                    { name: 'Animoto', categoryKey: 'editing', domain: 'animoto.com' },
+                    { name: 'OpenShot', categoryKey: 'editing', domain: 'openshot.org' },
+                    { name: 'Shotcut', categoryKey: 'editing', domain: 'shotcut.org' },
+                    { name: 'DaVinci Resolve', categoryKey: 'editing', domain: 'blackmagicdesign.com/products/davinciresolve' },
+                    { name: 'HitPaw Online Video Editor', categoryKey: 'editing', domain: 'online.hitpaw.com' },
+
+                    // --- CATEGORY: Productivity ---
+                    { name: 'Socratic', categoryKey: 'productivity', domain: 'socratic.org' },
+                    { name: 'Khanmigo', categoryKey: 'productivity', domain: 'khanacademy.org' },
+
+                    // --- CATEGORY: Download ---
+                    { name: 'SnapTik (TikTok)', categoryKey: 'download', domain: 'snaptik.app' },
+                    { name: 'SSSTik (TikTok)', categoryKey: 'download', domain: 'ssstik.io' },
+                    { name: 'SaveFrom.net (Multi)', categoryKey: 'download', domain: 'savefrom.net' },
+                    { name: 'YT5s (YouTube/TikTok)', categoryKey: 'download', domain: 'yt5s.biz' },
+                    { name: 'FDownloader (Facebook)', categoryKey: 'download', domain: 'fdownloader.net' },
+                    { name: 'Pinterest Downloader', categoryKey: 'download', domain: 'pinterestdownloader.com' },
+                    { name: 'Snapinsta (Instagram)', categoryKey: 'download', domain: 'snapinsta.app' },
+                    { name: 'Y2Mate (YouTube)', categoryKey: 'download', domain: 'y2mate.com' },
+                    { name: 'Y2Tube (YouTube)', categoryKey: 'download', domain: 'y2tube.lol' },
+                    { name: 'SnapTikTok', categoryKey: 'download', domain: 'snaptiktok.com' },
+                    { name: 'TikTok Downloader', categoryKey: 'download', domain: 'tiktokdownloader.com' },
+                    { name: 'FBDown (Facebook)', categoryKey: 'download', domain: 'fbdown.net' },
+                    { name: 'Downloader.la (Multi)', categoryKey: 'download', domain: 'downloader.la' },
+                    { name: '9xbuddy (Multi)', categoryKey: 'download', domain: '9xbuddy.com' },
+                    { name: 'Online Video Cutter (Multi)', categoryKey: 'download', domain: 'online-video-cutter.com' },
+                    { name: '4K Video Downloader', categoryKey: 'download', domain: '4kdownload.com' },
+                    
+                    // --- CATEGORY: Extractor ---
+                    { name: 'Getsubs', categoryKey: 'extractor', domain: 'getsubs.cc' }, 
+                    { name: 'Download YouTube Subtitles', categoryKey: 'extractor', domain: 'downloadyoutubesubtitles.com' },
+                    { name: 'DownSub', categoryKey: 'extractor', domain: 'downsub.com' },
+                    { name: 'VEED.IO', categoryKey: 'extractor', domain: 'veed.io' },
+                    { name: 'Otter.ai', categoryKey: 'extractor', domain: 'otter.ai' },
+                    { name: 'Notta.ai', categoryKey: 'extractor', domain: 'notta.ai' },
+                    { name: 'Happy Scribe', categoryKey: 'extractor', domain: 'happyscribe.com' },
+                    { name: 'SubtitleTools', categoryKey: 'extractor', domain: 'subtitletools.com' },
+                    { name: 'YouTube Subtitle Downloader (Amara)', categoryKey: 'extractor', domain: 'amara.org' },
+                    { name: 'Subscene Downloader', categoryKey: 'extractor', domain: 'subscene.com' },
+                    { name: 'SaveSub', categoryKey: 'extractor', domain: 'savesub.com' },
+                    { name: 'YTSubtitles', categoryKey: 'extractor', domain: 'ytsubtitles.org' },
+                    
+                    // --- CATEGORY: Long Video to Short ---
+                    { name: 'OpusClip', categoryKey: 'long_video', domain: 'opus.pro' },
+                    { name: 'Vidyo.ai (now Quso)', categoryKey: 'long_video', domain: 'quso.ai' },
+                    { name: 'Wisecut', categoryKey: 'long_video', domain: 'wisecut.video' },
+                    { name: '2short.ai', categoryKey: 'long_video', domain: '2short.ai' },
+                    { name: 'Dumme', categoryKey: 'long_video', domain: 'dumme.com' },
+                    { name: 'Vizard', categoryKey: 'long_video', domain: 'vizard.ai' },
+                    { name: 'Lumen5', categoryKey: 'long_video', domain: 'lumen5.com' },
+                    { name: 'InVideo (Smart Tools)', categoryKey: 'long_video', domain: 'invideo.io' },
+                    { name: 'Descript (Clips)', categoryKey: 'long_video', domain: 'descript.com' },
+                    { name: 'Kapwing (Auto-Summarize)', categoryKey: 'long_video', domain: 'kapwing.com' },
+                    { name: 'HeyGen (Clips)', categoryKey: 'long_video', domain: 'heygen.com' },
+                    { name: 'VidIQ (Trending Shorts)', categoryKey: 'long_video', domain: 'vidiq.com' },
+                    { name: 'Pictory (Auto-Create)', categoryKey: 'long_video', domain: 'pictory.ai' },
+
+                    // --- CATEGORY: Adobe ---
+                    { name: 'Adobe Express', categoryKey: 'adobe', domain: 'adobe.com/express' },
+                    { name: 'Adobe Podcast', categoryKey: 'adobe', domain: 'podcast.adobe.com' },
+                    { name: 'Adobe Firefly', categoryKey: 'adobe', domain: 'firefly.adobe.com' },
+                    { name: 'Adobe Acrobat Reader', categoryKey: 'adobe', domain: 'get.adobe.com/reader/' },
+                    { name: 'Adobe Lightroom', categoryKey: 'adobe', domain: 'adobe.com/products/photoshop-lightroom.html' },
+                    { name: 'Animate from Audio (Free)', categoryKey: 'adobe', domain: 'new.express.adobe.com/tools/animate-from-audio' },
+                    { name: 'Adobe Portfolio (Free Trial)', categoryKey: 'adobe', domain: 'portfolio.adobe.com' },
+                    
+                    // --- CATEGORY: Animation ---
+                    { name: 'RunwayML', categoryKey: 'animation', domain: 'runwayml.com' },
+                    { name: 'Kling AI', categoryKey: 'animation', domain: 'kling.kuaishou.com' },
+                    { name: 'Hedra', categoryKey: 'animation', domain: 'hedra.com' },
+                    { name: 'Blender', categoryKey: 'animation', domain: 'blender.org' },
+                    { name: 'Synfig Studio', categoryKey: 'animation', domain: 'synfig.org' },
+                    { name: 'OpenToonz', categoryKey: 'animation', domain: 'opentoonz.github.io' },
+                    { name: 'Animaker', categoryKey: 'animation', domain: 'animaker.com' },
+                    { name: 'Vyond', categoryKey: 'animation', domain: 'vyond.com' },
+                    { name: 'Powtoon', categoryKey: 'animation', domain: 'powtoon.com' },
+                    { name: 'Moovly', categoryKey: 'animation', domain: 'moovly.com' },
+                    
+                    // --- CATEGORY: CapCut Magic Tools ---
+                    { name: 'CapCut Magic Tools', categoryKey: 'capcut_tools', domain: 'capcut.com/tools' },
+                    { name: 'CapCut Online Editor', categoryKey: 'capcut_tools', domain: 'capcut.com/editor' },
+                    { name: 'CapCut Text to Speech', categoryKey: 'capcut_tools', domain: 'capcut.com/tools/text-to-speech' },
+                    { name: 'CapCut Auto Captions', categoryKey: 'capcut_tools', domain: 'capcut.com/tools/auto-captions' },
+                    { name: 'CapCut Remove Background', categoryKey: 'capcut_tools', domain: 'capcut.com/tools/remove-background' },
+                    { name: 'Pippit by CapCut', categoryKey: 'capcut_tools', domain: 'pippit.capcut.com' },
+
+                    // --- CATEGORY: Student Tools ---
+                    { name: 'Canva for Education', categoryKey: 'student_tools', domain: 'canva.com/education' },
+                    { name: 'Notion Student', categoryKey: 'student_tools', domain: 'notion.so/students' },
+                    { name: 'GitHub Student Pack', categoryKey: 'student_tools', domain: 'education.github.com' },
+                    { name: 'Figma Education', categoryKey: 'student_tools', domain: 'figma.com/education' },
+
+                    // --- CATEGORY: Templates ---
+                    { name: 'Envato Elements', categoryKey: 'templates', domain: 'elements.envato.com' },
+                    { name: 'Canva Templates', categoryKey: 'templates', domain: 'canva.com/templates' },
+                    { name: 'PixelSurplus', categoryKey: 'templates', domain: 'pixelsurplus.com' },
+                ],
+                translations: {
+                    ar: {
+                        backToHome: "العودة إلى الرئيسية",
+                        title: "عالم أدوات الذكاء الاصطناعي",
+                        subtitle: "اختر فئة أو استخدم البحث لتصفية الأدوات",
+                        searchPlaceholder: "ابحث عن أداة...",
+                        allTools: "كل الأدوات",
+                        toolsOf: "أدوات",
+                        noResults: "لم يتم العثور على نتائج.",
+                        footerText: `&copy; 2025 <a href="https://dawra.live" target="_blank" class="gradient-text font-bold">الشارع المغربي</a>. جميع الحقوق محفوظة.`,
+                        categories: {
+                            'chat_llm': 'دردشة LLM', 'writing': 'كتابة', 'website': 'مواقع', 'video': 'فيديو', 'image': 'صور', 'logos': 'شعارات', 'code': 'برمجة', 'chatbots': 'بوتات', 'audio_music': 'صوت وموسيقى', 'seo': 'سيو', 'ideas': 'أفكار وعروض', 'editing': 'تحرير', 'download': 'تنزيل', 'extractor': 'مستخرج نصوص', 'long_video': 'فيديو طويل إلى قصير', 'adobe': 'Adobe', 'animation': 'أدوات تحريك', 'capcut_tools': 'أدوات CapCut السحرية',
+                            'research': 'بحث', 'marketing': 'تسويق', 'productivity': 'إنتاجية', 'student_tools': 'أدوات طلابية', 'templates': 'قوالب'
+                        }
+                    },
+                    fr: {
+                        backToHome: "Retour à l'accueil",
+                        title: "Monde des Outils d'IA",
+                        subtitle: "Cliquez sur une catégorie ou utilisez la recherche pour filtrer les outils",
+                        searchPlaceholder: "Rechercher un outil...",
+                        allTools: "Tous les outils",
+                        toolsOf: "Outils de",
+                        noResults: "Aucun résultat trouvé.",
+                        footerText: `&copy; 2025 <a href="https://dawra.live" target="_blank" class="gradient-text font-bold">الشارع المغربي</a>. Tous droits réservés.`,
+                        categories: {
+                            'chat_llm': 'Chat LLM', 'writing': 'Rédaction', 'website': 'Sites Web', 'video': 'Vidéo', 'image': 'Images', 'logos': 'Logos', 'code': 'Code', 'chatbots': 'Chatbots', 'audio_music': 'Audio & Musique', 'seo': 'SEO', 'ideas': 'Idées & Présentations', 'editing': 'Édition', 'download': 'Télécharger', 'extractor': 'Extracteur de Script', 'long_video': 'Vidéo Longue en Courte', 'adobe': 'Adobe', 'animation': 'Animation', 'capcut_tools': 'Outils Magiques CapCut',
+                            'research': 'Recherche', 'marketing': 'Marketing', 'productivity': 'Productivité', 'student_tools': 'Outils Étudiants', 'templates': 'Modèles'
+                        }
+                    }
+                }
+            };
+
+            let currentLang = 'ar';
+            let currentFilterKey = null;
+            let currentSearch = '';
+            let searchDebounceTimer;
+
+            const doc = document.documentElement;
+            const mainTitle = document.getElementById('main-title');
+            const subtitle = document.getElementById('subtitle');
+            const searchInput = document.getElementById('search-input');
+            const categoryTitleDisplay = document.getElementById('category-title-display');
+            const toolsGrid = document.getElementById('tools-grid');
+            const noResultsMsg = document.getElementById('no-results');
+            const categoryButtonsContainer = document.getElementById('category-buttons');
+            const langArBtn = document.getElementById('lang-ar');
+            const langFrBtn = document.getElementById('lang-fr');
+            const backToHomeLink = document.getElementById('back-to-home-link');
+            const footerText = document.getElementById('footer-text');
+
+            function renderAll() {
+                const data = appData.translations[currentLang];
+                
+                doc.lang = currentLang;
+                doc.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+
+                mainTitle.textContent = data.title;
+                subtitle.textContent = data.subtitle;
+                searchInput.placeholder = data.searchPlaceholder;
+                noResultsMsg.textContent = data.noResults;
+                backToHomeLink.textContent = data.backToHome;
+                footerText.innerHTML = data.footerText;
+
+                langArBtn.classList.toggle('active', currentLang === 'ar');
+                langFrBtn.classList.toggle('active', currentLang === 'fr');
+                
+                renderCategoryButtons();
+                filterAndDisplayTools();
+            }
+
+            function renderCategoryButtons() {
+                const data = appData.translations[currentLang];
+                categoryButtonsContainer.innerHTML = ''; 
+
+                const createButton = (text, key) => {
+                    const btn = document.createElement('button');
+                    btn.textContent = text;
+                    btn.className = 'category-btn glass-card text-white font-semibold py-2 px-4 rounded-full';
+                    if (key !== undefined) btn.dataset.categoryKey = key;
+                    
+                    btn.addEventListener('click', () => {
+                        currentFilterKey = key;
+                        searchInput.value = '';
+                        currentSearch = '';
+                        filterAndDisplayTools();
+                    });
+                    return btn;
+                };
+
+                const allBtn = createButton(data.allTools, null);
+                categoryButtonsContainer.appendChild(allBtn);
+
+                const sortedCategories = Object.keys(data.categories).sort((a, b) => a.localeCompare(b));
+
+                sortedCategories.forEach(key => {
+                    const btn = createButton(data.categories[key], key);
+                    categoryButtonsContainer.appendChild(btn);
+                });
+            }
+
+            function filterAndDisplayTools() {
+                const trans = appData.translations[currentLang];
+                let filteredTools = appData.tools;
+                
+                if (currentFilterKey) {
+                    filteredTools = filteredTools.filter(tool => tool.categoryKey === currentFilterKey);
+                    categoryTitleDisplay.textContent = `${trans.toolsOf} ${trans.categories[currentFilterKey]}`;
+                } else {
+                    categoryTitleDisplay.textContent = trans.allTools;
+                }
+
+                if (currentSearch) {
+                    const lowerCaseSearch = currentSearch.toLowerCase();
+                    filteredTools = filteredTools.filter(tool => 
+                        tool.name.toLowerCase().includes(lowerCaseSearch)
+                    );
+                    if (!currentFilterKey) {
+                        categoryTitleDisplay.textContent = trans.allTools;
+                    }
+                }
+
+                updateActiveButton();
+                displayTools(filteredTools);
+            }
+
+            function updateActiveButton() {
+                const buttons = categoryButtonsContainer.querySelectorAll('.category-btn');
+                buttons.forEach(btn => {
+                    const key = btn.dataset.categoryKey === undefined ? null : btn.dataset.categoryKey;
+                    const isActive = currentFilterKey === key;
+                    btn.classList.toggle('active', isActive);
+                });
+            }
+
+            function displayTools(toolsToDisplay) {
+                toolsGrid.innerHTML = ''; 
+                
+                if (toolsToDisplay.length > 0) {
+                    noResultsMsg.classList.add('hidden');
+                    toolsToDisplay.forEach((tool, index) => {
+                        const card = document.createElement('a');
+                        card.href = `https://${tool.domain}`;
+                        card.target = '_blank';
+                        card.rel = 'noopener noreferrer';
+                        card.className = 'tool-card glass-card rounded-lg p-4 text-center flex flex-col items-center justify-start';
+                        card.style.animationDelay = `${index * 0.03}s`;
+
+                        const logoUrl = `https://unavatar.io/${tool.domain.split('/')[0]}`;
+                        const placeholderUrl = `https://placehold.co/64x64/374151/f9fafb?text=${tool.name.charAt(0)}`;
+                        
+                        card.innerHTML = `
+                            <div class="tool-logo">
+                                <img src="${logoUrl}" alt="${tool.name} Logo" loading="lazy" onerror="this.onerror=null; this.src='${placeholderUrl}';">
+                            </div>
+                            <h3 class="font-semibold text-gray-200 flex-grow flex items-center justify-center text-center w-full min-h-[48px]" dir="ltr">${tool.name}</h3>
+                        `;
+                        toolsGrid.appendChild(card);
+                    });
+                } else {
+                    noResultsMsg.classList.remove('hidden');
+                }
+            }
+            
+            searchInput.addEventListener('input', (e) => {
+                clearTimeout(searchDebounceTimer);
+                searchDebounceTimer = setTimeout(() => {
+                    currentSearch = e.target.value;
+                    currentFilterKey = null; 
+                    filterAndDisplayTools();
+                }, 300);
+            });
+
+            langArBtn.addEventListener('click', () => {
+                if (currentLang !== 'ar') {
+                    currentLang = 'ar';
+                    renderAll();
+                }
+            });
+
+            langFrBtn.addEventListener('click', () => {
+                if (currentLang !== 'fr') {
+                    currentLang = 'fr';
+                    renderAll();
+                }
+            });
+            
+            lucide.createIcons();
+            renderAll();
+
+            document.addEventListener('contextmenu', event => event.preventDefault());
+            document.addEventListener('keydown', event => {
+                if (event.keyCode === 123 || (event.ctrlKey && event.shiftKey && (event.keyCode === 73 || event.keyCode === 67 || event.keyCode === 74)) || (event.ctrlKey && event.keyCode === 85)) {
+                    event.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

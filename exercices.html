@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بنك الأوامر والتمارين العملية لصناع المحتوى</title>
+    
+    <!-- Theme: Burgundy/Gold on a dark, glassmorphism base. -->
+    <!-- Application Structure Plan: The application uses a dashboard structure with a nested accordion. The top-level accordion expands to show phases, and the inner accordions expand to show individual exercises and projects. This keeps the initial view clean while allowing users to dive into specific sections. A language switcher provides easy navigation. -->
+    <!-- Visualization & Content Choices: The content is a categorized list of exercises and prompts. The presentation method is an interactive accordion (HTML/Tailwind + JS) for the phases and styled cards for each exercise. This structure is ideal for a large text-based educational resource, making it easy to browse without overwhelming the user. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #0d0d0d;
+            color: #f9fafb;
+            min-height: 100vh;
+        }
+        
+        /* Burgundy/Gold Theme Integration */
+        .text-brand-gold { color: #D4AF37; }
+        .bg-brand-gold { background-color: #D4AF37; }
+        .border-brand-gold { border-color: #D4AF37; }
+        .shadow-brand-gold { box-shadow: 0 0 25px rgba(212, 175, 55, 0.6); }
+
+        .bg-brand-burgundy { background-color: #8B1538; }
+        .border-brand-burgundy { border-color: #8B1538; }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .phase-content, .exercise-content {
+            display: none;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+            max-height: 0;
+        }
+
+        .phase-header.active + .phase-content,
+        .exercise-header.active + .exercise-content {
+            display: block;
+            max-height: 10000px; /* Arbitrary large value */
+        }
+
+        .toggle-icon {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .phase-header.active .toggle-icon,
+        .exercise-header.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .lang-btn.active {
+            background-color: #8B1538;
+            color: #ffffff;
+        }
+
+        /* Gradient text animation */
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(-45deg, #8B1538, #D4AF37, #A91B47, #FFD700);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 3s ease infinite;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-black/50 backdrop-blur-lg shadow-lg shadow-brand-gold/10 sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                <img src="https://pwwijduek2.space.minimax.io/logo_alshaarea_almoghrabi.jpeg" alt="شعار الشارع المغربي" class="w-12 h-12 rounded-full" onerror="this.onerror=null;this.src='https://placehold.co/48x48/8B1538/ffffff?text=SM';">
+                <h1 class="text-xl font-bold text-white">الشارع المغربي</h1>
+            </div>
+            <div class="flex border border-slate-700 rounded-lg">
+                <button data-lang="fr" class="lang-btn text-slate-300 font-semibold py-2 px-4 rounded-l-lg transition-colors duration-200">FR</button>
+                <button data-lang="ar" class="lang-btn text-slate-300 font-semibold py-2 px-4 rounded-r-lg transition-colors duration-200 active">AR</button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-8">
+            <h1 id="main-title" data-lang-key="mainTitle" class="gradient-text text-4xl md:text-5xl font-extrabold tracking-tight">بنك الأوامر والتمارين</h1>
+            <p id="subtitle" data-lang-key="subTitle" class="text-lg text-slate-400 mt-2">دليلك الشامل لإنشاء محتوى يوتيوب احترافي باستخدام الذكاء الاصطناعي</p>
+        </header>
+
+        <main id="main-content" class="space-y-6">
+            <!-- Content will be injected here by JS -->
+        </main>
+    </div>
+    
+    <footer class="text-center py-6 mt-12 border-t border-slate-800/50">
+        <p data-lang-key="footerText" class="text-slate-500 text-sm">دورة مقدمة من طرف <span class="font-bold text-brand-gold">الشارع المغربي</span></p>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        let currentLang = 'ar';
+
+        const translations = {
+            ar: {
+                mainTitle: "بنك الأوامر والتمارين",
+                subTitle: "دليلك الشامل لإنشاء محتوى يوتيوب احترافي باستخدام الذكاء الاصطناعي",
+                introTitle: "مقدمة ومعلومات عامة",
+                introParagraph: "تم تصميم هذه المجموعة من التمارين العملية لتمكينك من إتقان فن استخدام الأوامر (Prompts) في إنشاء محتوى يوتيوب. استنادًا إلى \"بنك الأوامر (100)\"، يغطي هذا البرنامج التدريبي المراحل الخمس الأساسية لإنشاء المحتوى: من التصور الاستراتيجي إلى النشر الأمثل.",
+                goalTitle: "الهدف:",
+                goalText: "تقييم مدى إتقان استخدام الأوامر (Prompts) في إنشاء محتوى يوتيوب احترافي.",
+                materialsTitle: "المواد المطلوبة:",
+                materialsText: `<ul class="list-disc list-inside space-y-1"><li>الوصول إلى أدوات الذكاء الاصطناعي (ChatGPT, GROK, deepSeek, Manus, إلخ)</li><li>أدوات توليد الصور (dreamina, leonardo, ideogram, piclumen, إلخ)</li><li>برامج إنشاء المحتوى (Canva, CapCut, إلخ)</li></ul>`,
+                outputsTitle: "المخرجات المطلوبة:",
+                criteriaTitle: "معايير التقييم:",
+                instructionsTitle: "التعليمات:",
+                promptTitle: "الأمر",
+                projectTitle: "المشروع المتكامل",
+                footerText: 'دورة مقدمة من طرف <span class="font-bold text-brand-gold">الشارع المغربي</span>',
+                phases: ["المرحلة 1: العصف الذهني والاستراتيجية", "المرحلة 2: كتابة السيناريو والهيكل", "المرحلة 3: توليد المحتوى البصري", "المرحلة 4: تحسين المحتوى والنشر", "المرحلة 5: أوامر متقدمة ومتنوعة"]
+            },
+            fr: {
+                mainTitle: "Banque de Prompts & Exercices",
+                subTitle: "Votre guide complet pour créer du contenu YouTube professionnel avec l'IA",
+                introTitle: "Introduction et Informations Générales",
+                introParagraph: "Cette série d'exercices pratiques est conçue pour vous permettre de maîtriser l'art d'utiliser les prompts pour la création de contenu YouTube. Basé sur la 'Banque de 100 Prompts', ce programme couvre les cinq étapes essentielles de la création de contenu : de la conception stratégique à la publication optimisée.",
+                goalTitle: "Objectif :",
+                goalText: "Évaluer la maîtrise de l'utilisation des prompts pour créer du contenu YouTube professionnel.",
+                materialsTitle: "Matériel Requis :",
+                materialsText: `<ul class="list-disc list-inside space-y-1"><li>Accès aux outils d'IA (ChatGPT, GROK, deepSeek, Manus, etc.)</li><li>Outils de génération d'images (dreamina, leonardo, ideogram, piclumen, etc.)</li><li>Logiciels de création de contenu (Canva, CapCut, etc.)</li></ul>`,
+                outputsTitle: "Livrables Attendus :",
+                criteriaTitle: "Critères d'Évaluation :",
+                instructionsTitle: "Instructions :",
+                promptTitle: "Prompt",
+                projectTitle: "Projet Intégré",
+                footerText: 'Cours fourni par <span class="font-bold text-brand-gold">الشارع المغربي</span>',
+                phases: ["Phase 1 : Brainstorming et Stratégie", "Phase 2 : Écriture de Scénario et Structure", "Phase 3 : Génération de Contenu Visuel", "Phase 4 : Optimisation et Publication", "Phase 5 : Prompts Avancés et Divers"]
+            }
+        };
+
+        const exercisesData = [
+            { type: 'exercise', phase: 1, exerciseNum: 1, promptId: 1, title: { ar: 'التمرين 1.1: توليد أفكار متخصصة', fr: 'Exercice 1.1 : Génération d\'idées de niche' }, goal: { ar: 'إتقان استخدام الأمر #1 لتوليد أفكار قنوات إبداعية.', fr: 'Maîtriser l\'utilisation du prompt #1 pour générer des idées de chaînes créatives.' }, instructions: { ar: 'اختر مجالًا يثير شغفك واستخدم الأمر #1 لتوليد 10 أفكار لقنوات يوتيوب "بدون وجه".', fr: 'Choisissez un domaine qui vous passionne et utilisez le prompt #1 pour générer 10 idées de chaînes YouTube "sans visage".' }, prompt: { ar: "بصفتك خبيرًا في اتجاهات المحتوى على يوتيوب، اقترح 10 أفكار لقنوات 'بدون وجه' في مجال [التاريخ المنسي]، تستهدف الجمهور المهتم بالقصص غير المروية.", fr: "En tant qu'expert des tendances de contenu sur YouTube, proposez 10 idées de chaînes 'sans visage' dans le domaine de [l'Histoire Oubliée], ciblant le public intéressé par les récits inédits." }, outputs: { ar: '•قائمة بـ 10 أفكار مفصلة<br>•تبرير اختيار المجال<br>•تحليل لـ 3 أفكار واعدة', fr: '•Liste de 10 idées détaillées<br>•Justification du choix du domaine<br>•Analyse de 3 idées prometteuses' }, criteria: { ar: '•أصالة الأفكار (2 نقطة)<br>•التكيف مع السياق المحلي (2 نقطة)<br>•جودة التحليل (1 نقطة)', fr: '•Originalité des idées (2 points)<br>•Adaptation au contexte local (2 points)<br>•Qualité de l\'analyse (1 point)' } },
+            { type: 'exercise', phase: 1, exerciseNum: 2, promptId: 2, title: { ar: 'التمرين 1.2: إنشاء عناوين جذابة', fr: 'Exercice 1.2 : Création de titres accrocheurs' }, goal: { ar: 'تطوير القدرة على إنشاء عناوين جذابة باستخدام صيغ مختلفة.', fr: 'Développer la capacité à créer des titres accrocheurs en utilisant différentes formules.' }, instructions: { ar: 'اختر موضوعًا حاليًا في مجال اهتمامك واستخدم الأمر #2 لإنشاء 10 عناوين باستخدام الصيغ الخمس المذكورة. ثم اختبر هذه العناوين مع 5 أشخاص من محيطك.', fr: 'Choisissez un sujet d\'actualité dans votre domaine d\'intérêt et utilisez le prompt #2 pour créer 10 titres en utilisant les cinq formules mentionnées. Testez ensuite ces titres auprès de 5 personnes de votre entourage.' }, prompt: { ar: "لموضوع فيديو حول [فوائد الصيام المتقطع]، قم بتوليد 10 عناوين باستخدام صيغ مختلفة: سؤال، قائمة، تصريح صادم، فائدة مباشرة، وإثارة فضول.", fr: "Pour un sujet de vidéo sur [les bienfaits du jeûne intermittent], générez 10 titres utilisant différentes formules : question, liste, déclaration choc, bénéfice direct, et éveil de la curiosité." }, outputs: { ar: '•10 عناوين تم إنشاؤها (2 لكل صيغة)<br>•نتائج الاختبار مع 5 أشخاص<br>•تحليل العناوين الأكثر أداءً<br>•توصيات للتحسين', fr: '•10 titres créés (2 par formule)<br>•Résultats des tests avec 5 personnes<br>•Analyse des titres les plus performants<br>•Recommandations d\'amélioration' }, criteria: { ar: '•تنوع الصيغ المستخدمة (2 نقطة)<br>•جودة اختبارات المستخدم (2 نقطة)<br>•أهمية التحليل (1 نقطة)', fr: '•Diversité des formules utilisées (2 points)<br>•Qualité des tests utilisateurs (2 points)<br>•Pertinence de l\'analyse (1 point)' } },
+            { type: 'exercise', phase: 1, exerciseNum: 3, promptId: 3, title: { ar: 'التمرين 1.3: شخصية الجمهور المستهدف', fr: 'Exercice 1.3 : Persona de l\'audience cible' }, goal: { ar: 'إنشاء شخصيات مفصلة لفهم الجمهور بشكل أفضل.', fr: 'Créer des personas détaillés pour mieux comprendre l\'audience.' }, instructions: { ar: 'باستخدام الأمر #3، أنشئ شخصيتين مختلفتين لقناة يوتيوب في المجال الذي تختاره. يجب أن تتضمن كل شخصية تفاصيل ديموغرافية، نفسية، وسلوكية خاصة بسياقك الثقافي.', fr: 'En utilisant le prompt #3, créez deux personas différents pour une chaîne YouTube dans le domaine de votre choix. Chaque persona doit inclure des détails démographiques, psychologiques et comportementaux spécifiques à votre contexte culturel.' }, prompt: { ar: "لقناة في مجال [الاستثمار العقاري للمبتدئين]، أنشئ شخصية مفصلة لجمهور مستهدف (شاب مغربي موظف، 30 عامًا)، مع تحديد أهدافه، نقاط ألمه، وما يبحث عنه في المحتوى.", fr: "Pour une chaîne dans le domaine de [l'investissement immobilier pour débutants], créez un persona détaillé pour un public cible (jeune employé marocain, 30 ans), en précisant ses objectifs, ses points de douleur, et ce qu'il recherche dans le contenu." }, outputs: { ar: '•شخصيتان كاملتان مع صور<br>•خريطة تعاطف لكل شخصية<br>•استراتيجية محتوى مكيفة لكل شخصية', fr: '•Deux personas complets avec photos<br>•Carte d\'empathie pour chaque persona<br>•Stratégie de contenu adaptée pour chaque persona' }, criteria: { ar: '•ثراء التفاصيل (2 نقطة)<br>•واقعية الشخصيات (2 نقطة)<br>•اتساق الاستراتيجية (1 نقطة)', fr: '•Richesse des détails (2 points)<br>•Réalisme des personas (2 points)<br>•Cohérence de la stratégie (1 point)' } },
+            { type: 'exercise', phase: 1, exerciseNum: 4, promptId: 4, title: { ar: 'التمرين 1.4: البحث الاستراتيجي عن الكلمات المفتاحية', fr: 'Exercice 1.4 : Recherche stratégique de mots-clés' }, goal: { ar: 'إتقان البحث عن الكلمات المفتاحية وتنظيمها لتحسين محركات البحث.', fr: 'Maîtriser la recherche et l\'organisation de mots-clés pour le SEO.' }, instructions: { ar: 'اختر موضوع فيديو محددًا واستخدم الأمر #4 لإنشاء قائمة كاملة بالكلمات المفتاحية. ثم استخدم أدوات مجانية للتحقق من قائمتك وإثرائها.', fr: 'Choisissez un sujet de vidéo spécifique et utilisez le prompt #4 pour créer une liste complète de mots-clés. Utilisez ensuite des outils gratuits pour valider et enrichir votre liste.' }, prompt: { ar: "لموضوع فيديو حول [تعلم المونتاج على CapCut]، أنشئ قائمة بالكلمات المفتاحية الرئيسية (short-tail) والثانوية (long-tail) والكلمات ذات الصلة (LSI).", fr: "Pour un sujet de vidéo sur [apprendre le montage sur CapCut], créez une liste de mots-clés principaux (short-tail), secondaires (long-tail) et sémantiquement liés (LSI)." }, outputs: { ar: '•قائمة كلمات مفتاحية منظمة<br>•تحليل المنافسة لـ 5 كلمات رئيسية<br>•استراتيجية لسلسلة من 5 فيديوهات', fr: '•Liste de mots-clés organisée<br>•Analyse de la concurrence pour 5 mots-clés principaux<br>•Stratégie pour une série de 5 vidéos' }, criteria: { ar: '•اكتمال البحث (2 نقطة)<br>•استخدام أدوات التحقق (2 نقطة)<br>•استراتيجية متسقة (1 نقطة)', fr: '•Exhaustivité de la recherche (2 points)<br>•Utilisation d\'outils de validation (2 points)<br>•Stratégie cohérente (1 point)' } },
+            { type: 'exercise', phase: 1, exerciseNum: 5, promptId: 5, title: { ar: 'التمرين 1.5: خطة المحتوى الشهرية', fr: 'Exercice 1.5 : Plan de contenu mensuel' }, goal: { ar: 'تطوير مهارات التخطيط الاستراتيجي للمحتوى.', fr: 'Développer des compétences en planification stratégique de contenu.' }, instructions: { ar: 'استخدم الأمر #5 لإنشاء خطة محتوى مفصلة لشهر كامل. يجب أن تتضمن الخطة أنواعًا مختلفة من المحتوى وتأخذ في الاعتبار الأحداث الموسمية أو الثقافية في منطقتك.', fr: 'Utilisez le prompt #5 pour créer un plan de contenu détaillé pour un mois complet. Le plan doit inclure différents types de contenu et tenir compte des événements saisonniers ou culturels de votre région.' }, prompt: { ar: "بصفتك استراتيجي محتوى، أنشئ جدول محتوى مدته 4 أسابيع لقناة يوتيوب حول [الطبخ المغربي الصحي]. يجب أن يتضمن الجدول عنوان الفيديو، نوع المحتوى (وصفة، نصيحة)، والكلمة المفتاحية الرئيسية لكل أسبوع.", fr: "En tant que stratège de contenu, créez un calendrier de contenu de 4 semaines pour une chaîne YouTube sur [la cuisine marocaine saine]. Le calendrier doit inclure le titre de la vidéo, le type de contenu (recette, conseil), et le mot-clé principal pour chaque semaine." }, outputs: { ar: '•تقويم محتوى شهري مفصل<br>•تبرير الخيارات التحريرية<br>•خطة ترويج متقاطع<br>•مقاييس نجاح محددة لكل فيديو', fr: '•Calendrier de contenu mensuel détaillé<br>•Justification des choix éditoriaux<br>•Plan de promotion croisée<br>•Métriques de succès définies pour chaque vidéo' }, criteria: { ar: '•اتساق التخطيط (2 نقطة)<br>•تنوع المحتوى (2 نقطة)<br>•الواقعية والجدوى (1 نقطة)', fr: '•Cohérence de la planification (2 points)<br>•Diversité du contenu (2 points)<br>•Réalisme et faisabilité (1 point)' } },
+            { type: 'project', phase: 1, title: { ar: 'المشروع المتكامل للمرحلة 1: استراتيجية قناة كاملة', fr: 'Projet Intégré Phase 1 : Stratégie de Chaîne Complète' }, instructions: { ar: 'اجمع جميع العناصر التي تم العمل عليها في التمارين السابقة لإنشاء استراتيجية قناة يوتيوب كاملة. يجب أن يتضمن مشروعك:<br>1. مفهوم القناة مع تحديد موقع فريد<br>2. 3 شخصيات جمهور مفصلة<br>3. استراتيجية كلمات مفتاحية<br>4. خطة محتوى لمدة 3 أشهر<br>5. تحليل تنافسي<br>6. أهداف SMART للأشهر الستة الأولى', fr: 'Rassemblez tous les éléments travaillés dans les exercices précédents pour créer une stratégie de chaîne YouTube complète. Votre projet doit inclure :<br>1. Concept de la chaîne avec un positionnement unique<br>2. 3 personas d\'audience détaillés<br>3. Stratégie de mots-clés<br>4. Plan de contenu sur 3 mois<br>5. Analyse concurrentielle<br>6. Objectifs SMART pour les six premiers mois' }, outputs: { ar: '•وثيقة استراتيجية (10-15 صفحة)<br>•عرض تقديمي (10 شرائح كحد أقصى)<br>•فيديو تعريفي مدته 3 دقائق يقدم مفهومك', fr: '•Document de stratégie (10-15 pages)<br>•Présentation (10 diapositives max)<br>•Vidéo de présentation de 3 minutes de votre concept' }, criteria: { ar: '•الاتساق العام للاستراتيجية (4 نقاط)<br>•الأصالة والإبداع (3 نقاط)<br>•جودة العرض (3 نقاط)', fr: '•Cohérence globale de la stratégie (4 points)<br>•Originalité et créativité (3 points)<br>•Qualité de la présentation (3 points)' } },
+            // Phase 2
+            { type: 'exercise', phase: 2, exerciseNum: 1, promptId: 21, title: { ar: 'التمرين 2.1: بناء هيكل فيديو تفصيلي', fr: 'Exercice 2.1 : Construction d\'une structure vidéo détaillée' }, goal: { ar: 'تطبيق الأمر #21 لهيكلة نص فيديو بطريقة منطقية وجذابة.', fr: 'Appliquer le prompt #21 pour structurer un script vidéo de manière logique et attrayante.' }, instructions: { ar: 'اختر موضوعًا معقدًا من اختيارك. استخدم الأمر #21 لإنشاء خطة نص مفصلة.', fr: 'Choisissez un sujet complexe de votre choix. Utilisez le prompt #21 pour créer un plan de script détaillé.' }, prompt: { ar: "لفيديو بعنوان [لماذا تفشل معظم المشاريع الصغيرة؟]، أنشئ هيكلاً تفصيلياً يتضمن مقدمة بخطاف قوي، 3 أسباب رئيسية مع أمثلة، وخاتمة تقدم حلولاً عملية.", fr: "Pour une vidéo intitulée [Pourquoi la plupart des petites entreprises échouent-elles ?], créez une structure détaillée incluant une introduction avec une accroche forte, 3 raisons principales avec des exemples, et une conclusion proposant des solutions pratiques." }, outputs: { ar: '•خطة نص مفصلة (500 كلمة كحد أدنى)<br>•تبرير خيارات الهيكل<br>•اقتراح مرئيات لكل قسم', fr: '•Plan de script détaillé (500 mots min)<br>•Justification des choix structurels<br>•Suggestion de visuels pour chaque section' }, criteria: { ar: '•اتساق ووضوح الهيكل (2 نقطة)<br>•أهمية الأمثلة (2 نقطة)<br>•جودة الاقتراحات المرئية (1 نقطة)', fr: '•Cohérence et clarté de la structure (2 points)<br>•Pertinence des exemples (2 points)<br>•Qualité des suggestions visuelles (1 point)' } },
+            { type: 'exercise', phase: 2, exerciseNum: 2, promptId: 22, title: { ar: 'التمرين 2.2: كتابة مقدمة جذابة', fr: 'Exercice 2.2 : Écriture d\'une introduction accrocheuse' }, goal: { ar: 'إتقان فن جذب الانتباه منذ الثواني الأولى للفيديو.', fr: 'Maîtriser l\'art de capter l\'attention dès les premières secondes.' }, instructions: { ar: 'بناءً على موضوع التمرين 2.1، استخدم الأمر #22 لكتابة مقدمة لا تتجاوز 150 كلمة.', fr: 'En vous basant sur le sujet de l\'exercice 2.1, utilisez le prompt #22 pour rédiger une introduction de 150 mots maximum.' }, prompt: { ar: "اكتب مقدمة (لا تتجاوز 150 كلمة) لفيديو حول [أضرار السكر]. استخدم هيكل 'المشكلة - التحريض - الوعد بالحل'.", fr: "Rédigez une introduction (pas plus de 150 mots) pour une vidéo sur [les méfaits du sucre]. Utilisez la structure 'Problème - Agitation - Promesse de solution'." }, outputs: { ar: '•مقدمة مكتوبة<br>•تحليل فعالية الجذب<br>•ملاحظات من 3 أشخاص حول المقدمة', fr: '•Introduction rédigée<br>•Analyse de l\'efficacité de l\'accroche<br>•Retours de 3 personnes sur l\'introduction' }, criteria: { ar: '•الالتزام بالهيكل (2 نقطة)<br>•التأثير العاطفي (2 نقطة)<br>•جودة الملاحظات والتحليل (1 نقطة)', fr: '•Respect de la structure (2 points)<br>•Impact émotionnel (2 points)<br>•Qualité des retours et de l\'analyse (1 point)' } },
+            { type: 'exercise', phase: 2, exerciseNum: 3, promptId: 23, title: { ar: 'التمرين 2.3: السرد بالمثال', fr: 'Exercice 2.3 : Narration par l\'exemple' }, goal: { ar: 'دمج القصص لجعل المحتوى أكثر حيوية.', fr: 'Intégrer des histoires pour rendre le contenu plus vivant.' }, instructions: { ar: 'اختر إحدى النقاط الرئيسية في نصك من التمرين 2.1. استخدم الأمر #23 لتطوير هذه النقطة في قسم كامل من 250 كلمة.', fr: 'Choisissez l\'un des points principaux de votre script de l\'exercice 2.1. Utilisez le prompt #23 pour développer ce point en une section complète de 250 mots.' }, prompt: { ar: "قم بتوسيع النقطة رقم [2] من الهيكل السابق إلى فقرة كاملة (250 كلمة). استخدم قصة قصيرة عن شخص عانى من مشكلة ما وكيف تغلب عليها لتوضيح الفكرة.", fr: "Développez le point numéro [2] de la structure précédente en un paragraphe complet (250 mots). Utilisez une courte histoire sur quelqu'un qui a souffert d'un problème et comment il l'a surmonté pour illustrer l'idée." }, outputs: { ar: '•قسم نص مطور<br>•تبرير اختيار القصة/المثال<br>•تحليل التأثير السردي', fr: '•Section de script développée<br>•Justification du choix de l\'histoire/exemple<br>•Analyse de l\'impact narratif' }, criteria: { ar: '•أهمية القصة/المثال (2 نقطة)<br>•سلاسة الدمج (2 نقطة)<br>•جودة التحليل (1 نقطة)', fr: '•Pertinence de l\'histoire/exemple (2 points)<br>•Fluidité de l\'intégration (2 points)<br>•Qualité de l\'analyse (1 point)' } },
+            { type: 'exercise', phase: 2, exerciseNum: 4, promptId: 24, title: { ar: 'التمرين 2.4: كتابة خاتمة تفاعلية', fr: 'Exercice 2.4 : Écriture d\'une conclusion interactive' }, goal: { ar: 'حث المشاهدين على اتخاذ إجراء والمشاركة.', fr: 'Inciter les spectateurs à agir et à s\'engager.' }, instructions: { ar: 'بناءً على نصك، استخدم الأمر #24 لكتابة خاتمة تلخص النقاط الرئيسية وتقدم دعوتين منفصلتين لاتخاذ إجراء.', fr: 'En vous basant sur votre script, utilisez le prompt #24 pour rédiger une conclusion qui résume les points clés et présente deux appels à l\'action distincts.' }, prompt: { ar: "اكتب خاتمة فيديو تلخص الفائدة الرئيسية، وتتضمن دعوتين لاتخاذ إجراء: الاشتراك، وطرح سؤال محدد في التعليقات لزيادة التفاعل.", fr: "Rédigez une conclusion de vidéo qui résume le principal avantage et inclut deux appels à l'action : s'abonner et poser une question spécifique dans les commentaires pour augmenter l'engagement." }, outputs: { ar: '•خاتمة مكتوبة<br>•تحليل فعالية دعوات اتخاذ الإجراء<br>•اقتراح مرئيات للخاتمة', fr: '•Conclusion rédigée<br>•Analyse de l\'efficacité des appels à l\'action<br>•Suggestion de visuels pour la conclusion' }, criteria: { ar: '•وضوح الملخص (2 نقطة)<br>•أهمية وتنوع دعوات اتخاذ الإجراء (2 نقطة)<br>•جودة الاقتراحات المرئية (1 نقطة)', fr: '•Clarté du résumé (2 points)<br>•Pertinence et diversité des CTA (2 points)<br>•Qualité des suggestions visuelles (1 point)' } },
+            { type: 'exercise', phase: 2, exerciseNum: 5, promptId: 25, title: { ar: 'التمرين 2.5: تبسيط المحتوى المعقد', fr: 'Exercice 2.5 : Simplification de contenu complexe' }, goal: { ar: 'تحويل المعلومات المعقدة إلى لغة سهلة الفهم.', fr: 'Transformer des informations complexes en langage simple.' }, instructions: { ar: 'ابحث عن مقال علمي أو تقرير فني واستخدم الأمر #25 لإعادة كتابته وتبسيطه.', fr: 'Trouvez un article scientifique ou un rapport technique et utilisez le prompt #25 pour le réécrire et le simplifier.' }, prompt: { ar: "خذ هذا النص العلمي: [الصق النص هنا]. أعد كتابته ليكون مفهوماً لجمهور عام، باستخدام استعارات وجمل قصيرة.", fr: "Prenez ce texte scientifique : [Collez le texte ici]. Réécrivez-le pour qu'il soit compréhensible par un public général, en utilisant des métaphores et des phrases courtes." }, outputs: { ar: '•النص الأصلي والنص المبسط<br>•تحليل تقنيات التبسيط المستخدمة<br>•مقارنة قابلية قراءة النصين', fr: '•Texte original et texte simplifié<br>•Analyse des techniques de simplification utilisées<br>•Comparaison de la lisibilité des deux textes' }, criteria: { ar: '•دقة المحتوى الأصلي (2 نقطة)<br>•وضوح وبساطة النص المعاد كتابته (2 نقطة)<br>•أهمية الاستعارات (1 نقطة)', fr: '•Exactitude du contenu original (2 points)<br>•Clarté et simplicité du texte réécrit (2 points)<br>•Pertinence des métaphores (1 point)' } },
+            { type: 'project', phase: 2, title: { ar: 'المشروع المتكامل للمرحلة 2: نص فيديو كامل', fr: 'Projet Intégré Phase 2 : Script Vidéo Complet' }, instructions: { ar: 'باستخدام المهارات المكتسبة، اكتب نص فيديو كامل (5-7 دقائق) حول موضوع من اختيارك. يجب أن يتضمن النص:<br>1. مقدمة قوية<br>2. تطوير منظم مع قصتين/مثالين على الأقل<br>3. خاتمة مع دعوات واضحة لاتخاذ إجراء<br>4. إرشادات مرئية للمونتاج<br>5. عنوان ووصف محسّنين لـ SEO', fr: 'En utilisant les compétences acquises, rédigez un script vidéo complet (5-7 minutes) sur un sujet de votre choix. Le script doit inclure :<br>1. Une introduction forte<br>2. Un développement structuré avec au moins deux histoires/exemples<br>3. Une conclusion avec des appels à l\'action clairs<br>4. Des indications visuelles pour le montage<br>5. Un titre et une description optimisés pour le SEO' }, outputs: { ar: '•نص فيديو كامل<br>•ملف صوتي للنص<br>•تحليل نقدي للنص من قبل زميل', fr: '•Script vidéo complet<br>•Fichier audio du script<br>•Analyse critique du script par un pair' }, criteria: { ar: '•الجودة العامة للنص (4 نقاط)<br>•الأصالة والجذب (3 نقاط)<br>•اتساق الإرشادات المرئية (3 نقاط)', fr: '•Qualité générale du script (4 points)<br>•Originalité et attrait (3 points)<br>•Cohérence des indications visuelles (3 points)' } },
+            // Phase 3
+            { type: 'exercise', phase: 3, exerciseNum: 1, promptId: 46, title: { ar: 'التمرين 3.1: إنشاء صور واقعية', fr: 'Exercice 3.1 : Création d\'images réalistes' }, goal: { ar: 'إتقان توليد الأوامر للصور الواقعية.', fr: 'Maîtriser la génération de prompts pour des images réalistes.' }, instructions: { ar: 'استخدم الأمر #46 كأساس. اختر موضوعًا مرتبطًا بثقافتك واكتب أمرًا مفصلاً لتوليد صورة واقعية.', fr: 'Utilisez le prompt #46 comme base. Choisissez un sujet lié à votre culture et rédigez un prompt détaillé pour générer une image réaliste.' }, prompt: { ar: "صورة فوتوغرافية واقعية للغاية لرجل أعمال مغربي في الثلاثينات من عمره، يرتدي بدلة أنيقة، يجلس في مكتب عصري يطل على أفق الدار البيضاء عند غروب الشمس.", fr: "Photographie hyperréaliste d'un homme d'affaires marocain d'une trentaine d'années, portant un costume élégant, assis dans un bureau moderne avec vue sur l'horizon de Casablanca au coucher du soleil." }, outputs: { ar: '•أمر مكتوب<br>•صورة تم إنشاؤها<br>•تحليل عناصر الأمر', fr: '•Prompt rédigé<br>•Image générée<br>•Analyse des éléments du prompt' }, criteria: { ar: '•دقة وثراء الأمر (2 نقطة)<br>•الاتساق بين الأمر والصورة (2 نقطة)<br>•جودة التحليل (1 نقطة)', fr: '•Précision et richesse du prompt (2 points)<br>•Cohérence prompt/image (2 points)<br>•Qualité de l\'analyse (1 point)' } },
+            { type: 'exercise', phase: 3, exerciseNum: 2, promptId: 47, title: { ar: 'التمرين 3.2: استكشاف الأساليب الفنية', fr: 'Exercice 3.2 : Exploration de styles artistiques' }, goal: { ar: 'تطبيق أساليب فنية مختلفة على توليد الصور.', fr: 'Appliquer différents styles artistiques à la génération d\'images.' }, instructions: { ar: 'اختر مفهومًا بسيطًا واستخدم الأوامر #47، #48، و #49 لتوليده بأساليب مختلفة.', fr: 'Choisissez un concept simple et utilisez les prompts #47, #48, et #49 pour le générer dans différents styles.' }, prompt: { ar: "الأوامر #47 (بيكسار)، #48 (أنمي)، و #49 (رسم زيتي).", fr: "Prompts #47 (Pixar), #48 (Anime), et #49 (Peinture à l'huile)." }, outputs: { ar: '•3 أوامر مكتوبة<br>•3 صور تم إنشاؤها<br>•مقارنة النتائج', fr: '•3 prompts rédigés<br>•3 images générées<br>•Comparaison des résultats' }, criteria: { ar: '•إتقان خصائص كل أسلوب (2 نقطة)<br>•الإبداع في تكييف الأمر (2 نقطة)<br>•أهمية المقارنة (1 نقطة)', fr: '•Maîtrise des styles (2 points)<br>•Créativité dans l\'adaptation (2 points)<br>•Pertinence de la comparaison (1 point)' } },
+            { type: 'exercise', phase: 3, exerciseNum: 3, promptId: null, title: { ar: 'التمرين 3.3: سيناريو بصري لمفهوم مجرد', fr: 'Exercice 3.3 : Scénario visuel pour un concept abstrait' }, goal: { ar: 'ترجمة الأفكار المجردة إلى مفاهيم بصرية.', fr: 'Traduire des idées abstraites en concepts visuels.' }, instructions: { ar: 'اختر مفهومًا مجردًا (مثال: "الحرية"). اكتب أمرًا لتوليد صورة تمثل هذا المفهوم بصريًا.', fr: 'Choisissez un concept abstrait (ex: "Liberté"). Rédigez un prompt pour générer une image qui représente visuellement ce concept.' }, prompt: { ar: "اكتب أمرًا لتوليد صورة تمثل مفهوم [الحرية] بصريًا، مع التفكير في الرموز والألوان والتكوين.", fr: "Rédigez un prompt pour générer une image représentant visuellement le concept de [Liberté], en pensant aux symboles, couleurs et composition." }, outputs: { ar: '•أمر مكتوب<br>•صورة تم إنشاؤها<br>•شرح الرمزية البصرية', fr: '•Prompt rédigé<br>•Image générée<br>•Explication du symbolisme visuel' }, criteria: { ar: '•أصالة التمثيل (2 نقطة)<br>•وضوح الرسالة البصرية (2 نقطة)<br>•ثراء الشرح (1 نقطة)', fr: '•Originalité de la représentation (2 points)<br>•Clarté du message visuel (2 points)<br>•Richesse de l\'explication (1 point)' } },
+            { type: 'exercise', phase: 3, exerciseNum: 4, promptId: null, title: { ar: 'التمرين 3.4: إنشاء صور مصغرة لليوتيوب', fr: 'Exercice 3.4 : Création de miniatures YouTube' }, goal: { ar: 'تصميم صور مصغرة جذابة ومحسّنة للنقر.', fr: 'Concevoir des miniatures attrayantes et optimisées pour le clic.' }, instructions: { ar: 'لأحد نصوص الفيديو الخاصة بك، أنشئ 3 أوامر مختلفة لتوليد صور مصغرة بأسلوب مميز.', fr: 'Pour l\'un de vos scripts vidéo, créez 3 prompts différents pour générer des miniatures avec des styles distincts.' }, prompt: { ar: "أنشئ 3 أوامر لصور مصغرة لفيديو بعنوان [عنوان الفيديو]، بأساليب (بسيط، درامي، إعلامي) مع نص قصير ومؤثر.", fr: "Créez 3 prompts pour des miniatures pour une vidéo intitulée [Titre Vidéo], dans des styles (simple, dramatique, informatif) avec un texte court et percutant." }, outputs: { ar: '•3 أوامر لصور مصغرة<br>•3 صور مصغرة تم إنشاؤها<br>•تحليل A/B للصور المصغرة', fr: '•3 prompts de miniatures<br>•3 miniatures générées<br>•Analyse A/B des miniatures' }, criteria: { ar: '•التأثير البصري (2 نقطة)<br>•أهمية النص (2 نقطة)<br>•جودة تحليل A/B (1 نقطة)', fr: '•Impact visuel (2 points)<br>•Pertinence du texte (2 points)<br>•Qualité de l\'analyse A/B (1 point)' } },
+            { type: 'exercise', phase: 3, exerciseNum: 5, promptId: null, title: { ar: 'التمرين 3.5: لوحة القصة وتسلسل الصور', fr: 'Exercice 3.5 : Storyboard et séquence d\'images' }, goal: { ar: 'تخطيط تسلسل بصري لمقطع فيديو قصير.', fr: 'Planifier une séquence visuelle pour un court clip vidéo.' }, instructions: { ar: 'اختر مقطعًا مدته 30 ثانية من نص الفيديو الخاص بك. أنشئ لوحة قصة باستخدام الأوامر لتوليد 5 صور رئيسية.', fr: 'Choisissez un clip de 30 secondes de votre script vidéo. Créez un storyboard en utilisant des prompts pour générer 5 images clés.' }, prompt: { ar: "لمقطع من نص فيديو حول [الموضوع]، أنشئ لوحة قصة من 5 صور رئيسية تمثل التقدم البصري، مع وصف الحركة والعاطفة لكل صورة.", fr: "Pour un extrait de script vidéo sur [Sujet], créez un storyboard de 5 images clés représentant la progression visuelle, en décrivant le mouvement et l'émotion pour chaque image." }, outputs: { ar: '•لوحة قصة مع 5 أوامر و 5 صور<br>•وصف الحركة والعاطفة<br>•شرح الانتقال بين الصور', fr: '•Storyboard avec 5 prompts et 5 images<br>•Description du mouvement et de l\'émotion<br>•Explication de la transition entre les images' }, criteria: { ar: '•اتساق السرد (2 نقطة)<br>•جودة الأوامر البصرية (2 نقطة)<br>•سلاسة الانتقالات (1 نقطة)', fr: '•Cohérence narrative (2 points)<br>•Qualité des prompts visuels (2 points)<br>•Fluidité des transitions (1 point)' } },
+            { type: 'project', phase: 3, title: { ar: 'المشروع المتكامل للمرحلة 3: حملة بصرية لفيديو', fr: 'Projet Intégré Phase 3 : Campagne Visuelle pour une Vidéo' }, instructions: { ar: 'لفيديو من اختيارك، أنشئ حملة بصرية كاملة تتضمن:<br>1. صورة بانر للقناة<br>2. صورة شاشة نهاية الفيديو<br>3. 3 صور مصغرة مختلفة<br>4. صورة لمنشور مجتمعي<br>5. صورة للترويج على وسائل التواصل الاجتماعي', fr: 'Pour une vidéo de votre choix, créez une campagne visuelle complète incluant :<br>1. Bannière de chaîne<br>2. Écran de fin de vidéo<br>3. 3 miniatures différentes<br>4. Image pour post Communauté<br>5. Image pour promotion sur les réseaux sociaux' }, outputs: { ar: '•وثيقة موجزة للأوامر والصور<br>•تحليل الاتساق البصري<br>•عرض شفوي للخيارات', fr: '•Document de synthèse des prompts et images<br>•Analyse de la cohérence visuelle<br>•Présentation orale des choix' }, criteria: { ar: '•اتساق واحترافية الحملة (4 نقاط)<br>•إبداع وأصالة الصور (3 نقاط)<br>•جودة التبرير (3 نقاط)', fr: '•Cohérence et professionnalisme (4 points)<br>•Créativité et originalité (3 points)<br>•Qualité de la justification (3 points)' } },
+            // Phase 4
+            { type: 'exercise', phase: 4, exerciseNum: 1, promptId: 84, title: { ar: 'التمرين 4.1: توليد علامات (Tags) ذات صلة', fr: 'Exercice 4.1 : Génération de tags pertinents' }, goal: { ar: 'إتقان فن اختيار العلامات لتحسين قابلية اكتشاف الفيديوهات.', fr: 'Maîtriser l\'art de choisir des tags pour améliorer la découvrabilité.' }, instructions: { ar: 'اختر موضوع فيديو واستخدم الأمر #84 لتوليد 15 علامة. برر اختيار كل علامة.', fr: 'Choisissez un sujet de vidéo et utilisez le prompt #84 pour générer 15 tags. Justifiez chaque choix.' }, prompt: { ar: "لفيديو حول [التصوير الليلي بالهاتف]، قم بتوليد 15 علامة (محددة، عامة، طويلة) ذات صلة.", fr: "Pour une vidéo sur [la photographie de nuit avec un smartphone], générez 15 tags pertinents (spécifiques, généraux, longue traîne)." }, outputs: { ar: '•قائمة بـ 15 علامة مع التبرير<br>•تحليل أهمية العلامات<br>•اقتراح 3 علامات يجب تجنبها', fr: '•Liste de 15 tags avec justification<br>•Analyse de la pertinence des tags<br>•Suggestion de 3 tags à éviter' }, criteria: { ar: '•أهمية وتنوع العلامات (2 نقطة)<br>•جودة التبرير (2 نقطة)<br>•فهم أفضل ممارسات SEO (1 نقطة)', fr: '•Pertinence et diversité des tags (2 points)<br>•Qualité de la justification (2 points)<br>•Compréhension des bonnes pratiques SEO (1 point)' } },
+            { type: 'exercise', phase: 4, exerciseNum: 2, promptId: 85, title: { ar: 'التمرين 4.2: كتابة منشورات ترويجية', fr: 'Exercice 4.2 : Rédaction de posts promotionnels' }, goal: { ar: 'تكييف المحتوى الترويجي مع منصات مختلفة.', fr: 'Adapter le contenu promotionnel à différentes plateformes.' }, instructions: { ar: 'لفيديو يوتيوب، استخدم الأمر #85 لكتابة منشورات ترويجية لفيسبوك، تويتر/X، وإنستغرام.', fr: 'Pour une vidéo YouTube, utilisez le prompt #85 pour rédiger des posts promotionnels pour Facebook, Twitter/X, et Instagram.' }, prompt: { ar: "لفيديو يوتيوب جديد بعنوان [كيف بدأت مشروعي الخاص من الصفر؟]، اكتب منشورات ترويجية لفيسبوك، تويتر/X، وانستغرام.", fr: "Pour une nouvelle vidéo YouTube intitulée [Comment j'ai démarré mon entreprise à partir de zéro ?], rédigez des posts promotionnels pour Facebook, Twitter/X et Instagram." }, outputs: { ar: '•3 منشورات مكتوبة<br>•تحليل خصائص كل منصة<br>•اقتراح مرئيات إضافية', fr: '•3 posts rédigés<br>•Analyse des spécificités de chaque plateforme<br>•Suggestion de visuels additionnels' }, criteria: { ar: '•التكيف مع المنصة (2 نقطة)<br>•إمكانية جذب التفاعل (2 نقطة)<br>•إبداع الاقتراحات (1 نقطة)', fr: '•Adaptation à la plateforme (2 points)<br>•Potentiel d\'engagement (2 points)<br>•Créativité des suggestions (1 point)' } },
+            { type: 'exercise', phase: 4, exerciseNum: 3, promptId: 86, title: { ar: 'التمرين 4.3: إعادة تدوير المحتوى', fr: 'Exercice 4.3 : Recyclage du contenu' }, goal: { ar: 'زيادة مدى وصول المحتوى بتحويله لتنسيقات مختلفة.', fr: 'Maximiser la portée du contenu en le transformant.' }, instructions: { ar: 'خذ نص فيديو واستخدم الأمر #86 لاقتراح 5 طرق لإعادة تدويره.', fr: 'Prenez un script vidéo et utilisez le prompt #86 pour proposer 5 façons de le recycler.' }, prompt: { ar: "هذا هو سكريبت الفيديو: [الصق السكريبت]. اقترح 5 طرق لإعادة تدويره (مقال مدونة، سلسلة تغريدات، إنفوجرافيك، بودكاست، فيديو قصير).", fr: "Voici le script de la vidéo : [Collez le script]. Proposez 5 façons de le recycler (article de blog, fil de tweets, infographie, podcast, vidéo courte)." }, outputs: { ar: '•5 اقتراحات لإعادة التدوير<br>•وصف مفصل للتكييف<br>•تبرير أهمية كل تنسيق', fr: '•5 suggestions de recyclage<br>•Description détaillée de l\'adaptation<br>•Justification de la pertinence de chaque format' }, criteria: { ar: '•أصالة وجدوى الاقتراحات (2 نقطة)<br>•وضوح وصف التكييف (2 نقطة)<br>•فهم فوائد إعادة التدوير (1 نقطة)', fr: '•Originalité et faisabilité (2 points)<br>•Clarté de la description (2 points)<br>•Compréhension des avantages (1 point)' } },
+            { type: 'exercise', phase: 4, exerciseNum: 4, promptId: 87, title: { ar: 'التمرين 4.4: كتابة ردود على التعليقات', fr: 'Exercice 4.4 : Rédaction de réponses aux commentaires' }, goal: { ar: 'تطوير مهارات إدارة المجتمع.', fr: 'Développer des compétences en community management.' }, instructions: { ar: 'استخدم الأمر #87 لكتابة 3 نماذج ردود جاهزة لأنواع مختلفة من التعليقات.', fr: 'Utilisez le prompt #87 pour rédiger 3 modèles de réponses pour différents types de commentaires.' }, prompt: { ar: "بصفتك مدير مجتمع، اكتب 3 قوالب ردود جاهزة للرد على أنواع مختلفة من التعليقات (إيجابية، بناءة سلبية، أسئلة).", fr: "En tant que community manager, rédigez 3 modèles de réponses pour différents types de commentaires (positifs, critiques constructives, questions)." }, outputs: { ar: '•3 نماذج ردود<br>•تحليل مبادئ التواصل<br>•استراتيجيات للتعامل مع التعليقات السلبية', fr: '•3 modèles de réponses<br>•Analyse des principes de communication<br>•Stratégies pour les commentaires négatifs' }, criteria: { ar: '•أهمية واحترافية الردود (2 نقطة)<br>•الاتساق مع شخصية القناة (2 نقطة)<br>•جودة الاستراتيجيات (1 نقطة)', fr: '•Pertinence et professionnalisme (2 points)<br>•Cohérence avec le persona (2 points)<br>•Qualité des stratégies (1 point)' } },
+            { type: 'exercise', phase: 4, exerciseNum: 5, promptId: 94, title: { ar: 'التمرين 4.5: تحسين العناوين لمقاطع Shorts', fr: 'Exercice 4.5 : Optimisation des titres pour Shorts' }, goal: { ar: 'تكييف عناوين الفيديوهات الطويلة لتنسيقات قصيرة.', fr: 'Adapter les titres longs pour les formats courts.' }, instructions: { ar: 'خذ 5 عناوين فيديوهات طويلة واستخدم الأمر #94 لإعادة صياغتها لمقاطع Shorts.', fr: 'Prenez 5 titres de vidéos longues et utilisez le prompt #94 pour les reformuler pour des Shorts.' }, prompt: { ar: "خذ هذا العنوان الطويل: [عنوان فيديو طويل]. أعد صياغته ليكون عنوانًا مثاليًا لفيديو YouTube Short.", fr: "Prenez ce titre long : [titre de la vidéo longue]. Reformulez-le pour en faire un titre parfait pour un YouTube Short." }, outputs: { ar: '•5 عناوين أصلية ونسخها المحسّنة<br>•تحليل الفروق<br>•شرح التقنيات المستخدمة', fr: '•5 titres originaux et leurs versions optimisées<br>•Analyse des différences<br>•Explication des techniques utilisées' }, criteria: { ar: '•فعالية عناوين Shorts (2 نقطة)<br>•فهم قيود التنسيق (2 نقطة)<br>•وضوح الشرح (1 نقطة)', fr: '•Efficacité des titres Shorts (2 points)<br>•Compréhension des contraintes (2 points)<br>•Clarté de l\'explication (1 point)' } },
+            { type: 'project', phase: 4, title: { ar: 'المشروع المتكامل للمرحلة 4: استراتيجية إطلاق فيديو', fr: 'Projet Intégré Phase 4 : Stratégie de Lancement Vidéo' }, instructions: { ar: 'اختر فيديو. قم بتطوير استراتيجية إطلاق كاملة لهذا الفيديو، تتضمن:<br>1. عنوان ووصف SEO<br>2. قائمة علامات (Tags)<br>3. منشورات ترويجية لـ 3 منصات<br>4. خطة إعادة تدوير<br>5. استراتيجية للتفاعل مع المجتمع<br>6. جدول زمني للنشر', fr: 'Choisissez une vidéo. Développez une stratégie de lancement complète, incluant :<br>1. Titre et description SEO<br>2. Liste de tags<br>3. Posts promotionnels pour 3 plateformes<br>4. Plan de recyclage de contenu<br>5. Stratégie d\'engagement communautaire<br>6. Calendrier de publication' }, outputs: { ar: '•وثيقة استراتيجية إطلاق مفصلة<br>•أمثلة ملموسة لكل عنصر<br>•تحليل مقاييس النجاح', fr: '•Document de stratégie de lancement détaillé<br>•Exemples concrets pour chaque élément<br>•Analyse des métriques de succès' }, criteria: { ar: '•اتساق وشمولية الاستراتيجية (4 نقاط)<br>•جودة العناصر الإبداعية (3 نقاط)<br>•واقعية وجدوى الخطة (3 نقاط)', fr: '•Cohérence et exhaustivité (4 points)<br>•Qualité des éléments créatifs (3 points)<br>•Réalisme et faisabilité (3 points)' } },
+            // Phase 5
+            { type: 'exercise', phase: 5, exerciseNum: 1, promptId: 91, title: { ar: 'التمرين 5.1: نقد وتحسين النص', fr: 'Exercice 5.1 : Critique et amélioration de texte' }, goal: { ar: 'تطوير القدرة على تحليل وتحسين جودة النص.', fr: 'Développer la capacité d\'analyser et d\'améliorer la qualité d\'un texte.' }, instructions: { ar: 'خذ فقرة من نص فيديو واستخدم الأمر #91 لنقد هذا النص واقتراح تحسينات.', fr: 'Prenez un paragraphe d\'un script vidéo et utilisez le prompt #91 pour le critiquer et proposer des améliorations.' }, prompt: { ar: "انتقد هذا النص: [الصق النص]. حدد نقاط الضعف واقترح تحسينات لجعله أكثر وضوحاً وإقناعاً.", fr: "Critiquez ce texte : [Collez le texte]. Identifiez les points faibles et proposez des améliorations pour le rendre plus clair et persuasif." }, outputs: { ar: '•النص الأصلي والنص المحسن<br>•تحليل نقاط الضعف<br>•تبرير التحسينات', fr: '•Texte original et texte amélioré<br>•Analyse des points faibles<br>•Justification des améliorations' }, criteria: { ar: '•أهمية النقد (2 نقطة)<br>•فعالية التحسينات (2 نقطة)<br>•وضوح التبرير (1 نقطة)', fr: '•Pertinence de la critique (2 points)<br>•Efficacité des améliorations (2 points)<br>•Clarté de la justification (1 point)' } },
+            { type: 'exercise', phase: 5, exerciseNum: 2, promptId: 92, title: { ar: 'التمرين 5.2: تكييف النبرة', fr: 'Exercice 5.2 : Adaptation du ton' }, goal: { ar: 'إتقان فن تكييف نبرة الرسالة.', fr: 'Maîtriser l\'art d\'adapter le ton d\'un message.' }, instructions: { ar: 'اختر فقرة واستخدم الأمر #92 لإعادة كتابتها بثلاث نبرات مختلفة.', fr: 'Choisissez un paragraphe et utilisez le prompt #92 pour le réécrire avec trois tons différents.' }, prompt: { ar: "أعد كتابة هذه الفقرة: [الصق الفقرة] بثلاث نبرات مختلفة: أكاديمية، ودية وحماسية، وساخرة.", fr: "Réécrivez ce paragraphe : [Collez le paragraphe] avec trois tons différents : académique, amical et enthousiaste, et sarcastique." }, outputs: { ar: '•النص الأصلي و 3 نسخ<br>•تحليل العناصر اللغوية<br>•شرح تأثير كل نبرة', fr: '•Texte original et 3 versions<br>•Analyse des éléments linguistiques<br>•Explication de l\'impact de chaque ton' }, criteria: { ar: '•إتقان النبرات (2 نقطة)<br>•الاتساق بين النبرة والمفردات (2 نقطة)<br>•جودة التحليل (1 نقطة)', fr: '•Maîtrise des tons (2 points)<br>•Cohérence ton/vocabulaire (2 points)<br>•Qualité de l\'analyse (1 point)' } },
+            { type: 'exercise', phase: 5, exerciseNum: 3, promptId: 93, title: { ar: 'التمرين 5.3: توليد الاستعارات والتشبيهات', fr: 'Exercice 5.3 : Génération de métaphores et d\'analogies' }, goal: { ar: 'استخدام الأساليب البلاغية لتبسيط المفاهيم.', fr: 'Utiliser des figures de style pour simplifier des concepts.' }, instructions: { ar: 'اختر مفهومًا تقنيًا واستخدم الأمر #93 لاقتراح 3 استعارات أو تشبيهات.', fr: 'Choisissez un concept technique et utilisez le prompt #93 pour proposer 3 métaphores ou analogies.' }, prompt: { ar: "لشرح مفهوم [خوارزميات يوتيوب]، اقترح 3 استعارات بسيطة ومبتكرة تساعد على فهم الفكرة.", fr: "Pour expliquer le concept des [algorithmes de YouTube], proposez 3 métaphores simples et créatives qui aident à comprendre l'idée." }, outputs: { ar: '•3 استعارات/تشبيهات مطورة<br>•شرح أهمية كل استعارة<br>•تحليل فعالية الاستعارة', fr: '•3 métaphores/analogies développées<br>•Explication de la pertinence de chacune<br>•Analyse de l\'efficacité de la métaphore' }, criteria: { ar: '•أصالة الاستعارات (2 نقطة)<br>•وضوح الشرح (2 نقطة)<br>•القدرة على تبسيط المفهوم (1 نقطة)', fr: '•Originalité des métaphores (2 points)<br>•Clarté de l\'explication (2 points)<br>•Capacité à simplifier le concept (1 point)' } },
+            { type: 'exercise', phase: 5, exerciseNum: 4, promptId: 94, title: { ar: 'التمرين 5.4: تحدي الأفكار (محامي الشيطان)', fr: 'Exercice 5.4 : Remise en question des idées (avocat du diable)' }, goal: { ar: 'تطوير التفكير النقدي.', fr: 'Développer la pensée critique.' }, instructions: { ar: 'اقترح فكرة فيديو. تصرف كـ "محامي الشيطان" باستخدام الأمر #94. اطرح 5 أسئلة صعبة ثم أجب عليها.', fr: 'Proposez une idée de vidéo. Agissez en "avocat du diable" avec le prompt #94. Posez 5 questions difficiles et répondez-y.' }, prompt: { ar: "أخطط لإنشاء فيديو حول [الفكرة]. تصرف كمحامي الشيطان واطرح 5 أسئلة صعبة أو وجهات نظر معاكسة يجب أن أفكر فيها.", fr: "Je prévois de créer une vidéo sur [l'idée]. Agissez comme l'avocat du diable et posez 5 questions difficiles ou points de vue opposés que je devrais considérer." }, outputs: { ar: '•فكرة الفيديو<br>•5 أسئلة/اعتراضات<br>•ردود مدعومة بالحجج', fr: '•Idée de la vidéo<br>•5 questions/objections<br>•Réponses argumentées' }, criteria: { ar: '•أهمية وعمق الاعتراضات (2 نقطة)<br>•قوة الحجج في الرد (2 نقطة)<br>•القدرة على الدفاع عن الفكرة (1 نقطة)', fr: '•Pertinence et profondeur des objections (2 points)<br>•Force des arguments (2 points)<br>•Capacité à défendre l\'idée (1 point)' } },
+            { type: 'exercise', phase: 5, exerciseNum: 5, promptId: 99, title: { ar: 'التمرين 5.5: مقارنة الأدوات', fr: 'Exercice 5.5 : Comparaison d\'outils' }, goal: { ar: 'تحليل ومقارنة الأدوات لاتخاذ قرارات مستنيرة.', fr: 'Analyser et comparer des outils pour prendre des décisions éclairées.' }, instructions: { ar: 'اختر أداتين واستخدم الأمر #99 لكتابة نص فيديو يقارن بينهما.', fr: 'Choisissez deux outils et utilisez le prompt #99 pour rédiger un script vidéo les comparant.' }, prompt: { ar: "اكتب سكريبت لفيديو يقارن بين أداتين لتوليد الصور: [Midjourney] و [DALL-E 3]. يجب أن يغطي المقارنة: جودة الصور، سهولة الاستخدام، الأساليب الفنية، والتكلفة.", fr: "Rédigez un script pour une vidéo comparant deux outils de génération d'images : [Midjourney] et [DALL-E 3]. La comparaison doit couvrir : la qualité des images, la facilité d'utilisation, les styles artistiques et le coût." }, outputs: { ar: '•نص فيديو مقارنة<br>•جدول مقارنة موجز<br>•توصية نهائية', fr: '•Script vidéo comparatif<br>•Tableau comparatif résumé<br>•Recommandation finale' }, criteria: { ar: '•شمولية المقارنة (2 نقطة)<br>•وضوح التحليل (2 نقطة)<br>•أهمية التوصية (1 نقطة)', fr: '•Exhaustivité de la comparaison (2 points)<br>•Clarté de l\'analyse (2 points)<br>•Pertinence de la recommandation (1 point)' } },
+            { type: 'project', phase: 5, title: { ar: 'المشروع المتكامل للمرحلة 5: استراتيجية النمو والابتكار', fr: 'Projet Intégré Phase 5 : Stratégie de Croissance et d\'Innovation' }, instructions: { ar: 'بناءً على قناتك، قم بتطوير استراتيجية نمو وابتكار للأشهر الستة القادمة. يجب أن تتضمن:<br>1. تحليل SWOT لقناتك<br>2. 3 أفكار محتوى مبتكرة<br>3. خطة لتطوير مصدر دخل جديد<br>4. اقتراح تعاون<br>5. استراتيجية للتعامل مع الأزمات', fr: 'En vous basant sur votre chaîne, développez une stratégie de croissance et d\'innovation pour les 6 prochains mois. Elle doit inclure :<br>1. Analyse SWOT de votre chaîne<br>2. 3 idées de contenu innovantes<br>3. Plan pour développer une nouvelle source de revenus<br>4. Proposition de collaboration<br>5. Stratégie de gestion de crise' }, outputs: { ar: '•وثيقة استراتيجية مفصلة<br>•عرض شفوي للاستراتيجية<br>•محاكاة الرد على تعليق صعب', fr: '•Document de stratégie détaillé<br>•Présentation orale de la stratégie<br>•Simulation de réponse à un commentaire difficile' }, criteria: { ar: '•الرؤية الاستراتيجية والابتكار (4 نقاط)<br>•واقعية وجدوى الاقتراحات (3 نقاط)<br>•جودة العرض والمحاكاة (3 نقاط)', fr: '•Vision stratégique et innovation (4 points)<br>•Réalisme et faisabilité (3 points)<br>•Qualité de la présentation et de la simulation (3 points)' } },
+        ];
+
+        const mainContainer = document.getElementById('main-content');
+        
+        const buildContent = () => {
+            mainContainer.innerHTML = '';
+            
+            const intro = document.createElement('div');
+            intro.className = 'glass-card p-6 rounded-xl shadow-md mb-8';
+            intro.innerHTML = `<h2 class="text-2xl font-bold text-brand-gold mb-4" data-lang-key="introTitle">${translations[currentLang].introTitle}</h2><p class="mb-4 text-slate-300" data-lang-key="introParagraph">${translations[currentLang].introParagraph}</p><div class="grid md:grid-cols-2 gap-6 mt-6"><div><h3 class="font-bold text-lg mb-2 text-slate-100" data-lang-key="goalTitle">${translations[currentLang].goalTitle}</h3><p class="text-slate-400" data-lang-key="goalText">${translations[currentLang].goalText}</p></div><div><h3 class="font-bold text-lg mb-2 text-slate-100" data-lang-key="materialsTitle">${translations[currentLang].materialsTitle}</h3><div class="text-slate-400" data-lang-key="materialsText">${translations[currentLang].materialsText}</div></div></div>`;
+            mainContainer.appendChild(intro);
+
+            const phases = [...new Set(exercisesData.map(e => e.phase))];
+            phases.forEach(phaseNum => {
+                const phaseWrapper = document.createElement('div');
+                phaseWrapper.className = 'phase mb-6';
+                
+                const header = document.createElement('div');
+                header.className = `phase-header glass-card p-4 rounded-lg cursor-pointer flex justify-between items-center transition hover:border-brand-gold`;
+                header.innerHTML = `<h2 class="text-xl md:text-2xl font-bold text-slate-100">${translations[currentLang].phases[phaseNum - 1]}</h2><div class="toggle-icon text-slate-300"><i data-lucide="chevron-down" class="w-6 h-6"></i></div>`;
+
+                const content = document.createElement('div');
+                content.className = `phase-content mt-2 space-y-3`;
+
+                const phaseItems = exercisesData.filter(e => e.phase === phaseNum);
+                phaseItems.forEach(item => {
+                    const itemWrapper = document.createElement('div');
+                    
+                    if (item.type === 'exercise') {
+                        itemWrapper.className = 'exercise mb-4 border-b border-slate-800 pb-4 last:border-b-0 last:pb-0';
+                        itemWrapper.innerHTML = `
+                            <div class="exercise-header cursor-pointer flex justify-between items-center p-3 rounded-lg hover:bg-slate-800/50">
+                                <h3 class="text-lg md:text-xl font-semibold text-slate-200">${item.title[currentLang]}</h3>
+                                <div class="toggle-icon text-slate-400"><i data-lucide="plus" class="w-5 h-5"></i></div>
+                            </div>
+                            <div class="exercise-content mt-4 space-y-6 px-4">
+                                <div><h4 class="font-bold mb-2 text-slate-100">${translations[currentLang].goalTitle}</h4><p class="text-slate-400">${item.goal[currentLang]}</p></div>
+                                <div><h4 class="font-bold mb-2 text-slate-100">${translations[currentLang].instructionsTitle}</h4><p class="text-slate-400">${item.instructions[currentLang]}</p></div>
+                                <div class="prompt-box bg-slate-900/50 p-4 rounded-lg border-r-4 border-brand-gold">
+                                    <h4 class="font-bold text-lg mb-2 text-slate-100">${item.promptId ? `${translations[currentLang].promptTitle} #${item.promptId}:` : ''}</h4>
+                                    <p class="text-slate-300">${item.prompt[currentLang]}</p>
+                                </div>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div><h4 class="font-bold mb-2 text-slate-100">${translations[currentLang].outputsTitle}</h4><div class="text-slate-400">${item.outputs[currentLang]}</div></div>
+                                    <div><h4 class="font-bold mb-2 text-slate-100">${translations[currentLang].criteriaTitle}</h4><div class="text-slate-400">${item.criteria[currentLang]}</div></div>
+                                </div>
+                            </div>`;
+                    } else if (item.type === 'project') {
+                        itemWrapper.className = `project-box border-brand-gold p-6 rounded-xl my-6 bg-gradient-to-br from-slate-900/20 to-brand-gold/10`;
+                        itemWrapper.innerHTML = `
+                            <div class="exercise-header cursor-pointer flex justify-between items-center">
+                                <h3 class="text-xl md:text-2xl font-bold text-brand-gold">${item.title[currentLang]}</h3>
+                                <div class="toggle-icon text-brand-gold"><i data-lucide="star" class="w-6 h-6"></i></div>
+                            </div>
+                            <div class="exercise-content mt-4 space-y-6">
+                                <div><h4 class="font-bold mb-2 text-slate-100">${translations[currentLang].instructionsTitle}</h4><div class="text-slate-300">${item.instructions[currentLang]}</div></div>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div><h4 class="font-bold mb-2 text-slate-100">${translations[currentLang].outputsTitle}</h4><div class="text-slate-300">${item.outputs[currentLang]}</div></div>
+                                    <div><h4 class="font-bold mb-2 text-slate-100">${translations[currentLang].criteriaTitle}</h4><div class="text-slate-300">${item.criteria[currentLang]}</div></div>
+                                </div>
+                            </div>`;
+                    }
+                    content.appendChild(itemWrapper);
+                });
+
+                phaseWrapper.appendChild(header);
+                phaseWrapper.appendChild(content);
+                mainContainer.appendChild(phaseWrapper);
+            });
+
+            lucide.createIcons();
+            addEventListeners();
+        }
+
+        const addEventListeners = () => {
+            document.querySelectorAll('.phase-header, .exercise-header').forEach(header => {
+                header.addEventListener('click', function (event) {
+                    event.stopPropagation();
+                    this.classList.toggle('active');
+                    const icon = this.querySelector('.toggle-icon i');
+                    if(icon && icon.getAttribute('data-lucide') === 'plus') {
+                        icon.setAttribute('data-lucide', 'minus');
+                        lucide.createIcons();
+                    } else if (icon && icon.getAttribute('data-lucide') === 'minus') {
+                        icon.setAttribute('data-lucide', 'plus');
+                        lucide.createIcons();
+                    }
+                });
+            });
+        }
+        
+        const setLanguage = (lang) => {
+            currentLang = lang;
+            
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+            document.querySelectorAll('[data-lang-key]').forEach(elem => {
+                const key = elem.dataset.langKey;
+                if (translations[lang][key]) {
+                    elem.innerHTML = translations[lang][key];
+                }
+            });
+
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            
+            buildContent();
+        };
+
+        document.querySelectorAll('.lang-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                setLanguage(e.target.dataset.lang);
+            });
+        });
+
+        // Initial Load
+        setLanguage(currentLang);
+    });
+    </script>
+
+</body>
+</ht
