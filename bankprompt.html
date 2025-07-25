@@ -3,72 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بنك الأوامر لتوليد الصور بالذكاء الاصطناعي | الشارع المغربي</title>
-    <meta name="description" content="استكشف وصنّف وانسخ أوامر (prompts) مفصلة لإلهام إبداعاتك في توليد الصور بالذكاء الاصطناعي. أتقن العديد من الأساليب الفنية لمشاريعك.">
+    <title>بنك الأوامر (100) - لصناع المحتوى | الشارع المغربي</title>
+    <meta name="description" content="مجموعة شاملة من 100 أمر (prompt) احترافي لصناع المحتوى على يوتيوب، تغطي كل المراحل من العصف الذهني إلى النشر والتحسين.">
 
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://toolify.biz">
-    <meta property="og:title" content="بنك الأوامر لتوليد الصور بالذكاء الاصطناعي | الشارع المغربي">
-    <meta property="og:description" content="استكشف وانسخ أوامر مفصلة لإلهام إبداعاتك في توليد الصور بالذكاء الاصطناعي.">
+    <meta property="og:title" content="بنك الأوامر (100) - لصناع المحتوى | الشارع المغربي">
+    <meta property="og:description" content="مجموعة شاملة من 100 أمر (prompt) احترافي لصناع المحتوى على يوتيوب.">
     <meta property="og:image" content="https://pwwijduek2.space.minimax.io/logo_alshaarea_almoghrabi.jpeg">
 
+    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://toolify.biz">
-    <meta property="twitter:title" content="بنك الأوامر لتوليد الصور بالذكاء الاصطناعي | الشارع المغربي">
-    <meta property="twitter:description" content="استكشف وانسخ أوامر مفصلة لإلهام إبداعاتك في توليد الصور بالذكاء الاصطناعي.">
+    <meta property="twitter:title" content="بنك الأوامر (100) - لصناع المحتوى | الشارع المغربي">
+    <meta property="twitter:description" content="مجموعة شاملة من 100 أمر (prompt) احترافي لصناع المحتوى على يوتيوب.">
     <meta property="twitter:image" content="https://pwwijduek2.space.minimax.io/logo_alshaarea_almoghrabi.jpeg">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <style>
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
         body {
             font-family: 'Tajawal', sans-serif;
             background-color: #0d0d0d;
             color: #f9fafb;
+            min-height: 100vh;
             -webkit-user-select: none;
             -ms-user-select: none;
             user-select: none;
         }
-        .font-ar { font-family: 'Tajawal', sans-serif; }
-        .font-en { font-family: 'Inter', sans-serif; }
+        html[lang="fr"] body { font-family: 'Inter', sans-serif; }
         
         .text-brand-gold { color: #D4AF37; }
-        .bg-brand-gold { background-color: #D4AF37; }
         .border-brand-gold { border-color: #D4AF37; }
-        .shadow-brand-gold { box-shadow: 0 0 25px rgba(212, 175, 55, 0.6); }
-
         .bg-brand-burgundy { background-color: #8B1538; }
-        .border-brand-burgundy { border-color: #8B1538; }
-
+        
         .glass-card {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            animation: fadeIn 0.5s ease-in-out;
         }
-        .filter-btn.active {
-            background-color: #8B1538;
-            color: #ffffff;
-            border-color: #D4AF37;
-            transform: scale(1.05);
-            box-shadow: 0 4px 14px 0 rgba(212, 175, 55, 0.3);
+        
+        .phase-content {
+            display: none;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+            max-height: 0;
         }
+
+        .phase-header.active + .phase-content {
+            display: block;
+            max-height: 5000px;
+        }
+
+        .toggle-icon {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .phase-header.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
         .lang-btn.active {
             background-color: #8B1538;
             color: #ffffff;
         }
-        .prompt-text {
-            direction: ltr;
-            text-align: left;
-            font-family: 'Inter', sans-serif;
+
+        #searchInput::placeholder { text-align: right; }
+        html[dir="ltr"] #searchInput::placeholder { text-align: left; }
+        
+        .highlight {
+            background-color: #D4AF37;
+            color: #0d0d0d;
+            padding: 0 2px;
+            border-radius: 3px;
         }
         
         @keyframes gradient-shift {
@@ -93,7 +110,7 @@
             <div class="flex-shrink-0">
                 <a href="https://toolify.biz" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3">
                     <img src="https://pwwijduek2.space.minimax.io/logo_alshaarea_almoghrabi.jpeg" alt="شعار الشارع المغربي" class="w-12 h-12 rounded-full border-2 border-brand-gold" onerror="this.onerror=null;this.src='https://placehold.co/48x48/8B1538/ffffff?text=AI';">
-                    <h1 class="text-xl font-bold text-white hidden sm:block">الشارع المغربي</h1>
+                    <h1 data-lang-key="brandName" class="text-xl font-bold text-white hidden sm:block"></h1>
                 </a>
             </div>
             <div class="flex items-center gap-4">
@@ -101,31 +118,37 @@
                     <button data-lang="fr" class="lang-btn text-slate-300 font-semibold py-2 px-4 rounded-l-lg transition-colors duration-200">FR</button>
                     <button data-lang="ar" class="lang-btn text-slate-300 font-semibold py-2 px-4 rounded-r-lg transition-colors duration-200 active">AR</button>
                 </div>
-                <a href="../index.html" data-lang-key="backToHome" class="text-slate-300 hover:text-brand-gold transition">العودة إلى الرئيسية</a>
+                <a href="../index.html" data-lang-key="backToHome" class="text-slate-300 hover:text-brand-gold transition"></a>
             </div>
         </nav>
     </header>
 
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        
-        <header class="text-center mb-10">
-            <h1 data-lang-key="mainTitle" class="gradient-text text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">بنك الأنماط للذكاء الاصطناعي</h1>
-            <p data-lang-key="subTitle" class="text-base sm:text-lg text-slate-400 mt-4 max-w-3xl mx-auto">استكشف وصنّف وانسخ مطالبات مفصلة لإلهام إبداعاتك في توليد الصور بالذكاء الاصطناعي. تم تصميم هذه الأداة لمساعدتك على إتقان العديد من الأساليب الفنية لمشاريع المحتوى الخاصة بك.</p>
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-8">
+            <h1 id="main-title" data-lang-key="mainTitle" class="gradient-text text-4xl md:text-5xl font-extrabold tracking-tight"></h1>
+            <p id="subtitle" data-lang-key="subTitle" class="text-lg text-slate-400 mt-2"></p>
         </header>
 
-        <nav id="filter-nav" class="flex flex-wrap justify-center gap-3 mb-12">
-            </nav>
-
-        <main id="style-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8">
-            </main>
+        <div class="max-w-xl mx-auto mb-8 relative">
+             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none rtl:left-auto rtl:right-0 rtl:pr-3">
+                 <i data-lucide="search" class="w-5 h-5 text-slate-400"></i>
+             </div>
+            <input type="text" id="searchInput" data-lang-key-placeholder="searchPlaceholder" class="w-full glass-card pl-10 pr-4 py-2.5 text-white focus:outline-none focus:ring-2 focus:ring-brand-gold transition-all rounded-lg rtl:pr-10 rtl:pl-4">
+        </div>
+        <p id="noResults" data-lang-key="noResults" class="text-center text-slate-500 mt-4 hidden"></p>
+        
+        <main id="prompts-container" class="mt-12 space-y-4">
+            <!-- Phases and prompts will be injected here by JS -->
+        </main>
     </div>
     
-    <footer class="text-center py-6 mt-auto border-t border-slate-800/50">
+    <footer class="text-center py-6 mt-12 border-t border-slate-800/50">
         <p data-lang-key="footerText" class="text-slate-500 text-sm"></p>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- Content Protection ---
             document.addEventListener('contextmenu', event => event.preventDefault());
             document.addEventListener('keydown', event => {
                 if (event.keyCode === 123 || (event.ctrlKey && event.shiftKey && (event.keyCode === 73 || event.keyCode === 67 || event.keyCode === 74)) || (event.ctrlKey && event.keyCode === 85)) {
@@ -133,166 +156,323 @@
                 }
             });
 
+            let currentLang = 'ar';
+
             const translations = {
                 ar: {
-                    mainTitle: "بنك الأنماط للذكاء الاصطناعي",
-                    subTitle: "استكشف وصنّف وانسخ مطالبات مفصلة لإلهام إبداعاتك في توليد الصور بالذكاء الاصطناعي. تم تصميم هذه الأداة لمساعدتك على إتقان العديد من الأساليب الفنية لمشاريع المحتوى الخاصة بك.",
-                    filterAll: "كل الأنماط",
-                    filterGeneral: "أنماط عامة ومواضيعية",
-                    filterArtists: "فنانون وحركات فنية",
-                    copyButton: "نسخ الموجه",
-                    copiedButton: "تم النسخ!",
+                    brandName: "الشارع المغربي",
                     backToHome: "العودة إلى الرئيسية",
-                    footerText: `&copy; 2025 <a href="https://toolify.biz" target="_blank" class="gradient-text font-bold">الشارع المغربي</a>. جميع الحقوق محفوظة.`
+                    mainTitle: "بنك الأوامر (100)",
+                    subTitle: "مجموعة شاملة من الأوامر لصناع المحتوى على يوتيوب",
+                    searchPlaceholder: "ابحث عن أمر...",
+                    noResults: "لم يتم العثور على نتائج.",
+                    copyButton: "نسخ",
+                    copiedButton: "تم النسخ!",
+                    footerText: `&copy; 2025 <a href="https://toolify.biz" target="_blank" class="gradient-text font-bold">الشارع المغربي</a>. جميع الحقوق محفوظة.`,
+                    phases: [
+                        "المرحلة 1: العصف الذهني والاستراتيجية",
+                        "المرحلة 2: كتابة السيناريو والهيكل",
+                        "المرحلة 3: توليد المحتوى البصري",
+                        "المرحلة 4: تحسين المحتوى والنشر",
+                        "المرحلة 5: أوامر متقدمة ومتنوعة"
+                    ]
                 },
                 fr: {
-                    mainTitle: "Banque de Styles IA",
-                    subTitle: "Explorez, filtrez et copiez des prompts détaillés pour inspirer vos créations d'images par IA. Cet outil est conçu pour vous aider à maîtriser une multitude de styles artistiques pour vos projets.",
-                    filterAll: "Tous les Styles",
-                    filterGeneral: "Généraux & Thématiques",
-                    filterArtists: "Artistes & Mouvements",
-                    copyButton: "Copier le Prompt",
-                    copiedButton: "Copié !",
+                    brandName: "الشارع المغربي",
                     backToHome: "Retour à l'accueil",
-                    footerText: `&copy; 2025 <a href="https://toolify.biz" target="_blank" class="gradient-text font-bold">الشارع المغربي</a>. Tous droits réservés.`
+                    mainTitle: "Banque de Prompts (100)",
+                    subTitle: "Une collection complète de prompts pour les créateurs de contenu YouTube",
+                    searchPlaceholder: "Rechercher un prompt...",
+                    noResults: "Aucun résultat trouvé.",
+                    copyButton: "Copier",
+                    copiedButton: "Copié !",
+                    footerText: `&copy; 2025 <a href="https://toolify.biz" target="_blank" class="gradient-text font-bold">الشارع المغربي</a>. Tous droits réservés.`,
+                    phases: [
+                        "Phase 1 : Brainstorming et Stratégie",
+                        "Phase 2 : Écriture de Scénario et Structure",
+                        "Phase 3 : Génération de Contenu Visuel",
+                        "Phase 4 : Optimisation et Publication",
+                        "Phase 5 : Prompts Avancés et Divers"
+                    ]
                 }
             };
 
-            const stylesData = [
-                { title: { fr: "Style Ghibli", ar: "أسلوب غيبلي" }, category: "generaux", prompt: "A Ghibli-style masterpiece, classic Studio Ghibli art style, soft hand-drawn illustration, muted watercolor palette, warm and somber cinematic lighting, gentle outlines, richly detailed backgrounds, painterly aesthetic, nostalgic feel, art by Hayao Miyazaki and Isao Takahata." },
-                { title: { fr: "Style 3D Pixar", ar: "أسلوب بيكسار ثلاثي الأبعاد" }, category: "generaux", prompt: "A vibrant 3D Pixar-style illustration, rendered with smooth, polished textures and a warm, inviting color palette of soft pastels, golden yellows, and lush greens. The lighting is dynamic yet gentle, with a cinematic glow that emphasizes depth and emotional warmth. Characters have expressive, slightly caricatured features with large, emotive eyes." },
-                { title: { fr: "Style Hyper-Réaliste", ar: "أسلوب فائق الواقعية" }, category: "generaux", prompt: "A hyper-realistic digital painting, rendered with meticulous detail and photorealistic precision. The color palette is rich yet naturalistic, under crisp, directional lighting. Every texture—craggy stone, wind-torn grass, and glistening sea spray—is rendered with breathtaking clarity. The mood is dramatic, raw, and immersive." },
-                { title: { fr: "Style Steampunk", ar: "أسلوب ستيم بانك" }, category: "generaux", prompt: "A steampunk illustration, blending Victorian-era aesthetics with futuristic, steam-powered machinery. The color palette is rich with brass, copper, leather, and sepia tones. Lighting emphasizes intricate gears, clockwork mechanisms, and polished metal surfaces. The mood is adventurous and inventive." },
-                { title: { fr: "Style Cyberpunk Neon", ar: "أسلوب سايبربانك نيون" }, category: "generaux", prompt: "A cyberpunk neon illustration, rendered in a high-contrast digital style with glowing, oversaturated colors—electric blues, hot pinks, and acid greens—set against deep blacks. The lighting is artificial, with flickering neon signs and holographic reflections. The setting is a rain-soaked urban dystopia at night." },
-                { title: { fr: "Style Vaporwave", ar: "أسلوب فيبورويف" }, category: "generaux", prompt: "Vaporwave aesthetic, nostalgic 80s and 90s internet visuals, pastel pinks and blues, neon grids, Roman busts, glitch art, Japanese characters. The scene has a surreal, retro-futuristic feel, often set in a digital landscape or an abandoned shopping mall. The mood is melancholic, ironic, and dreamlike." },
-                { title: { fr: "Style Synthwave", ar: "أسلوب سينثويف" }, category: "generaux", prompt: "A Synthwave-style digital art piece. Features retro-futuristic 1980s aesthetics, glowing neon grids stretching to the horizon, a setting sun, and a sports car silhouette. The color palette is dominated by vibrant pinks, purples, and blues. The mood is nostalgic, cool, and iconic of 80s sci-fi." },
-                { title: { fr: "Style Isométrique 3D", ar: "أسلوب ثلاثي الأبعاد متساوي القياس" }, category: "generaux", prompt: "A clean 3D isometric illustration. The scene is a miniature diorama with a clean, minimalist aesthetic. It features simple geometric shapes, a soft pastel color palette, and soft, ambient lighting with subtle shadows to create depth without complexity. The mood is modern, playful, and organized." },
-                { title: { fr: "Art Linéaire Minimaliste", ar: "فن الخط البسيط" }, category: "generaux", prompt: "A minimalist single-line drawing. The artwork is created with a single, continuous, flowing black line on a clean white background. It forms a simple, elegant shape or figure. The style is clean, modern, and sophisticated, focusing on the purity of the line itself." },
-                { title: { fr: "Illustration Cinématique Encre et Fusain", ar: "رسم سينمائي بالحبر والفحم" }, category: "generaux", prompt: "A cinematic ink-and-charcoal illustration in high contrast, richly textured, with a muted palette of ochre, navy, and gray. Gothic noir atmosphere with stark shadows, gritty details, and swirling fog. The scene is haunting, melancholic, and existential." },
-                { title: { fr: "Illustration d'Horreur Médiévale", ar: "رسم رعب من العصور الوسطى" }, category: "generaux", prompt: "A medieval horror illustration in the style of Alan Lee and Arthur Rackham, rendered with harsh realistic detail and soft painterly textures. Ink-and-wash technique on aged paper. The lighting is gloomy and atmospheric, with muted earthy tones like sepia, ash, and ochre dominating the scene. The environment feels melancholic and decayed — a ruined minaret leans above a collapsing medieval cityscape, surrounded by abandoned streets, broken rooftops, and overgrown gardens being reclaimed by time. The mood is grim, haunting, and emotionally raw, evoking a forgotten world lost to ruin and silence." },
-                { title: { fr: "Style Pixel Art", ar: "أسلوب فن البكسل" }, category: "generaux", prompt: "A pixel art illustration, composed of individual pixels, creating a distinct retro and digital aesthetic. The color palette is typically limited but vibrant, with clear outlines and sharp transitions between colors. Lighting is often simplified, relying on dithering and color variations to create depth and shading. The scene could be a classic 8-bit video game environment, detailed character sprites, or intricate landscapes built pixel by pixel. The mood is nostalgic, charming, and can range from whimsical to dramatic, capturing the essence of early digital graphics." },
-                { title: { fr: "Style Post-Impressionniste (van Gogh)", ar: "أسلوب ما بعد الانطباعية (فان جوخ)" }, category: "artistes", prompt: "An oil painting in the post-impressionist style of Vincent van Gogh. The scene is rendered with thick, energetic impasto brushwork, creating a swirling, dynamic texture. The color palette is bold and emotional, dominated by vibrant yellows, deep blues, and rich greens. The mood is passionate and intense." },
-                { title: { fr: "Style Surréaliste (Dalí)", ar: "أسلوب سريالي (دالي)" }, category: "artistes", prompt: "A surrealist masterpiece in the style of Salvador Dalí. The painting features bizarre, dreamlike imagery rendered with hyper-realistic, academic precision, like melting clocks draped over a barren landscape. The atmosphere is strange, unsettling, and mysterious." },
-                { title: { fr: "Style Cubiste (Picasso)", ar: "أسلوب تكعيبي (بيكاسو)" }, category: "artistes", prompt: "A cubist painting in the style of Pablo Picasso. The subject is deconstructed into geometric forms and fragmented planes, presented from multiple viewpoints simultaneously. The color palette is muted, focusing on browns and grays to emphasize form. The mood is intellectual and revolutionary." },
-                { title: { fr: "Style Art Nouveau (Mucha)", ar: "أسلوب الفن الجديد (موشا)" }, category: "artistes", prompt: "An Art Nouveau decorative illustration in the style of Alphonse Mucha. The image features a stylized, elegant female figure with flowing hair, surrounded by intricate floral motifs and ornate patterns. The linework is sinuous and organic. The mood is romantic and ethereal." },
-                { title: { fr: "Style Pop Art (Warhol)", ar: "أسلوب فن البوب (وارهول)" }, category: "artistes", prompt: "A pop art piece in the style of Andy Warhol. The artwork uses imagery from consumer culture, rendered in a bold, graphic, screen-printed style. The color palette is flat, vibrant, and non-naturalistic. The composition often involves repetition. The mood is cool, detached, and celebratory of mass culture." },
-                { title: { fr: "Style Baroque Chiaroscuro (Caravaggio)", ar: "أسلوب الباروك كياروسكورو (كارافاجيو)" }, category: "artistes", prompt: "A baroque oil painting in the style of Caravaggio, employing dramatic tenebrism. The scene is characterized by intense, high-contrast lighting, with deep, enveloping shadows, and a single, strong light source. The subjects are rendered with gritty realism and powerful emotions. The mood is theatrical and intense." },
-                { title: { fr: "Style Réalisme Américain (Hopper)", ar: "أسلوب الواقعية الأمريكية (هوبر)" }, category: "artistes", prompt: "An oil painting in the style of American realist Edward Hopper. The scene depicts a quiet, contemplative moment of modern urban life, emphasizing solitude. The lighting is stark and cinematic, creating a palpable mood. The composition is deliberate and often asymmetrical. The mood is melancholic and hauntingly quiet." },
-                { title: { fr: "Style Anime Cinématographique (Shinkai)", ar: "أسلوب أنمي سينمائي (شينكاي)" }, category: "artistes", prompt: "A cinematic anime illustration in the style of Makoto Shinkai. The artwork features hyper-detailed, photorealistic backgrounds. The lighting is incredibly dramatic, with lens flares, glistening raindrops, and soft, ethereal glows creating a nostalgic and emotional atmosphere. The mood is deeply sentimental and romantic." },
-                { title: { fr: "Style Street Art (Banksy)", ar: "أسلوب فن الشارع (بانكسي)" }, category: "artistes", prompt: "A street art piece in the style of Banksy. The image is a high-contrast, black-and-white stencil spray-painted onto a gritty, urban wall texture. The artwork features a simple yet powerful image with a satirical or political message, often with a single splash of color. The mood is subversive and witty." },
-                { title: { fr: "Style Ukiyo-e", ar: "أسلوب أوكييو-إه" }, category: "artistes", prompt: "A Japanese ukiyo-e woodblock print. Features flat areas of color, bold outlines, and a distinct lack of perspective. Subjects often include landscapes like Mount Fuji, kabuki actors, or beautiful women. The style is elegant, stylized, and evocative of Edo-period Japan." },
-                { title: { fr: "Style Bande Dessinée (Kirby)", ar: "أسلوب القصص المصورة (كيربي)" }, category: "artistes", prompt: "A comic book illustration in the dynamic style of Jack Kirby. Characterized by powerful, energetic figures, dramatic foreshortening, and 'Kirby Krackle' energy effects. The action is explosive and larger than life. The linework is bold and confident. The mood is epic and heroic." }
+            const promptsData = [
+                { phase: 1, id: 1, title: { ar: 'توليد أفكار متخصصة', fr: 'Génération d\'idées de niche' }, content: { ar: "بصفتك خبيرًا في اتجاهات المحتوى على يوتيوب المغرب، اقترح 10 أفكار لقنوات 'بدون وجه' في مجال [التاريخ المنسي]، تستهدف الجمهور المهتم بالقصص غير المروية.", fr: "En tant qu'expert des tendances de contenu sur YouTube Maroc, proposez 10 idées de chaînes 'sans visage' dans le domaine de [l'Histoire Oubliée], ciblant le public intéressé par les récits inédits." } },
+                { phase: 1, id: 2, title: { ar: 'توليد عناوين جذابة', fr: 'Génération de titres accrocheurs' }, content: { ar: "لموضوع فيديو حول [فوائد الصيام المتقطع]، قم بتوليد 10 عناوين باستخدام صيغ مختلفة: سؤال، قائمة، تصريح صادم، فائدة مباشرة، وإثارة فضول.", fr: "Pour un sujet de vidéo sur [les bienfaits du jeûne intermittent], générez 10 titres utilisant différentes formules : question, liste, déclaration choc, bénéfice direct, et éveil de la curiosité." } },
+                { phase: 1, id: 3, title: { ar: 'تحليل الجمهور المستهدف', fr: 'Analyse du public cible' }, content: { ar: "لقناة في مجال [الاستثمار العقاري للمبتدئين]، أنشئ شخصية مفصلة لجمهور مستهدف (شاب مغربي موظف، 30 عامًا)، مع تحديد أهدافه، نقاط ألمه، وما يبحث عنه في المحتوى.", fr: "Pour une chaîne dans le domaine de [l'investissement immobilier pour débutants], créez un persona détaillé pour un public cible (jeune employé marocain, 30 ans), en précisant ses objectifs, ses points de douleur, et ce qu'il recherche dans le contenu." } },
+                { phase: 1, id: 4, title: { ar: 'البحث عن الكلمات المفتاحية', fr: 'Recherche de mots-clés' }, content: { ar: "لموضوع فيديو حول [تعلم المونتاج على CapCut]، أنشئ قائمة بالكلمات المفتاحية الرئيسية (short-tail) والثانوية (long-tail) والكلمات ذات الصلة (LSI).", fr: "Pour un sujet de vidéo sur [apprendre le montage sur CapCut], créez une liste de mots-clés principaux (short-tail), secondaires (long-tail) et sémantiquement liés (LSI)." } },
+                { phase: 1, id: 5, title: { ar: 'إنشاء خطة محتوى شهرية', fr: 'Création d\'un plan de contenu mensuel' }, content: { ar: "بصفتك استراتيجي محتوى، أنشئ جدول محتوى مدته 4 أسابيع لقناة يوتيوب حول [الطبخ المغربي الصحي]. يجب أن يتضمن الجدول عنوان الفيديو، نوع المحتوى (وصفة، نصيحة)، والكلمة المفتاحية الرئيسية لكل أسبوع.", fr: "En tant que stratège de contenu, créez un calendrier de contenu de 4 semaines pour une chaîne YouTube sur [la cuisine marocaine saine]. Le calendrier doit inclure le titre de la vidéo, le type de contenu (recette, conseil), et le mot-clé principal pour chaque semaine." } },
+                { phase: 1, id: 6, title: { ar: 'تحليل الاتجاهات (Trends)', fr: 'Analyse des tendances (Trends)' }, content: { ar: "باستخدام بيانات Google Trends ويوتيوب، ما هي المواضيع الفرعية الرائجة حالياً داخل مجال [الألعاب الإلكترونية] في منطقة شمال أفريقيا؟ اقترح 3 أفكار فيديوهات تستغل هذه الاتجاهات.", fr: "En utilisant les données de Google Trends et YouTube, quels sont les sous-thèmes populaires actuellement dans le domaine des [jeux vidéo] en Afrique du Nord ? Proposez 3 idées de vidéos qui exploitent ces tendances." } },
+                { phase: 1, id: 7, title: { ar: 'تحديد زاوية فريدة للمحتوى', fr: 'Définir un angle de contenu unique' }, content: { ar: "منافسي في مجال [مراجعة الأفلام] يركزون على المراجعات الطويلة. اقترح 5 زوايا فريدة يمكنني أن أتميز بها، مثل 'تحليل نفسي للشخصيات' أو 'أخطاء تاريخية في الأفلام'.", fr: "Mes concurrents dans le domaine de [la critique de films] se concentrent sur les longues critiques. Proposez 5 angles uniques pour me démarquer, comme 'l'analyse psychologique des personnages' ou 'les erreurs historiques dans les films'." } },
+                { phase: 1, id: 8, title: { ar: 'هيكلة سلسلة فيديوهات', fr: 'Structuration d\'une série de vidéos' }, content: { ar: "أريد إنشاء سلسلة من 3 فيديوهات للمبتدئين حول [التصوير الفوتوغرافي بالهاتف]. اقترح العناوين والهيكل الرئيسي لكل فيديو لضمان تدفق منطقي ومتكامل.", fr: "Je veux créer une série de 3 vidéos pour débutants sur [la photographie avec un smartphone]. Proposez les titres et la structure principale de chaque vidéo pour assurer une progression logique et cohérente." } },
+                { phase: 1, id: 9, title: { ar: 'توليد أسماء قنوات', fr: 'Génération de noms de chaînes' }, content: { ar: "اقترح 10 أسماء إبداعية وجذابة لقناة يوتيوب متخصصة في [سرد القصص الغامضة باللهجة المغربية].", fr: "Proposez 10 noms créatifs et attrayants pour une chaîne YouTube spécialisée dans [la narration d'histoires mystérieuses en dialecte marocain]." } },
+                { phase: 1, id: 10, title: { ar: 'تحديد هوية القناة', fr: 'Définition de l\'identité de la chaîne' }, content: { ar: "صف هوية العلامة التجارية لقناة تعليمية عن [البرمجة]. يجب أن تكون النبرة: مشجعة، مبسطة، ومحفزة للعمل. قدم 3 أمثلة لجمل تعكس هذه الهوية.", fr: "Décrivez l'identité de marque pour une chaîne éducative sur [la programmation]. Le ton doit être : encourageant, simplifié et incitatif à l'action. Donnez 3 exemples de phrases qui reflètent cette identité." } },
+                { phase: 1, id: 11, title: { ar: 'تحليل SWOT للمنافسين', fr: 'Analyse SWOT des concurrents' }, content: { ar: "اختر قناة منافسة في مجال [اذكر المجال]. قم بإجراء تحليل SWOT (نقاط القوة، الضعف، الفرص، التهديدات) لهذه القناة. بناءً على هذا التحليل، ما هي الفجوة في المحتوى التي يمكنني سدها؟", fr: "Choisissez une chaîne concurrente dans le domaine de [mentionnez le domaine]. Effectuez une analyse SWOT (Forces, Faiblesses, Opportunités, Menaces) pour cette chaîne. Sur la base de cette analyse, quelle lacune de contenu puis-je combler ?" } },
+                { phase: 1, id: 12, title: { ar: 'تحديد صيغ المحتوى', fr: 'Détermination des formats de contenu' }, content: { ar: "لقناة حول [التطوير الشخصي]، اقترح 7 صيغ مختلفة للمحتوى (مثل: مقابلات، دراسات حالة، فيديوهات شرح، قوائم، تحديات) يمكنني استخدامها لتنويع قناتي.", fr: "Pour une chaîne sur [le développement personnel], proposez 7 formats de contenu différents (ex: interviews, études de cas, vidéos explicatives, listes, défis) que je peux utiliser pour diversifier ma chaîne." } },
+                { phase: 1, id: 13, title: { ar: 'تخطيط فيديو متعدد الخطوات', fr: 'Planification d\'une vidéo en plusieurs étapes' }, content: { ar: "خطط لسلسلة من 3 فيديوهات حول 'كيف تبدأ مشروعك الخاص'. الفيديو الأول: 'العثور على فكرة مربحة'. الفيديو الثاني: 'كتابة خطة عمل مبسطة'. الفيديو الثالث: 'التسويق لمشروعك بأقل تكلفة'. صف بإيجاز ما سيغطيه كل فيديو.", fr: "Planifiez une série de 3 vidéos sur 'Comment démarrer votre propre entreprise'. Vidéo 1 : 'Trouver une idée rentable'. Vidéo 2 : 'Rédiger un business plan simplifié'. Vidéo 3 : 'Promouvoir votre projet à moindre coût'. Décrivez brièvement ce que chaque vidéo couvrira." } },
+                { phase: 1, id: 14, title: { ar: 'استهداف جمهور ثانوي', fr: 'Ciblage d\'un public secondaire' }, content: { ar: "جمهوري الأساسي هم [صف الجمهور الأساسي]. من يمكن أن يكون الجمهور الثانوي المهتم بالمحتوى؟ وكيف يمكنني تعديل بعض الفيديوهات لتناسبهم بشكل أفضل؟", fr: "Mon public principal est [décrivez le public principal]. Qui pourrait être le public secondaire intéressé par le contenu ? Et comment puis-je adapter certaines vidéos pour mieux leur convenir ?" } },
+                { phase: 1, id: 15, title: { ar: 'توليد أفكار من التعليقات', fr: 'Génération d\'idées à partir des commentaires' }, content: { ar: "بصفتك محلل بيانات، تخيل أنك قرأت 100 تعليق على قناة منافسة. ما هي 5 أفكار فيديوهات محتملة يمكن استخلاصها من الأسئلة والمشكلات المتكررة في هذه التعليقات؟", fr: "En tant qu'analyste de données, imaginez que vous avez lu 100 commentaires sur une chaîne concurrente. Quelles sont les 5 idées de vidéos potentielles qui peuvent être extraites des questions et problèmes récurrents dans ces commentaires ?" } },
+                { phase: 1, id: 16, title: { ar: 'ربط الأحداث الجارية بالمحتوى', fr: 'Lier l\'actualité au contenu' }, content: { ar: "كيف يمكنني ربط [حدث حالي، مثل: مؤتمر تكنولوجي كبير] بمحتوى قناتي حول [مراجعة الهواتف الذكية]؟ اقترح 3 أفكار فيديوهات ذات صلة ومناسبة للوقت الحالي.", fr: "Comment puis-je lier [un événement actuel, ex: une grande conférence tech] au contenu de ma chaîne sur [les critiques de smartphones] ? Proposez 3 idées de vidéos pertinentes et d'actualité." } },
+                { phase: 1, id: 17, title: { ar: 'تحديد عرض القيمة الفريد (UVP)', fr: 'Définition de la proposition de valeur unique (UVP)' }, content: { ar: "ساعدني في صياغة عرض القيمة الفريد (Unique Value Proposition) لقناتي. المجال هو [التاريخ]، والمنافسون يقدمون وثائقيات طويلة. أريد أن أكون 'القناة التي تقدم قصصًا تاريخية مثيرة في أقل من 10 دقائق'. هل هذه صياغة جيدة؟ اقترح تحسينات.", fr: "Aidez-moi à formuler la proposition de valeur unique (UVP) de ma chaîne. Le domaine est [l'Histoire], et les concurrents proposent de longs documentaires. Je veux être 'la chaîne qui raconte des histoires historiques passionnantes en moins de 10 minutes'. Est-ce une bonne formulation ? Proposez des améliorations." } },
+                { phase: 1, id: 18, title: { ar: 'تخطيط محتوى لنموذج AIDA', fr: 'Planification de contenu pour le modèle AIDA' }, content: { ar: "خطط لفيديو ترويجي قصير (30 ثانية) لمنتج رقمي (كتاب إلكتروني) باستخدام نموذج AIDA (Attention, Interest, Desire, Action). صف كل مرحلة من المراحل الأربع.", fr: "Planifiez une vidéo promotionnelle courte (30 secondes) pour un produit numérique (e-book) en utilisant le modèle AIDA (Attention, Intérêt, Désir, Action). Décrivez chaque étape." } },
+                { phase: 1, id: 19, title: { ar: 'استكشاف تنسيقات يوتيوب المختلفة', fr: 'Exploration des différents formats YouTube' }, content: { ar: "أريد زيادة تواجدي على يوتيوب. إلى جانب الفيديوهات الطويلة، كيف يمكنني استخدام YouTube Shorts والبث المباشر ومنشورات المجتمع بشكل استراتيجي لخدمة قناتي في مجال [اللياقة البدنية]؟", fr: "Je veux accroître ma présence sur YouTube. Outre les vidéos longues, comment puis-je utiliser stratégiquement les YouTube Shorts, les diffusions en direct et les posts Communauté pour servir ma chaîne sur [le fitness] ?" } },
+                { phase: 1, id: 20, title: { ar: 'تحديد مؤشرات الأداء الرئيسية (KPIs)', fr: 'Définition des indicateurs clés de performance (KPIs)' }, content: { ar: "بصفتك استراتيجي نمو، ما هي أهم 5 مؤشرات أداء رئيسية (KPIs) يجب أن أراقبها في الشهر الأول من إطلاق قناتي؟ ولماذا كل مؤشر مهم؟", fr: "En tant que stratège de croissance, quels sont les 5 indicateurs de performance clés (KPIs) les plus importants que je devrais suivre le premier mois après le lancement de ma chaîne ? Et pourquoi chaque indicateur est-il important ?" } },
+                { phase: 2, id: 21, title: { ar: 'بناء هيكل فيديو تفصيلي', fr: 'Construction d\'une structure vidéo détaillée' }, content: { ar: "لفيديو بعنوان [لماذا تفشل معظم المشاريع الصغيرة؟]، أنشئ هيكلاً تفصيلياً يتضمن مقدمة بخطاف قوي، 3 أسباب رئيسية مع أمثلة، وخاتمة تقدم حلولاً عملية.", fr: "Pour une vidéo intitulée [Pourquoi la plupart des petites entreprises échouent-elles ?], créez une structure détaillée incluant une introduction avec une accroche forte, 3 raisons principales avec des exemples, et une conclusion proposant des solutions pratiques." } },
+                { phase: 2, id: 22, title: { ar: 'كتابة مقدمة بخطاف قوي', fr: 'Écriture d\'une introduction avec une accroche forte' }, content: { ar: "اكتب مقدمة (لا تتجاوز 150 كلمة) لفيديو حول [أضرار السكر]. استخدم هيكل 'المشكلة - التحريض - الوعد بالحل'.", fr: "Rédigez une introduction (pas plus de 150 mots) pour une vidéo sur [les méfaits du sucre]. Utilisez la structure 'Problème - Agitation - Promesse de solution'." } },
+                { phase: 2, id: 23, title: { ar: 'كتابة جسم السكريبت بالقصص', fr: 'Écriture du corps du script avec des histoires' }, content: { ar: "قم بتوسيع النقطة رقم [2] من الهيكل السابق إلى فقرة كاملة (250 كلمة). استخدم قصة قصيرة عن شخص عانى من مشكلة ما وكيف تغلب عليها لتوضيح الفكرة.", fr: "Développez le point numéro [2] de la structure précédente en un paragraphe complet (250 mots). Utilisez une courte histoire sur quelqu'un qui a souffert d'un problème et comment il l'a surmonté pour illustrer l'idée." } },
+                { phase: 2, id: 24, title: { ar: 'كتابة خاتمة تفاعلية', fr: 'Écriture d\'une conclusion interactive' }, content: { ar: "اكتب خاتمة فيديو تلخص الفائدة الرئيسية، وتتضمن دعوتين لاتخاذ إجراء: الاشتراك، وطرح سؤال محدد في التعليقات لزيادة التفاعل.", fr: "Rédigez une conclusion de vidéo qui résume le principal avantage et inclut deux appels à l'action : s'abonner et poser une question spécifique dans les commentaires pour augmenter l'engagement." } },
+                { phase: 2, id: 25, title: { ar: 'تبسيط نص معقد', fr: 'Simplification d\'un texte complexe' }, content: { ar: "خذ هذا النص العلمي: [الصق النص هنا]. أعد كتابته ليكون مفهوماً لجمهور عام، باستخدام استعارات وجمل قصيرة.", fr: "Prenez ce texte scientifique : [Collez le texte ici]. Réécrivez-le pour qu'il soit compréhensible par un public général, en utilisant des métaphores et des phrases courtes." } },
+                { phase: 2, id: 26, title: { ar: 'تحويل نقاط إلى حوار', fr: 'Transformation de points en dialogue' }, content: { ar: "حول هذه النقاط: [قائمة نقاط] إلى حوار طبيعي بين شخصيتين (خبير ومبتدئ) لجعله أكثر جاذبية.", fr: "Transformez ces points : [liste de points] en un dialogue naturel entre deux personnages (un expert et un débutant) pour le rendre plus attrayant." } },
+                { phase: 2, id: 27, title: { ar: 'إضافة إحصائيات وأدلة', fr: 'Ajout de statistiques et de preuves' }, content: { ar: "لهذا الادعاء: [اذكر الادعاء، مثال: 'التأمل يقلل من التوتر']، ابحث عن 3 إحصائيات أو دراسات علمية تدعمه واكتبها بأسلوب مبسط للسكريبت.", fr: "Pour cette affirmation : [mentionnez l'affirmation, ex: 'la méditation réduit le stress'], trouvez 3 statistiques ou études scientifiques qui la soutiennent et rédigez-les dans un style simple pour le script." } },
+                { phase: 2, id: 28, title: { ar: 'كتابة انتقال سلس بين الفقرات', fr: 'Écriture d\'une transition fluide entre les paragraphes' }, content: { ar: "لدي هاتان الفقرتان: [فقرة 1] و [فقرة 2]. اكتب جملة أو جملتين انتقاليتين لربطهما معاً بشكل منطقي وسلس.", fr: "J'ai ces deux paragraphes : [paragraphe 1] et [paragraphe 2]. Rédigez une ou deux phrases de transition pour les lier de manière logique et fluide." } },
+                { phase: 2, id: 29, title: { ar: 'التحقق من الحقائق', fr: 'Vérification des faits' }, content: { ar: "بصفتك باحثاً دقيقاً، قم بمراجعة هذا السكريبت: [الصق السكريبت] وتحقق من صحة المعلومات المذكورة فيه. ضع علامة على أي معلومة قد تكون غير دقيقة أو تحتاج إلى مصدر.", fr: "En tant que chercheur méticuleux, examinez ce script : [Collez le script] et vérifiez l'exactitude des informations mentionnées. Marquez toute information qui pourrait être inexacte ou nécessiter une source." } },
+                { phase: 2, id: 30, title: { ar: 'تكييف النص لمنصات مختلفة', fr: 'Adaptation du texte pour différentes plateformes' }, content: { ar: "خذ هذا السكريبت الطويل (500 كلمة) وقم بتلخيصه في نص لا يتجاوز 150 كلمة ليكون مناسباً لفيديو قصير على تيك توك.", fr: "Prenez ce long script (500 mots) et résumez-le en un texte de 150 mots maximum pour qu'il soit adapté à une courte vidéo sur TikTok." } },
+                { phase: 2, id: 31, title: { ar: 'كتابة قصة باستخدام رحلة البطل', fr: 'Écriture d\'une histoire avec le voyage du héros' }, content: { ar: "اكتب قصة قصيرة (300 كلمة) عن [شخصية تتعلم مهارة جديدة] باستخدام هيكل 'رحلة البطل' المبسط (الدعوة للمغامرة، مواجهة التحديات، العودة بالغنيمة).", fr: "Rédigez une nouvelle (300 mots) sur [un personnage apprenant une nouvelle compétence] en utilisant la structure simplifiée du 'voyage du héros' (appel à l'aventure, confrontation des défis, retour avec la récompense)." } },
+                { phase: 2, id: 32, title: { ar: 'إنشاء سيناريو بصري', fr: 'Création d\'un scénario visuel' }, content: { ar: "لهذا الجزء من السكريبت: [الصق فقرة من السكريبت]، اكتب التعليمات المرئية للمونتاج. صف ما يجب أن يظهر على الشاشة (B-roll، نص، رسوم بيانية) لتوضيح الكلام.", fr: "Pour cette partie du script : [Collez un paragraphe du script], écrivez les instructions visuelles pour le montage. Décrivez ce qui doit apparaître à l'écran (B-roll, texte, graphiques) pour illustrer le discours." } },
+                { phase: 2, id: 33, title: { ar: 'تغيير نبرة السكريبت', fr: 'Changement du ton du script' }, content: { ar: "أعد كتابة هذه الفقرة: [الصق الفقرة] لتكون أكثر حماساً وتفاؤلاً. استخدم كلمات قوية وأفعالاً محفزة.", fr: "Réécrivez ce paragraphe : [Collez le paragraphe] pour qu'il soit plus enthousiaste et optimiste. Utilisez des mots forts et des verbes d'action." } },
+                { phase: 2, id: 34, title: { ar: 'كتابة سكريبت \'قبل وبعد\'', fr: 'Écriture d\'un script \'Avant et Après\'' }, content: { ar: "اكتب سكريبت قصير لفيديو يعرض تحولاً (مثال: تنظيم مكتب). صف الحالة 'قبل' (الفوضى والمشاكل) والحالة 'بعد' (النظام والفوائد).", fr: "Rédigez un court script pour une vidéo montrant une transformation (ex: organisation d'un bureau). Décrivez l'état 'avant' (le désordre et les problèmes) et l'état 'après' (l'ordre et les avantages)." } },
+                { phase: 2, id: 35, title: { ar: 'توليد أسئلة للمقابلة', fr: 'Génération de questions d\'interview' }, content: { ar: "أخطط لإجراء مقابلة مع [خبير في مجال التسويق الرقمي]. جهز قائمة من 10 أسئلة ذكية ومفتوحة تركز على استراتيجياته العملية ونصائحه للمبتدئين.", fr: "Je prévois une interview avec [un expert en marketing numérique]. Préparez une liste de 10 questions intelligentes et ouvertes axées sur ses stratégies pratiques et ses conseils pour les débutants." } },
+                { phase: 2, id: 36, title: { ar: 'كتابة نص للتعليق الصوتي (Voiceover)', fr: 'Écriture d\'un texte pour voix off' }, content: { ar: "اكتب نصًا للتعليق الصوتي مدته 60 ثانية لفيديو وثائقي قصير عن [مدينة مراكش]. يجب أن يكون النص شاعريًا وغنيًا بالوصف البصري.", fr: "Rédigez un texte de voix off de 60 secondes pour un court documentaire sur [la ville de Marrakech]. Le texte doit être poétique et riche en descriptions visuelles." } },
+                { phase: 2, id: 37, title: { ar: 'تفنيد خرافة شائعة', fr: 'Démystification d\'un mythe courant' }, content: { ar: "اختر خرافة شائعة في مجال [التغذية، مثال: 'الدهون سيئة دائمًا']. اكتب هيكل فيديو يفند هذه الخرافة، يبدأ بعرض الخرافة، ثم تقديم الأدلة العلمية التي تدحضها، وينتهي بنصيحة عملية.", fr: "Choisissez un mythe courant dans [la nutrition, ex: 'les graisses sont toujours mauvaises']. Rédigez une structure de vidéo qui démystifie ce mythe, en commençant par présenter le mythe, puis en fournissant des preuves scientifiques pour le réfuter, et en terminant par un conseil pratique." } },
+                { phase: 2, id: 38, title: { ar: 'سكريبت لـ \'أفضل 5\'', fr: 'Script pour un \'Top 5\'' }, content: { ar: "اكتب سكريبت لفيديو 'أفضل 5 أدوات ذكاء اصطناعي لزيادة الإنتاجية'. لكل أداة، اذكر اسمها، وظيفتها الرئيسية، وأفضل ميزة فيها.", fr: "Rédigez un script pour une vidéo 'Top 5 des outils d'IA pour augmenter la productivité'. Pour chaque outil, mentionnez son nom, sa fonction principale et sa meilleure caractéristique." } },
+                { phase: 2, id: 39, title: { ar: 'مقارنة بين مفهومين', fr: 'Comparaison entre deux concepts' }, content: { ar: "اكتب سكريبت يقارن بين [الاستثمار] و [المضاربة]. استخدم تشبيهًا بسيطًا (مثل زراعة شجرة مقابل المراهنة) لتوضيح الفرق.", fr: "Rédigez un script qui compare [l'investissement] et [la spéculation]. Utilisez une analogie simple (comme planter un arbre contre parier) pour illustrer la différence." } },
+                { phase: 2, id: 40, title: { ar: 'كتابة قصة شخصية ملهمة', fr: 'Écriture d\'une histoire personnelle inspirante' }, content: { ar: "اكتب قصة شخصية قصيرة حول كيف ساعدني [كتاب معين أو عادة معينة] في التغلب على [تحدٍ معين]. ركز على المشاعر والتحول الذي حدث.", fr: "Rédigez une courte histoire personnelle sur la façon dont [un certain livre ou une certaine habitude] m'a aidé à surmonter [un défi spécifique]. Concentrez-vous sur les émotions et la transformation qui a eu lieu." } },
+                { phase: 2, id: 41, title: { ar: 'سيناريو تعليمي خطوة بخطوة', fr: 'Scénario de tutoriel étape par étape' }, content: { ar: "اكتب سيناريو لفيديو تعليمي يشرح كيفية [استخدام ميزة معينة في برنامج Canva]. قسم الشرح إلى 5 خطوات واضحة وبسيطة. ابدأ كل خطوة بفعل أمر (مثال: 'أولاً، انقر على...').", fr: "Rédigez un scénario pour une vidéo tutoriel expliquant comment [utiliser une fonctionnalité spécifique de Canva]. Divisez l'explication en 5 étapes claires et simples. Commencez chaque étape par un verbe d'action (ex: 'D'abord, cliquez sur...')." } },
+                { phase: 2, id: 42, title: { ar: 'تحويل مقال إلى سكريبت', fr: 'Transformation d\'un article en script' }, content: { ar: "خذ هذا المقال: [الصق رابط أو نص مقال قصير]. حوله إلى سكريبت فيديو جذاب، أضف مقدمة قوية، وخاتمة تفاعلية، واقتراحات مرئية.", fr: "Prenez cet article : [Collez le lien ou le texte d'un court article]. Transformez-le en un script vidéo attrayant, ajoutez une introduction forte, une conclusion interactive et des suggestions visuelles." } },
+                { phase: 2, id: 43, title: { ar: 'كتابة دعوة للعمل (CTA) مقنعة', fr: 'Écriture d\'un appel à l\'action (CTA) persuasif' }, content: { ar: "اقترح 5 صيغ مختلفة لدعوة المشاهدين للاشتراك في الدورة التدريبية في نهاية الفيديو. جرب صيغًا تركز على الفائدة، الندرة، والدليل الاجتماعي.", fr: "Proposez 5 formulations différentes pour inviter les spectateurs à s'inscrire à la formation à la fin de la vidéo. Essayez des formules axées sur le bénéfice, la rareté et la preuve sociale." } },
+                { phase: 2, id: 44, title: { ar: 'توليد عناوين فرعية (Subheadings) للسكريبت', fr: 'Génération de sous-titres pour le script' }, content: { ar: "لهذا السكريبت الطويل: [الصق السكريبت]، اقترح عناوين فرعية جذابة لتقسيمه إلى أجزاء منطقية. هذه العناوين يمكن استخدامها كنص على الشاشة.", fr: "Pour ce long script : [Collez le script], proposez des sous-titres attrayants pour le diviser en sections logiques. Ces titres peuvent être utilisés comme texte à l'écran." } },
+                { phase: 2, id: 45, title: { ar: 'مراجعة وتحسين الوضوح', fr: 'Révision et amélioration de la clarté' }, content: { ar: "بصفتك محررًا، راجع هذه الفقرة: [الصق فقرة]. أعد صياغتها لجعلها أكثر وضوحًا وإيجازًا. استبدل الكلمات المعقدة بكلمات أبسط وقصّر الجمل الطويلة.", fr: "En tant qu'éditeur, révisez ce paragraphe : [Collez le paragraphe]. Reformulez-le pour le rendre plus clair et concis. Remplacez les mots complexes par des mots plus simples et raccourcissez les phrases longues." } },
+                { phase: 3, id: 46, title: { ar: 'وصف لتوليد صورة واقعية', fr: 'Description pour générer une image réaliste' }, content: { ar: "صورة فوتوغرافية واقعية للغاية لرجل أعمال مغربي في الثلاثينات من عمره، يرتدي بدلة أنيقة، يجلس في مكتب عصري يطل على أفق الدار البيضاء عند غروب الشمس. الإضاءة دافئة وذهبية، مع تفاصيل واضحة في انعكاسات النوافذ. استخدم كاميرا DSLR بفتحة عدسة f/1.8.", fr: "Photographie hyperréaliste d'un homme d'affaires marocain d'une trentaine d'années, portant un costume élégant, assis dans un bureau moderne avec vue sur l'horizon de Casablanca au coucher du soleil. L'éclairage est chaud et doré, avec des détails nets dans les reflets des fenêtres. Utilisez un appareil photo reflex numérique avec une ouverture de f/1.8." } },
+                { phase: 3, id: 47, title: { ar: 'وصف لتوليد صورة بأسلوب Pixar', fr: 'Description pour générer une image de style Pixar' }, content: { ar: "شخصية بأسلوب أفلام بيكسار ثلاثية الأبعاد، طباخ مغربي مبتسم بوجه لطيف وشارب كبير، يرتدي طربوشًا أحمر ويقدم طاجينًا يخرج منه البخار. الخلفية مطبخ دافئ ومريح. الألوان زاهية ومفعمة بالحياة.", fr: "Personnage de style film Pixar 3D, un chef marocain souriant avec un visage sympathique et une grande moustache, portant un tarbouche rouge et présentant un tajine fumant. L'arrière-plan est une cuisine chaleureuse et confortable. Les couleurs sont vives et pleines de vie." } },
+                { phase: 3, id: 48, title: { ar: 'وصف لتوليد صورة بأسلوب الأنمي', fr: 'Description pour générer une image de style Anime' }, content: { ar: "شابة مغربية بأسلوب الأنمي الياباني (shōjo)، بشعر أسود طويل وعيون كبيرة معبرة، تجلس في حديقة ماجوريل بمراكش. ترتدي قفطانًا عصريًا. الألوان ناعمة والخطوط دقيقة، مع تركيز على تفاصيل الزهور الزرقاء في الخلفية.", fr: "Jeune femme marocaine dans le style anime japonais (shōjo), avec de longs cheveux noirs et de grands yeux expressifs, assise dans le Jardin Majorelle à Marrakech. Elle porte un caftan moderne. Les couleurs sont douces et les lignes fines, avec un accent sur les détails des fleurs bleues en arrière-plan." } },
+                { phase: 3, id: 49, title: { ar: 'وصف لتوليد صورة بأسلوب الرسم الزيتي', fr: 'Description pour générer une image de style peinture à l\'huile' }, content: { ar: "لوحة زيتية كلاسيكية تصور سوقًا قديمًا في مدينة فاس. التفاصيل غنية بالألوان الترابية، مع ضربات فرشاة واضحة تظهر نسيج الجدران والملابس التقليدية للناس. الضوء يتسرب من بين أزقة السوق الضيقة.", fr: "Peinture à l'huile classique représentant un ancien souk dans la ville de Fès. Les détails sont riches en tons de terre, avec des coups de pinceau visibles montrant la texture des murs et les vêtements traditionnels des gens. La lumière filtre à travers les ruelles étroites du souk." } },
+                { phase: 4, id: 50, title: { ar: 'توليد علامات للفيديو (Tags)', fr: 'Génération de tags pour la vidéo' }, content: { ar: "لفيديو حول [التصوير الليلي بالهاتف]، قم بتوليد 15 علامة (محددة، عامة، طويلة) ذات صلة.", fr: "Pour une vidéo sur [la photographie de nuit avec un smartphone], générez 15 tags pertinents (spécifiques, généraux, longue traîne)." } },
+                { phase: 4, id: 51, title: { ar: 'كتابة منشورات للترويج', fr: 'Rédaction de posts promotionnels' }, content: { ar: "لفيديو يوتيوب جديد بعنوان [كيف بدأت مشروعي الخاص من الصفر؟]، اكتب منشورات ترويجية لفيسبوك، تويتر/X، وانستغرام.", fr: "Pour une nouvelle vidéo YouTube intitulée [Comment j'ai démarré mon entreprise à partir de zéro ?], rédigez des posts promotionnels pour Facebook, Twitter/X et Instagram." } },
+                { phase: 4, id: 52, title: { ar: 'إعادة تدوير المحتوى', fr: 'Recyclage du contenu' }, content: { ar: "هذا هو سكريبت الفيديو: [الصق السكريبت]. اقترح 5 طرق لإعادة تدويره (مقال مدونة، سلسلة تغريدات، انفوجرافيك، مقاطع قصيرة).", fr: "Voici le script de la vidéo : [Collez le script]. Proposez 5 façons de le recycler (article de blog, fil de tweets, infographie, clips courts)." } },
+                { phase: 4, id: 53, title: { ar: 'كتابة ردود على التعليقات', fr: 'Rédaction de réponses aux commentaires' }, content: { ar: "بصفتك مدير مجتمع، اكتب 3 قوالب ردود جاهزة للرد على أنواع مختلفة من التعليقات (إيجابية، سلبية بناءة، أسئلة).", fr: "En tant que community manager, rédigez 3 modèles de réponses pour différents types de commentaires (positifs, critiques constructives, questions)." } },
+                { phase: 4, id: 54, title: { ar: 'A/B Testing للعناوين', fr: 'A/B Testing pour les titres' }, content: { ar: "لدي هذان العنوانان لنفس الفيديو: [العنوان أ] و [العنوان ب]. بصفتك خبير تسويق، حلل نقاط القوة والضعف لكل منهما، وأيهما تتوقع أن يحقق نسبة نقر أعلى ولماذا.", fr: "J'ai ces deux titres pour la même vidéo : [Titre A] et [Titre B]. En tant qu'expert en marketing, analysez les forces et les faiblesses de chacun, et lequel prévoyez-vous aura un taux de clics plus élevé et pourquoi." } },
+                { phase: 4, id: 55, title: { ar: 'كتابة منشور للمجتمع', fr: 'Rédaction d\'un post pour la communauté' }, content: { ar: "اكتب منشوراً تفاعلياً لعلامة تبويب المجتمع على يوتيوب لسؤال الجمهور عن المواضيع التي يرغبون في رؤيتها في الشهر القادم.", fr: "Rédigez un post interactif pour l'onglet Communauté de YouTube pour demander au public quels sujets ils aimeraient voir le mois prochain." } },
+                { phase: 4, id: 56, title: { ar: 'تحليل أداء الفيديو', fr: 'Analyse des performances de la vidéo' }, content: { ar: "أداء الفيديو الأخير كان ضعيفاً في الاحتفاظ بالجمهور، حيث يغادر معظم المشاهدين بعد 30 ثانية. بصفتك محلل بيانات، ما هي الأسباب المحتملة؟ وما هي 3 تحسينات يمكنني القيام بها في الفيديو القادم؟", fr: "La dernière vidéo a eu une faible rétention d'audience, la plupart des spectateurs partant après 30 secondes. En tant qu'analyste de données, quelles sont les causes possibles ? Et quelles sont les 3 améliorations que je peux apporter à la prochaine vidéo ?" } },
+                { phase: 4, id: 57, title: { ar: 'إنشاء قائمة تشغيل (Playlist)', fr: 'Création d\'une playlist' }, content: { ar: "لدي هذه الفيديوهات: [قائمة الفيديوهات]. نظمها في قائمتي تشغيل (Playlists) ذات معنى، مع اقتراح عنوان جذاب ووصف قصير لكل قائمة.", fr: "J'ai ces vidéos : [liste de vidéos]. Organisez-les en deux playlists cohérentes, en proposant un titre attrayant et une courte description pour chacune." } },
+                { phase: 4, id: 58, title: { ar: 'كتابة نص إعلان قصير', fr: 'Rédaction d\'un texte pour une courte publicité' }, content: { ar: "اكتب نصاً لإعلان يوتيوب مدته 15 ثانية (Skippable Ad) للترويج لفيديو بعنوان [دورة كاملة لتعلم Excel في ساعة واحدة].", fr: "Rédigez le texte d'une publicité YouTube de 15 secondes (Skippable Ad) pour promouvoir une vidéo intitulée [Cours complet pour apprendre Excel en une heure]." } },
+                { phase: 4, id: 59, title: { ar: 'تحسين الطوابع الزمنية (Timestamps)', fr: 'Optimisation des horodatages (Timestamps)' }, content: { ar: "هذا هو هيكل الفيديو: [الصق الهيكل]. حوله إلى طوابع زمنية (Timestamps) لوصف الفيديو، مع تسمية كل فصل باسم جذاب ومحفز للنقر.", fr: "Voici la structure de la vidéo : [Collez la structure]. Transformez-la en horodatages (Timestamps) pour la description de la vidéo, en nommant chaque chapitre de manière attrayante et incitative au clic." } },
+                { phase: 4, id: 60, title: { ar: 'صياغة عنوان لفيديو قصير (Shorts)', fr: 'Formulation d\'un titre pour un YouTube Short' }, content: { ar: "خذ هذا العنوان الطويل: [عنوان فيديو طويل]. أعد صياغته ليكون عنوانًا مثاليًا لفيديو YouTube Short (قصير، مباشر، ومثير للفضول).", fr: "Prenez ce titre long : [titre de la vidéo longue]. Reformulez-le pour en faire un titre parfait pour un YouTube Short (court, direct et suscitant la curiosité)." } },
+                { phase: 4, id: 61, title: { ar: 'تحليل عناوين المنافسين', fr: 'Analyse des titres des concurrents' }, content: { ar: "ابحث عن 5 فيديوهات ناجحة حول موضوع [التسويق بالعمولة]. حلل صيغ عناوينهم. ما هو النمط المشترك الذي يمكنني استخدامه في عنواني؟", fr: "Trouvez 5 vidéos à succès sur le thème du [marketing d'affiliation]. Analysez les formules de leurs titres. Quel est le modèle commun que je peux utiliser dans mon propre titre ?" } },
+                { phase: 4, id: 62, title: { ar: 'اقتراح تعاون (Collaboration)', fr: 'Proposition de collaboration' }, content: { ar: "اقترح 3 صناع محتوى في مجال [التقنية] يمكن أن يكون التعاون معهم مفيدًا لقناتي. اشرح لماذا كل تعاون سيكون استراتيجيًا.", fr: "Proposez 3 créateurs de contenu dans le domaine de [la technologie] avec qui une collaboration pourrait être bénéfique pour ma chaîne. Expliquez pourquoi chaque collaboration serait stratégique." } },
+                { phase: 4, id: 63, title: { ar: 'جدولة المحتوى', fr: 'Planification du contenu' }, content: { ar: "بصفتك مدير وسائل تواصل اجتماعي، أنشئ جدولاً أسبوعيًا بسيطًا لنشر المحتوى المعاد تدويره من فيديو يوتيوب واحد. حدد المنصة (انستغرام، فيسبوك، تويتر)، اليوم، ونوع المحتوى (صورة، مقطع، نص).", fr: "En tant que gestionnaire de médias sociaux, créez un calendrier hebdomadaire simple pour publier du contenu recyclé à partir d'une seule vidéo YouTube. Précisez la plateforme (Instagram, Facebook, Twitter), le jour et le type de contenu (image, clip, texte)." } },
+                { phase: 5, id: 64, title: { ar: 'النقد والتحسين', fr: 'Critique et amélioration' }, content: { ar: "انتقد هذا النص: [الصق النص]. حدد نقاط الضعف واقترح تحسينات لجعله أكثر وضوحاً وإقناعاً.", fr: "Critiquez ce texte : [Collez le texte]. Identifiez les points faibles et proposez des améliorations pour le rendre plus clair et persuasif." } },
+                { phase: 5, id: 65, title: { ar: 'تغيير نبرة الكتابة', fr: 'Changement de ton d\'écriture' }, content: { ar: "أعد كتابة هذه الفقرة: [الصق الفقرة] بثلاث نبرات مختلفة: أكاديمية، ودية وحماسية، وساخرة.", fr: "Réécrivez ce paragraphe : [Collez le paragraphe] avec trois tons différents : académique, amical et enthousiaste, et sarcastique." } },
+                { phase: 5, id: 66, title: { ar: 'توليد استعارات وتشبيهات', fr: 'Génération de métaphores et d\'analogies' }, content: { ar: "لشرح مفهوم [خوارزميات يوتيوب]، اقترح 3 استعارات بسيطة ومبتكرة تساعد على فهم الفكرة.", fr: "Pour expliquer le concept des [algorithmes de YouTube], proposez 3 métaphores simples et créatives qui aident à comprendre l'idée." } },
+                { phase: 5, id: 67, title: { ar: 'تحدي الأفكار (محامي الشيطان)', fr: 'Remise en question des idées (avocat du diable)' }, content: { ar: "أخطط لإنشاء فيديو حول [الفكرة]. تصرف كمحامي الشيطان واطرح 5 أسئلة صعبة أو وجهات نظر معاكسة يجب أن أفكر فيها.", fr: "Je prévois de créer une vidéo sur [l'idée]. Agissez comme l'avocat du diable et posez 5 questions difficiles ou points de vue opposés que je devrais considérer." } },
+                { phase: 5, id: 68, title: { ar: 'تطوير شخصية القناة', fr: 'Développement d\'un persona pour la chaîne' }, content: { ar: "ساعدني على تطوير شخصية افتراضية لقناتي. اسمها [اسم الشخصية] وهي خبيرة في [المجال]. صف مظهرها، شخصيتها، وقصة خلفيتها.", fr: "Aidez-moi à développer un persona virtuel pour ma chaîne. Son nom est [nom du personnage] et elle est experte en [domaine]. Décrivez son apparence, sa personnalité et son histoire." } },
+                { phase: 5, id: 69, title: { ar: 'إنشاء خطة عمل', fr: 'Création d\'un plan d\'affaires' }, content: { ar: "بصفتك مستشار أعمال، أنشئ خطة عمل مبسطة لقناة يوتيوب في مجال [التمويل الشخصي]، تتضمن أهدافاً لـ 6 أشهر، واستراتيجيات تحقيق الدخل.", fr: "En tant que consultant en affaires, créez un plan d'affaires simplifié pour une chaîne YouTube sur [les finances personnelles], incluant des objectifs à 6 mois et des stratégies de monétisation." } },
+                { phase: 5, id: 70, title: { ar: 'كتابة بريد إلكتروني للتعاون', fr: 'Rédaction d\'un e-mail de collaboration' }, content: { ar: "اكتب قالب بريد إلكتروني احترافي لتقديمه إلى علامة تجارية [اسم العلامة التجارية] لاقتراح تعاون أو رعاية (Sponsorship).", fr: "Rédigez un modèle d'e-mail professionnel à envoyer à une marque [nom de la marque] pour proposer une collaboration ou un parrainage (Sponsorship)." } },
+                { phase: 5, id: 71, title: { ar: 'إنشاء محتوى دورة تدريبية', fr: 'Création de contenu de cours' }, content: { ar: "خذ هذا السكريبت الطويل: [الصق السكريبت]. قم بتحويله إلى هيكل دورة تدريبية مصغرة من 3 وحدات، مع تحديد أهداف التعلم لكل وحدة.", fr: "Prenez ce long script : [Collez le script]. Transformez-le en une structure de mini-cours en 3 modules, en définissant les objectifs d'apprentissage pour chaque module." } },
+                { phase: 5, id: 72, title: { ar: 'المقارنة بين أداتين', fr: 'Comparaison entre deux outils' }, content: { ar: "اكتب سكريبت لفيديو يقارن بين أداتين لتوليد الصور: [Midjourney] و [DALL-E 3]. يجب أن يغطي المقارنة: جودة الصور، سهولة الاستخدام، الأساليب الفنية، والتكلفة.", fr: "Rédigez un script pour une vidéo comparant deux outils de génération d'images : [Midjourney] et [DALL-E 3]. La comparaison doit couvrir : la qualité des images, la facilité d'utilisation, les styles artistiques et le coût." } },
+                { phase: 5, id: 73, title: { ar: 'التفكير من المبادئ الأولى', fr: 'Pensée à partir des premiers principes' }, content: { ar: "أريد إنشاء محتوى فريد حول [موضوع شائع ومستهلك مثل 'كيف تكون سعيداً']. باستخدام التفكير من المبادئ الأولى، قم بتفكيك الموضوع إلى حقائقه الأساسية واقترح 3 زوايا جديدة تماماً لمناقشته لم يقم بها أحد من قبل.", fr: "Je veux créer un contenu unique sur [un sujet populaire et saturé comme 'comment être heureux']. En utilisant la pensée à partir des premiers principes, décomposez le sujet en ses vérités fondamentales et proposez 3 angles entièrement nouveaux pour l'aborder que personne n'a jamais traités." } }
             ];
 
-            let currentLang = 'ar';
-            const styleGrid = document.getElementById('style-grid');
-            const filterNav = document.getElementById('filter-nav');
-            const langButtons = document.querySelectorAll('.lang-btn');
+            const mainContainer = document.getElementById('prompts-container');
+            
+            const buildPhases = () => {
+                mainContainer.innerHTML = '';
+                const phases = [...new Set(promptsData.map(p => p.phase))];
 
-            const renderFilters = () => {
-                filterNav.innerHTML = `
-                    <button data-category="all" data-lang-key="filterAll" class="filter-btn px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 glass-card text-slate-200 border-slate-700 hover:border-brand-gold"></button>
-                    <button data-category="generaux" data-lang-key="filterGeneral" class="filter-btn px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 glass-card text-slate-200 border-slate-700 hover:border-brand-gold"></button>
-                    <button data-category="artistes" data-lang-key="filterArtists" class="filter-btn px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 glass-card text-slate-200 border-slate-700 hover:border-brand-gold"></button>
-                `;
-                document.querySelectorAll('.filter-btn').forEach(button => {
-                    button.addEventListener('click', (e) => {
-                        filterStyles(e.target.dataset.category);
-                    });
-                });
-            };
+                phases.forEach(phaseNum => {
+                    const phaseWrapper = document.createElement('div');
+                    phaseWrapper.className = 'phase mb-4';
+                    phaseWrapper.dataset.phaseId = phaseNum;
 
-            const renderStyles = (styles) => {
-                styleGrid.innerHTML = '';
-                styles.forEach(style => {
-                    const card = document.createElement('div');
-                    card.className = 'style-card glass-card rounded-xl overflow-hidden flex flex-col';
-                    card.dataset.category = style.category;
-                    card.innerHTML = `
-                        <div class="p-6 flex-grow flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-100 mb-3">${style.title[currentLang]}</h3>
-                            <p class="prompt-text text-slate-400 text-sm leading-relaxed flex-grow">${style.prompt}</p>
-                        </div>
-                        <div class="p-4 bg-slate-900/30 border-t border-slate-800">
-                            <button class="copy-btn w-full bg-slate-700 text-slate-200 font-bold py-2 px-4 rounded-lg hover:bg-brand-burgundy hover:text-white focus:outline-none focus:ring-2 focus:ring-brand-gold focus:ring-opacity-75 transition-colors duration-200 flex items-center justify-center gap-2">
-                                <i data-lucide="copy" class="w-4 h-4"></i>
-                                <span data-lang-key="copyButton">${translations[currentLang].copyButton}</span>
-                            </button>
+                    const phasePrompts = promptsData.filter(p => p.phase === phaseNum);
+                    const promptCount = phasePrompts.length;
+
+                    const header = document.createElement('div');
+                    header.className = `phase-header glass-card p-4 rounded-lg cursor-pointer flex justify-between items-center transition hover:border-brand-gold`;
+                    header.style.borderColor = 'transparent';
+                    
+                    header.innerHTML = `
+                        <h2 class="text-xl font-bold" data-lang-key-phase="${phaseNum-1}">${translations[currentLang].phases[phaseNum-1]} (${promptCount})</h2>
+                        <div class="toggle-icon">
+                            <i data-lucide="chevron-down" class="w-6 h-6"></i>
                         </div>
                     `;
-                    styleGrid.appendChild(card);
+
+                    const content = document.createElement('div');
+                    content.className = `phase-content mt-2 space-y-3`;
+                    
+                    phasePrompts.forEach(prompt => {
+                        const promptElement = document.createElement('div');
+                        promptElement.className = 'prompt-item glass-card p-4 rounded-lg';
+                        
+                        const titleText = `${prompt.id}. ${prompt.title[currentLang]}`;
+                        const contentText = prompt.content[currentLang];
+                        promptElement.dataset.title = titleText;
+                        promptElement.dataset.content = contentText;
+
+                        promptElement.innerHTML = `
+                            <div class="flex justify-between items-start gap-4">
+                                <div>
+                                    <h4 class="prompt-title text-lg font-bold text-slate-200">${titleText}</h4>
+                                    <p class="prompt-content text-slate-400 mt-2">${contentText}</p>
+                                </div>
+                                <button title="${translations[currentLang].copyButton}" class="copy-btn bg-slate-700 hover:bg-brand-burgundy text-slate-300 hover:text-white font-bold p-3 rounded-full transition-colors duration-200 flex-shrink-0">
+                                    <i data-lucide="copy" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        `;
+                        content.appendChild(promptElement);
+                    });
+
+                    phaseWrapper.appendChild(header);
+                    phaseWrapper.appendChild(content);
+                    mainContainer.appendChild(phaseWrapper);
                 });
                 lucide.createIcons();
-            };
-            
-            const filterStyles = (category) => {
-                document.querySelectorAll('.filter-btn').forEach(btn => {
-                    btn.classList.toggle('active', btn.dataset.category === category);
+                addEventListeners();
+            }
+
+            const addEventListeners = () => {
+                document.querySelectorAll('.phase-header').forEach(header => {
+                    header.addEventListener('click', function () {
+                        this.classList.toggle('active');
+                    });
                 });
-                const filteredData = category === 'all' ? stylesData : stylesData.filter(s => s.category === category);
-                renderStyles(filteredData);
-            };
 
-            const setLanguage = (lang) => {
-                currentLang = lang;
-                document.documentElement.lang = lang;
-                document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-                document.body.className = `antialiased font-${lang === 'ar' ? 'ar' : 'en'}`;
-
-                document.querySelectorAll('[data-lang-key]').forEach(elem => {
-                    const key = elem.dataset.langKey;
-                    if (translations[lang][key]) {
-                        if (elem.tagName === 'A' || key === 'mainTitle') {
-                             elem.textContent = translations[lang][key];
-                        } else {
-                             elem.innerHTML = translations[lang][key];
+                document.querySelectorAll('.copy-btn').forEach(button => {
+                    button.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const promptText = this.closest('.prompt-item').querySelector('.prompt-content').textContent;
+                        
+                        const textArea = document.createElement("textarea");
+                        textArea.value = promptText;
+                        textArea.style.position = "fixed"; 
+                        textArea.style.left = "-9999px";
+                        document.body.appendChild(textArea);
+                        textArea.focus();
+                        textArea.select();
+                        try {
+                            document.execCommand('copy');
+                            this.innerHTML = `<i data-lucide="check" class="w-5 h-5 text-green-400"></i>`;
+                            lucide.createIcons();
+                            this.title = translations[currentLang].copiedButton;
+                            setTimeout(() => {
+                                this.innerHTML = `<i data-lucide="copy" class="w-5 h-5"></i>`;
+                                lucide.createIcons();
+                                this.title = translations[currentLang].copyButton;
+                            }, 2000);
+                        } catch (err) {
+                            console.error('Fallback: Oops, unable to copy', err);
                         }
+                        document.body.removeChild(textArea);
+                    });
+                });
+            }
+
+            const searchInputEl = document.getElementById('searchInput');
+            const noResultsEl = document.getElementById('noResults');
+
+            searchInputEl.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase().trim();
+                let resultsFound = false;
+
+                document.querySelectorAll('.prompt-item').forEach(prompt => {
+                    const promptTitleEl = prompt.querySelector('.prompt-title');
+                    const promptContentEl = prompt.querySelector('.prompt-content');
+
+                    const originalTitle = prompt.dataset.title;
+                    const originalContent = prompt.dataset.content;
+                    
+                    promptTitleEl.innerHTML = originalTitle;
+                    promptContentEl.innerHTML = originalContent;
+                    
+                    const textToSearch = (originalTitle + ' ' + originalContent).toLowerCase();
+
+                    if (textToSearch.includes(searchTerm)) {
+                        prompt.style.display = 'block';
+                        resultsFound = true;
+                        if(searchTerm){
+                            const regex = new RegExp(searchTerm.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'gi');
+                            promptTitleEl.innerHTML = originalTitle.replace(regex, `<span class="highlight">$&</span>`);
+                            promptContentEl.innerHTML = originalContent.replace(regex, `<span class="highlight">$&</span>`);
+                        }
+                    } else {
+                        prompt.style.display = 'none';
                     }
                 });
 
-                langButtons.forEach(btn => {
-                    btn.classList.toggle('active', btn.dataset.lang === lang);
+                document.querySelectorAll('.phase').forEach(phase => {
+                    const visiblePrompts = phase.querySelectorAll('.prompt-item[style*="display: block"]');
+                    if (visiblePrompts.length > 0) {
+                        phase.style.display = 'block';
+                        if(searchTerm) {
+                            phase.querySelector('.phase-header').classList.add('active');
+                        }
+                    } else {
+                        phase.style.display = 'none';
+                    }
                 });
 
-                const activeFilter = document.querySelector('.filter-btn.active')?.dataset.category || 'all';
-                renderStyles(stylesData);
-                filterStyles(activeFilter);
+                noResultsEl.style.display = resultsFound ? 'none' : 'block';
+            });
+            
+            const setLanguage = (lang) => {
+                currentLang = lang;
+                
+                document.documentElement.lang = lang;
+                document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+                
+                document.querySelectorAll('[data-lang-key]').forEach(elem => {
+                    const key = elem.dataset.langKey;
+                    if (translations[lang][key]) {
+                         if (elem.tagName === 'H1') {
+                             elem.textContent = translations[lang][key];
+                         } else {
+                             elem.innerHTML = translations[lang][key];
+                         }
+                    }
+                });
+                
+                const searchInputPlaceholder = document.querySelector('[data-lang-key-placeholder]');
+                if(searchInputPlaceholder) {
+                    const placeholderKey = searchInputPlaceholder.dataset.langKeyPlaceholder;
+                    searchInputPlaceholder.placeholder = translations[lang][placeholderKey];
+                }
+                
+                const searchIconWrapper = document.getElementById('searchIconWrapper');
+                if (searchIconWrapper && searchInputEl) {
+                    if (lang === 'ar') { // RTL
+                        searchIconWrapper.classList.remove('right-0', 'pr-3');
+                        searchIconWrapper.classList.add('left-0', 'pl-3');
+                        searchInputEl.classList.remove('pr-10');
+                        searchInputEl.classList.add('pl-10');
+                    } else { // LTR
+                        searchIconWrapper.classList.remove('left-0', 'pl-3');
+                        searchIconWrapper.classList.add('right-0', 'pr-3');
+                        searchInputEl.classList.remove('pl-10');
+                        searchInputEl.classList.add('pr-10');
+                    }
+                }
+
+
+                document.querySelectorAll('.lang-btn').forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.lang === lang);
+                });
+                
+                buildPhases();
             };
 
-            styleGrid.addEventListener('click', function(e) {
-                const copyButton = e.target.closest('.copy-btn');
-                if (copyButton) {
-                    const card = copyButton.closest('.style-card');
-                    const promptText = card.querySelector('.prompt-text').textContent;
-                    
-                    navigator.clipboard.writeText(promptText).then(() => {
-                        const originalText = copyButton.innerHTML;
-                        copyButton.innerHTML = `<i data-lucide="check" class="w-4 h-4"></i> <span>${translations[currentLang].copiedButton}</span>`;
-                        lucide.createIcons();
-                        copyButton.classList.add('bg-green-600');
-                        copyButton.classList.remove('bg-slate-700', 'hover:bg-brand-burgundy');
-
-                        setTimeout(() => {
-                            copyButton.innerHTML = originalText;
-                            lucide.createIcons();
-                            copyButton.classList.remove('bg-green-600');
-                            copyButton.classList.add('bg-slate-700', 'hover:bg-brand-burgundy');
-                        }, 2000);
-                    }).catch(err => {
-                        console.error('Failed to copy text: ', err);
-                    });
-                }
-            });
-
-            langButtons.forEach(btn => {
-                btn.addEventListener('click', (e) => {
+            document.querySelectorAll('.lang-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
                     setLanguage(e.target.dataset.lang);
                 });
             });
 
-            renderFilters();
-            setLanguage('ar');
+            // Initial Load
+            setLanguage(currentLang);
+            lucide.createIcons();
         });
     </script>
+
 </body>
-</html>
+</ht
