@@ -4,17 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بنك الأوامر والتمارين العملية لصناع المحتوى</title>
-    
-    <!-- Theme: Burgundy/Gold on a dark, glassmorphism base. -->
-    <!-- Application Structure Plan: The application uses a dashboard structure with a nested accordion. The top-level accordion expands to show phases, and the inner accordions expand to show individual exercises and projects. This keeps the initial view clean while allowing users to dive into specific sections. A language switcher provides easy navigation. -->
-    <!-- Visualization & Content Choices: The content is a categorized list of exercises and prompts. The presentation method is an interactive accordion (HTML/Tailwind + JS) for the phases and styled cards for each exercise. This structure is ideal for a large text-based educational resource, making it easy to browse without overwhelming the user. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <meta name="description" content="دليل شامل وتمارين عملية لإنشاء محتوى يوتيوب احترافي باستخدام الذكاء الاصطناعي، مقدم من الشارع المغربي.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dawra.live">
+    <meta property="og:title" content="بنك الأوامر والتمارين العملية لصناع المحتوى | الشارع المغربي">
+    <meta property="og:description" content="دليل شامل وتمارين عملية لإنشاء محتوى يوتيوب احترافي باستخدام الذكاء الاصطناعي.">
+    <meta property="og:image" content="https://pwwijduek2.space.minimax.io/logo_alshaarea_almoghrabi.jpeg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://dawra.live">
+    <meta property="twitter:title" content="بنك الأوامر والتمارين العملية لصناع المحتوى | الشارع المغربي">
+    <meta property="twitter:description" content="دليل شامل وتمارين عملية لإنشاء محتوى يوتيوب احترافي باستخدام الذكاء الاصطناعي.">
+    <meta property="twitter:image" content="https://pwwijduek2.space.minimax.io/logo_alshaarea_almoghrabi.jpeg">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <style>
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -26,16 +36,15 @@
             background-color: #0d0d0d;
             color: #f9fafb;
             min-height: 100vh;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
+        html[lang="fr"] body { font-family: 'Inter', sans-serif; }
         
-        /* Burgundy/Gold Theme Integration */
         .text-brand-gold { color: #D4AF37; }
-        .bg-brand-gold { background-color: #D4AF37; }
         .border-brand-gold { border-color: #D4AF37; }
-        .shadow-brand-gold { box-shadow: 0 0 25px rgba(212, 175, 55, 0.6); }
-
         .bg-brand-burgundy { background-color: #8B1538; }
-        .border-brand-burgundy { border-color: #8B1538; }
         
         .glass-card {
             background: rgba(255, 255, 255, 0.05);
@@ -54,7 +63,7 @@
         .phase-header.active + .phase-content,
         .exercise-header.active + .exercise-content {
             display: block;
-            max-height: 10000px; /* Arbitrary large value */
+            max-height: 10000px;
         }
 
         .toggle-icon {
@@ -71,7 +80,6 @@
             color: #ffffff;
         }
 
-        /* Gradient text animation */
         @keyframes gradient-shift {
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -91,21 +99,26 @@
 
     <header class="bg-black/50 backdrop-blur-lg shadow-lg shadow-brand-gold/10 sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-4 rtl:space-x-reverse">
-                <img src="https://pwwijduek2.space.minimax.io/logo_alshaarea_almoghrabi.jpeg" alt="شعار الشارع المغربي" class="w-12 h-12 rounded-full" onerror="this.onerror=null;this.src='https://placehold.co/48x48/8B1538/ffffff?text=SM';">
-                <h1 class="text-xl font-bold text-white">الشارع المغربي</h1>
+            <div class="flex-shrink-0">
+                <a href="https://dawra.live" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3">
+                    <img src="https://pwwijduek2.space.minimax.io/logo_alshaarea_almoghrabi.jpeg" alt="شعار الشارع المغربي" class="w-12 h-12 rounded-full border-2 border-brand-gold" onerror="this.onerror=null;this.src='https://placehold.co/48x48/8B1538/ffffff?text=AI';">
+                    <h1 data-lang-key="brandName" class="text-xl font-bold text-white hidden sm:block"></h1>
+                </a>
             </div>
-            <div class="flex border border-slate-700 rounded-lg">
-                <button data-lang="fr" class="lang-btn text-slate-300 font-semibold py-2 px-4 rounded-l-lg transition-colors duration-200">FR</button>
-                <button data-lang="ar" class="lang-btn text-slate-300 font-semibold py-2 px-4 rounded-r-lg transition-colors duration-200 active">AR</button>
+            <div class="flex items-center gap-4">
+                <div class="flex border border-slate-700 rounded-lg">
+                    <button data-lang="fr" class="lang-btn text-slate-300 font-semibold py-2 px-4 rounded-l-lg transition-colors duration-200">FR</button>
+                    <button data-lang="ar" class="lang-btn text-slate-300 font-semibold py-2 px-4 rounded-r-lg transition-colors duration-200 active">AR</button>
+                </div>
+                <a href="../index.html" data-lang-key="backToHome" class="text-slate-300 hover:text-brand-gold transition"></a>
             </div>
         </nav>
     </header>
 
     <div class="container mx-auto px-4 py-8">
         <header class="text-center mb-8">
-            <h1 id="main-title" data-lang-key="mainTitle" class="gradient-text text-4xl md:text-5xl font-extrabold tracking-tight">بنك الأوامر والتمارين</h1>
-            <p id="subtitle" data-lang-key="subTitle" class="text-lg text-slate-400 mt-2">دليلك الشامل لإنشاء محتوى يوتيوب احترافي باستخدام الذكاء الاصطناعي</p>
+            <h1 id="main-title" data-lang-key="mainTitle" class="gradient-text text-4xl md:text-5xl font-extrabold tracking-tight"></h1>
+            <p id="subtitle" data-lang-key="subTitle" class="text-lg text-slate-400 mt-2"></p>
         </header>
 
         <main id="main-content" class="space-y-6">
@@ -114,15 +127,25 @@
     </div>
     
     <footer class="text-center py-6 mt-12 border-t border-slate-800/50">
-        <p data-lang-key="footerText" class="text-slate-500 text-sm">دورة مقدمة من طرف <span class="font-bold text-brand-gold">الشارع المغربي</span></p>
+        <p data-lang-key="footerText" class="text-slate-500 text-sm"></p>
     </footer>
 
     <script>
     document.addEventListener('DOMContentLoaded', function () {
+        // --- Content Protection ---
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.addEventListener('keydown', event => {
+            if (event.keyCode === 123 || (event.ctrlKey && event.shiftKey && (event.keyCode === 73 || event.keyCode === 67 || event.keyCode === 74)) || (event.ctrlKey && event.keyCode === 85)) {
+                event.preventDefault();
+            }
+        });
+
         let currentLang = 'ar';
 
         const translations = {
             ar: {
+                brandName: "الشارع المغربي",
+                backToHome: "العودة إلى الرئيسية",
                 mainTitle: "بنك الأوامر والتمارين",
                 subTitle: "دليلك الشامل لإنشاء محتوى يوتيوب احترافي باستخدام الذكاء الاصطناعي",
                 introTitle: "مقدمة ومعلومات عامة",
@@ -136,10 +159,12 @@
                 instructionsTitle: "التعليمات:",
                 promptTitle: "الأمر",
                 projectTitle: "المشروع المتكامل",
-                footerText: 'دورة مقدمة من طرف <span class="font-bold text-brand-gold">الشارع المغربي</span>',
+                footerText: `&copy; 2025 <a href="https://dawra.live" target="_blank" class="gradient-text font-bold">الشارع المغربي</a>. جميع الحقوق محفوظة.`,
                 phases: ["المرحلة 1: العصف الذهني والاستراتيجية", "المرحلة 2: كتابة السيناريو والهيكل", "المرحلة 3: توليد المحتوى البصري", "المرحلة 4: تحسين المحتوى والنشر", "المرحلة 5: أوامر متقدمة ومتنوعة"]
             },
             fr: {
+                brandName: "الشارع المغربي",
+                backToHome: "Retour à l'accueil",
                 mainTitle: "Banque de Prompts & Exercices",
                 subTitle: "Votre guide complet pour créer du contenu YouTube professionnel avec l'IA",
                 introTitle: "Introduction et Informations Générales",
@@ -153,7 +178,7 @@
                 instructionsTitle: "Instructions :",
                 promptTitle: "Prompt",
                 projectTitle: "Projet Intégré",
-                footerText: 'Cours fourni par <span class="font-bold text-brand-gold">الشارع المغربي</span>',
+                footerText: `&copy; 2025 <a href="https://dawra.live" target="_blank" class="gradient-text font-bold">الشارع المغربي</a>. Tous droits réservés.`,
                 phases: ["Phase 1 : Brainstorming et Stratégie", "Phase 2 : Écriture de Scénario et Structure", "Phase 3 : Génération de Contenu Visuel", "Phase 4 : Optimisation et Publication", "Phase 5 : Prompts Avancés et Divers"]
             }
         };
